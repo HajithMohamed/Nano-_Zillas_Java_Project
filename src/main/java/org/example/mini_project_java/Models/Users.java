@@ -1,3 +1,5 @@
+package org.example.mini_project_java.Models;
+
 abstract public class Users {
     private String username;
     private String password;
