@@ -1,0 +1,34 @@
+.login_container{
+    --fxbackground-color: #EEEEEE;
+}
+
+.login_logo_container{
+   -fx-background-color: darkslategray;
+    -fx-alignment:center;
+}
+
+.login_logo_container Text{
+    -fx-font-size: 2em;
+    -fx-fill: #000000;
+}
+
+.login_logo_container FontAwsomeIconView{
+    -fx-fill: #ECF39E;
+}
+
+.login_container_Main_Heading{
+    -fx-font-size: 1.7em;
+}
+.login_container_text_field_label{
+    -fx-font-size: 1.2em;
+}
+.login_container_text_field{
+    -fx-background-color: #e2e8f0;
+    -fx-min-height:40px ;
+}
+.login_container_Button{
+    -fx-min-width: 350px;
+    -fx-background-color: darkslategray;
+    -fx-font-size: 1.2em;
+    -fx-border-radius: 20px;
+}
