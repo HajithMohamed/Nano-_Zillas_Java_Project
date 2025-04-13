@@ -15,6 +15,14 @@
         <junit.version>5.10.2</junit.version>
     </properties>
 
+    <!-- Add Gluon repository here -->
+    <repositories>
+        <repository>
+            <id>gluon-releases</id>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- JavaFX dependencies -->
         <dependency>
@@ -38,6 +46,11 @@
             <groupId>org.kordamp.bootstrapfx</groupId>
             <artifactId>bootstrapfx-core</artifactId>
             <version>0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-glisten</artifactId>
+            <version>6.0.5</version>
         </dependency>
 
         <!-- JUnit for testing -->
@@ -79,4 +92,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
