@@ -1,0 +1,45 @@
+.login_container {
+    -fx-background-color: #EEEEEE;
+
+}
+.login_container_logo{
+    -fx-background-color: #008B8B;
+    -fx-alignment:center;
+}
+
+.login_container_logo_Text{
+    -fx-font-size: 1.2em;
+    -fx-fill: #000000;
+    -fx-padding: 10px;
+}
+.login_container_Main_VB{
+    -fx-background-color: #EEEEEE;
+}
+.login_container_Main_Heading{
+    -fx-font-size: 2em;
+    -fx-alignment:center;
+}
+.login_container_Main_Heading_2{
+    -fx-font-size: 1.5em;
+    -fx-alignment:center;
+}
+.login_container_Main_Label{
+    -fx-font-size: 1.2em;
+}
+.login_container_Main_Button{
+    -fx-font-size: 1.5em;
+    -fx-alignment:center;
+    -fx-background-color: #008B8B;
+    -fx-min-width: 375px;
+}
+.login_container_Main_TextField{
+    -fx-background-color: #e2e8f0;
+    -fx-min-height: 40px;
+}
+.login_container_Main_PasswordField{
+    -fx-background-color: #e2e8f0;
+    -fx-min-height: 40px;
+}
+
+.login_container_logo_Label {
+}
