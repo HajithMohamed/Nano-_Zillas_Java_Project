@@ -1,7 +1,7 @@
 module org.example.mini_project_java {
     requires javafx.controls;
     requires javafx.fxml;
-    requires de.jensd.fx.glyphs.fontawesome;
+    //requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
