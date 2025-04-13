@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="" />
+    <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Admin/adminPaneel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Admin/adminPaneel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Student/StudentOannel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Student/Student_oannel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Student/Student_oannel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Images/OIP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Images/download.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Styles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Controllers/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Models/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Models/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Views/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Views/View.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,9 +59,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.JavaFX App.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Hajith__Mohamed&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Projects/Nano-_Zillas_Java_Project&quot;,
@@ -63,6 +83,17 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\Nano-_Zillas_Java_Project\Mini_Project_Java\src\main\resources\Images" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="JavaFX App" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
+      <module name="demo" />
+      <option name="PROGRAM_PARAMETERS" value=" --module-path &quot;C:\Users\Admin\Documents\javafx-sdk-24\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <option name="VM_PARAMETERS" value="C:\Users\Admin\Documents\javafx-sdk-24\lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -90,6 +121,9 @@
       <workItem from="1744468014337" duration="3000" />
       <workItem from="1744474536990" duration="420000" />
       <workItem from="1744504348538" duration="437000" />
+      <workItem from="1744524467908" duration="2166000" />
+      <workItem from="1744527179185" duration="2169000" />
+      <workItem from="1744529380934" duration="1839000" />
     </task>
     <servers />
   </component>

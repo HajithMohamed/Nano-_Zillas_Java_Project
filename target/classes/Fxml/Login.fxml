@@ -1,81 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane opacity="0.85" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Styles/login.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.mini_project_java.Controllers.LoginController">
-   <styleClass>
-      <String fx:value="login_container"/>
-      <String fx:value="login_container"/>
-   </styleClass>
-   <VBox layoutY="-3.0" prefHeight="400.0" prefWidth="200.0" styleClass="login_logo_container"
-         stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-         AnchorPane.topAnchor="0.0">
-      <Avatar radius="50.0">
-         <image>
-            <Image url="@../Images/download.jpg"/>
-         </image>
-      </Avatar>
-      <Text fontSmoothingType="LCD" opacity="0.65" strokeType="OUTSIDE" strokeWidth="0.0"
-            styleClass="login_logo_container" text="UNIVERSITY OF RUHUNA" textAlignment="JUSTIFY"
-            wrappingWidth="148.16641235351562"/>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Login_Controller">
+   <!-- Left Logo Section -->
+   <VBox prefHeight="450.0" prefWidth="200.0" styleClass="login_container_logo">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_logo_Text" text="UNIVERSITY OF RUHUNA" textAlignment="CENTER" />
    </VBox>
-   <VBox layoutX="218.0" layoutY="30.0" prefHeight="350.0" prefWidth="350.0" AnchorPane.rightAnchor="20.0"
-         AnchorPane.topAnchor="20.0">
-      <Label prefHeight="81.0" prefWidth="350.0" styleClass="login_container_Main_Heading"
-             text=" University Management System">
-         <padding>
-            <Insets left="10.0"/>
-         </padding>
-      </Label>
-      <Label styleClass="login_container_text_field_label" text="User Name:">
-         <padding>
-            <Insets left="5.0"/>
-         </padding>
-      </Label>
-      <TextField styleClass="login_container_text_field">
+
+   <!-- Login Form Section -->
+   <VBox layoutX="214.0" layoutY="14.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_container_Main_VB" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+
+      <!-- Heading Section -->
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_Main_Heading" text="University Management System">
          <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            <Insets left="10.0" right="5.0" top="10.0" />
          </VBox.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-         </padding>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_Main_Heading_2" text="Faculty of Technology">
+         <VBox.margin>
+            <Insets bottom="5.0" left="85.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </Text>
+
+      <!-- Username Input -->
+      <Label styleClass="login_container_Main_Label" text="User Name :">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <TextField styleClass="login_container_Main_TextField">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
       </TextField>
-      <Label styleClass="login_container_text_field_label" text="Password:">
-         <padding>
-            <Insets left="5.0"/>
-         </padding>
+
+      <!-- Password Input -->
+      <Label styleClass="login_container_Main_Label" text="Password :">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
       </Label>
-      <TextField styleClass="login_container_text_field">
+      <PasswordField styleClass="login_container_Main_PasswordField">
          <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
          </VBox.margin>
-      </TextField>
-      <Button alignment="TOP_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" text="Log In"
-              textAlignment="RIGHT">
+      </PasswordField>
+
+      <!-- Login Button -->
+      <Button mnemonicParsing="false" styleClass="login_container_Main_Button" text="Log In">
          <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            <Insets left="8.0" top="10.0" />
          </VBox.margin>
-         <font>
-            <Font name="System Bold" size="23.0"/>
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND"/>
-         </cursor>
       </Button>
-      <Button contentDisplay="RIGHT" mnemonicParsing="false" text="Clear"/>
    </VBox>
 </AnchorPane>

@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Login_Controller">
    <!-- Left Logo Section -->
    <VBox prefHeight="450.0" prefWidth="200.0" styleClass="login_container_logo">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_logo_Text" text="UNIVERSTY OF RUHUNA" textAlignment="CENTER" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_logo_Text" text="UNIVERSITY OF RUHUNA" textAlignment="CENTER" />
    </VBox>
 
    <!-- Login Form Section -->
