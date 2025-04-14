@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane prefHeight="750.0" prefWidth="190.0" stylesheets="@../../Styles/admin_pannell.css">
+        <VBox prefHeight="100.0" prefWidth="160.0" styleClass="logo" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Avatar radius="25.0">
+                <Image url="@../../Images/admin.png" />
+            </Avatar>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="logo_Text" text="Admin panel" wrappingWidth="179.78617095947266" />
+        </VBox>
+        <VBox layoutX="102.0" layoutY="74.0" prefHeight="400.0" prefWidth="160.0" styleClass="nav-box" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <Button mnemonicParsing="false" text=" User Profiles" />
+            <Button mnemonicParsing="false" text="Course" />
+            <Button mnemonicParsing="false" text="Notice" />
+            <Button mnemonicParsing="false" text="Time Table" />
+            <Line endX="120.0" />
+            <Button mnemonicParsing="false" text="Log Out" />
+        </VBox>
+        <VBox prefHeight="120.0" prefWidth="130.0" styleClass="footer-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggetion / Bug?" />
+            <Label prefHeight="54.0" prefWidth="223.0" styleClass="footer-label" text="Use this to report any Errors / suggetion">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" styleClass="footer-button" text="Report" />
+         </children></VBox>
+      <VBox.margin>
+         <Insets right="30.0" />
+      </VBox.margin>
+    </AnchorPane>
+</VBox>
