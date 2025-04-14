@@ -1,34 +1,85 @@
-.login_container{
-    --fxbackground-color: #EEEEEE;
+/* Container styling */
+.login_container {
+    -fx-background-color: #EEEEEE;
 }
 
-.login_logo_container{
-   -fx-background-color: darkslategray;
-    -fx-alignment:center;
+/* Left section (logo panel) */
+.login_container_logo {
+    -fx-background-color: #008B8B;
+    -fx-alignment: center;
+    -fx-padding: 20px;
 }
 
-.login_logo_container Text{
+/* University logo text */
+.login_container_logo_Text {
     -fx-font-size: 2em;
-    -fx-fill: #000000;
+    -fx-fill: #ffffff;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
 }
 
-.login_logo_container FontAwsomeIconView{
-    -fx-fill: #ECF39E;
+/* Right section (form panel) */
+.login_container_Main_VB {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 4);
+    -fx-spacing: 10px;
+    -fx-padding: 20px;
+
 }
 
-.login_container_Main_Heading{
-    -fx-font-size: 1.7em;
+/* Headings */
+.login_container_Main_Heading {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-text-alignment: center;
 }
-.login_container_text_field_label{
+
+.login_container_Main_Heading_2 {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: #555555;
+    -fx-text-alignment: center;
+}
+
+/* Labels */
+.login_container_Main_Label {
     -fx-font-size: 1.2em;
+    -fx-text-fill: #333333;
+    -fx-text-alignment: left;
 }
-.login_container_text_field{
+
+/* Text input fields */
+.login_container_Main_TextField,
+.login_container_Main_PasswordField {
     -fx-background-color: #e2e8f0;
-    -fx-min-height:40px ;
+    -fx-background-radius: 5;
+    -fx-min-height: 40px;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 1em;
 }
-.login_container_Button{
-    -fx-min-width: 350px;
-    -fx-background-color: darkslategray;
+
+/* Login Button */
+.login_container_Main_Button {
     -fx-font-size: 1.2em;
-    -fx-border-radius: 20px;
+    -fx-background-color: #008B8B;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-min-width: 375px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+}
+
+.login_container_Main_Button:hover {
+    -fx-background-color: #006d6d;
+}
+
+/* Optional hover focus styles */
+.login_container_Main_TextField:focused,
+.login_container_Main_PasswordField:focused {
+    -fx-border-color: #008B8B;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
 }
