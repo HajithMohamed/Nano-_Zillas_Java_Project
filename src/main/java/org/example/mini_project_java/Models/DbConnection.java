@@ -10,20 +10,20 @@ public class DbConnection {
     private String password = "1234";
     private Connection con = null;
 
-    private void registerMyConnection() {
+    private void driverConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Connecting to database...");
+            System.out.println("sucessfully Connected to driver...");
         } catch (ClassNotFoundException e) {
             System.out.println("Couldn't find database driver: " + e.getMessage());
         }
     }
 
-    public Connection getMyConnection() {
-        registerMyConnection();
+    public Connection fetchConnection() {
+        driverConnection();
         try {
             con = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected");
+            System.out.println("Connected to database");
         } catch (SQLException e) {
             System.out.println("Couldn't connect to database: " + e.getMessage());
         }

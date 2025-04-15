@@ -1,11 +1,12 @@
 package org.example.mini_project_java.Models;
 
+import java.sql.Connection;
 import java.util.Scanner;
 public class Undergraduate{
     public static void main(String[] args) {
         System.out.println("Welcome to Undergrauate Page");
         int choice;
-        DbConnection db = new DbConnection();
+
         do{
             System.out.println("1.Update your profile");
             System.out.println("2.See the attendance");
@@ -17,14 +18,20 @@ public class Undergraduate{
             System.out.println("8.Exit");
 
 
+            UndergraduateDemo ud = new UndergraduateDemo();
             System.out.println("Enter the choice");
             Scanner sc = new Scanner(System.in);
             choice = sc.nextInt();
-
+            DbConnection db = new DbConnection();
             switch (choice) {
                 case 1:
-                    db.getMyConnection();
 
+                    Connection con=db.fetchConnection();
+                    if(con !=null)
+                        ud.studentExists();
+
+                    else
+                        System.out.println("Couldn't connect to database");
                     break;
                 case 2:
                     System.out.println("See the attendance");
