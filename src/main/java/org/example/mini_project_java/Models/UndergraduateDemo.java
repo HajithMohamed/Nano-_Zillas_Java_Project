@@ -5,60 +5,87 @@ import java.sql.* ;
 import java.util.Scanner;
 
 public class UndergraduateDemo {
-    int  stid;
-    public void updateProfile() {
+    String stid;
+    Scanner sc = new Scanner(System.in);
+    String ppath;
+    int contact;
+
+    public void updateProfile(Connection con) {
         DbConnection db = new DbConnection();
-        Connection con = db.fetchConnection();
 
-//Connection is a Java object from the JDBC (Java Database Connectivity):
-
-        Scanner sc = new Scanner(System.in);
         System.out.println("Enter your student id");
-        stid = sc.nextInt();
-        if (!studentExists()) {
-            System.out.println("Student does not exist");
-            return;
-        }
-        System.out.println("Enter your profile picture path");
-        String ppath = sc.nextLine();
+        stid = sc.next();
+        sc.nextLine();
+        if (studentExists(con)) {
+            System.out.println("Enter your profile picture path");
+            ppath = sc.nextLine();
 
-        System.out.println("Enter your contact number");
-        int contact = sc.nextInt();
+            System.out.println("Enter your contact number");
+            contact = sc.nextInt();
 
 
-        String sql = "UPDATE undergraduates SET contact=?  WHERE studentid=?";
-        try {
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, contact);
-            pst.setString(2, ppath);
-            pst.setInt(3, stid);
+            String sql = "UPDATE undergraduate SET ContactNumber=?,ProfilePath=?  WHERE StudentId=?";
+            try {
+                PreparedStatement pst = con.prepareStatement(sql);
+                pst.setInt(1, contact);
+                pst.setString(2, ppath);
+                pst.setString(3, stid);
 
-            int rowsAffected = pst.executeUpdate();
+                int rowsAffected = pst.executeUpdate();
 
-            if (rowsAffected > 0) {
-                System.out.println("Profile updated successfully");
-            } else
-                System.out.println("Profile update failed");
+                if (rowsAffected > 0) {
+                    System.out.println("Profile updated successfully");
+                } else
+                    System.out.println("Profile update failed");
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
 
     }
 
-    public boolean studentExists() {
-        DbConnection db = new DbConnection();
-        Connection con = db.fetchConnection();
-        String sql = "select stdid from undergraduates where studentid=?";
+    private boolean studentExists(Connection con) {
+        String sql = "select StudentId from undergraduate where StudentId =?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, stid);
+            pst.setString(1, stid);
             ResultSet rs = pst.executeQuery();
-            rs.next();
+            if (rs.next()) {
+                return true;
+            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
+
+    public void seeAttendance(Connection con) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your student id");
+        String stid = sc.next();
+
+        String sql = "SELECT course_code,attendance_percentage FROM attendance WHERE Student_id=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, stid);
+            ResultSet rs = pst.executeQuery();
+            boolean found=false;
+            while (rs.next()) {
+                found = true;
+                String c_code = rs.getString("course_code");
+                float attendance = rs.getFloat("attendance_percentage");
+                System.out.println(c_code + " " + attendance);
+            }
+
+            if (!found) {
+                System.out.println("Attendance not found");
+            }
+        } catch (SQLException e) {
+            System.out.println("error in getting attendance");
+        }
+    }
+
 }

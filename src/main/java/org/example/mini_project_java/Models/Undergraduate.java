@@ -1,9 +1,14 @@
 package org.example.mini_project_java.Models;
 
-import java.sql.Connection;
+
+
+import java.sql.* ;
 import java.util.Scanner;
 public class Undergraduate{
-    public static void main(String[] args) {
+    public Connection con;
+
+    public  static void main(String[] args) {
+        UndergraduateDemo ud = new UndergraduateDemo();
         System.out.println("Welcome to Undergrauate Page");
         int choice;
 
@@ -18,28 +23,29 @@ public class Undergraduate{
             System.out.println("8.Exit");
 
 
-            UndergraduateDemo ud = new UndergraduateDemo();
+            //Connection is a Java object from the JDBC (Java Database Connectivity):
             System.out.println("Enter the choice");
             Scanner sc = new Scanner(System.in);
             choice = sc.nextInt();
-            DbConnection db = new DbConnection();
+
             switch (choice) {
+
                 case 1:
-
-                    Connection con=db.fetchConnection();
-                    if(con !=null)
-                        ud.studentExists();
-
-                    else
-                        System.out.println("Couldn't connect to database");
+                    Undergraduate x= new Undergraduate();
+                    if(x.con !=null){
+                        ud.updateProfile(x.con);}
                     break;
                 case 2:
+                    x= new Undergraduate();
                     System.out.println("See the attendance");
+                    if(x.con !=null){
+                        ud.seeAttendance(x.con);}
                     break;
                 case 3:
                     System.out.println("See the Medical Details");
                     break;
                 case 4:
+
                     System.out.println("See their course details");
                     break;
                 case 5:
@@ -61,6 +67,11 @@ public class Undergraduate{
             }
         }while(choice != 8);
 
+
+    }
+    public  Undergraduate () {
+        DbConnection db = new DbConnection();
+        this. con= db.fetchConnection();//Assign this connection to the con variable that belongs to the object.”
 
     }
 }
