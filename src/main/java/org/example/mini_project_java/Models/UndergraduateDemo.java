@@ -87,5 +87,60 @@ public class UndergraduateDemo {
             System.out.println("error in getting attendance");
         }
     }
+    public void seeMedicalDetails(Connection con) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your student id");
+        String stid = sc.next();
 
-}
+        String sql = "SELECT c_code,stid,subdate,description FROM medical_records WHERE Student_id=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, stid);
+            ResultSet rs = pst.executeQuery();
+            boolean found=false;
+            while (rs.next()) {
+                found = true;
+                String c_code = rs.getString("c_code");
+                String stuid = rs.getString("stid");
+                String subdate = rs.getString("subdate");
+                String description = rs.getString("description");
+                System.out.println(c_code + " " + stuid + " " + subdate + " " + description);
+            }
+
+            if (!found) {
+                System.out.println("Medical not found");
+            }
+        } catch (SQLException e) {
+            System.out.println("error in see Medical");
+        }
+    }
+    public void seeCourseDetails(Connection con) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Department(ICT/ET/BST)");
+        String dep=sc.next().toUpperCase();//avoid the case sensitivity
+
+        String sql = "SELECT c_code,c_name FROM courses WHERE department=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, dep);
+            ResultSet rs = pst.executeQuery();
+            boolean found=false;
+            while (rs.next()) {
+                found = true;
+                String c_code = rs.getString("c_code");
+                String c_name = rs.getString("c_name");
+                System.out.println(c_code + " " + c_name);
+            }
+
+            if (!found) {
+                System.out.println("course not found");
+            }
+        } catch (SQLException e) {
+            System.out.println("error in see course details");
+        }
+
+    }
+
+    }
+
+

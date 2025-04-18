@@ -1,9 +1,7 @@
 package org.example.mini_project_java.Models;
-
-
-
 import java.sql.* ;
 import java.util.Scanner;
+
 public class Undergraduate{
     public Connection con;
 
@@ -34,6 +32,8 @@ public class Undergraduate{
                     Undergraduate x= new Undergraduate();
                     if(x.con !=null){
                         ud.updateProfile(x.con);}
+                    else
+                        System.out.println("connection is null");
                     break;
                 case 2:
                     x= new Undergraduate();
@@ -42,11 +42,18 @@ public class Undergraduate{
                         ud.seeAttendance(x.con);}
                     break;
                 case 3:
-                    System.out.println("See the Medical Details");
+                    x= new Undergraduate();
+                    if(x.con !=null){
+                        ud.seeMedicalDetails(x.con);}
+                    else
+                        System.out.println("connection is null");
                     break;
                 case 4:
-
-                    System.out.println("See their course details");
+                    x= new Undergraduate();
+                    if(x.con !=null){
+                        ud.seeCourseDetails(x.con);}
+                    else
+                        System.out.println("connection is null");
                     break;
                 case 5:
                     System.out.println("See their timetables");
@@ -71,7 +78,7 @@ public class Undergraduate{
     }
     public  Undergraduate () {
         DbConnection db = new DbConnection();
-        this. con= db.fetchConnection();//Assign this connection to the con variable that belongs to the object.”
+        this.con= db.fetchConnection();//Assign this connection to the con variable that belongs to the object.”
 
     }
 }

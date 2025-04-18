@@ -1,8 +1,5 @@
 package org.example.mini_project_java.Models;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DbConnection {
     private String url = "jdbc:mysql://localhost:3306/Undergraduate";
