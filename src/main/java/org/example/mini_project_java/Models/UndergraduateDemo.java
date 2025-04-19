@@ -92,7 +92,7 @@ public class UndergraduateDemo {
         System.out.println("Enter your student id");
         String stid = sc.next();
 
-        String sql = "SELECT c_code,stid,subdate,description FROM medical_records WHERE Student_id=?";
+        String sql = "SELECT c_code,stid,subdate,description FROM medical_records WHERE Stid=?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, stid);
@@ -139,6 +139,36 @@ public class UndergraduateDemo {
             System.out.println("error in see course details");
         }
 
+
+    }
+
+    public void seeNotice(Connection con) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your Department (ICT/ET/BST)");
+        String department = sc.next();
+
+
+        String sql = "SELECT title,description ,date_posted FROM notice WHERE department=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, department);
+            ResultSet rs = pst.executeQuery();
+            boolean found=false;
+            while (rs.next()) {
+                found = true;
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String date_posted = rs.getString("date_posted");
+                System.out.println(title + " " + description + " " + date_posted);
+            }
+
+            if (!found) {
+                System.out.println("Notice not found");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error in see notice");
+        }
     }
 
     }

@@ -1,4 +1,5 @@
 package org.example.mini_project_java.Models;
+
 import java.sql.* ;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ public class Undergraduate{
 
     public  static void main(String[] args) {
         UndergraduateDemo ud = new UndergraduateDemo();
+        TimetableViewer tm = new TimetableViewer();
         System.out.println("Welcome to Undergrauate Page");
         int choice;
 
@@ -16,8 +18,8 @@ public class Undergraduate{
             System.out.println("3.See the Medical Details");
             System.out.println("4.See their course details ");
             System.out.println("5.see the grades and GPA");
-            System.out.println("6.See their timetables ");
-            System.out.println("7.See notices");
+            System.out.println("6.See notices");
+            System.out.println("7.See their timetables ");
             System.out.println("8.Exit");
 
 
@@ -31,7 +33,14 @@ public class Undergraduate{
                 case 1:
                     Undergraduate x= new Undergraduate();
                     if(x.con !=null){
-                        ud.updateProfile(x.con);}
+                        ud.updateProfile(x.con);
+                        try{
+                            x.con.close();
+                            System.out.println("Connection closed.");
+
+                        }catch(SQLException e){
+                            System.out.println("Error closing connection: " + e.getMessage());
+                        }}
                     else
                         System.out.println("connection is null");
                     break;
@@ -39,30 +48,81 @@ public class Undergraduate{
                     x= new Undergraduate();
                     System.out.println("See the attendance");
                     if(x.con !=null){
-                        ud.seeAttendance(x.con);}
+                        ud.seeAttendance(x.con);
+                    try {
+                            x.con.close();  // ✅ Close the connection here
+                            System.out.println("Connection closed.");
+                        } catch (SQLException e) {
+                        System.out.println("Error closing connection: " + e.getMessage());
+                    }
+
+                    }
+                    else
+                        System.out.println("connection is null");
                     break;
                 case 3:
                     x= new Undergraduate();
                     if(x.con !=null){
-                        ud.seeMedicalDetails(x.con);}
+                        ud.seeMedicalDetails(x.con);
+                        try{
+                            x.con.close();
+                            System.out.println("Connection closed.");
+
+                        }catch(SQLException e){
+                            System.out.println("Error closing connection: " + e.getMessage());
+                        }
+                    }
                     else
                         System.out.println("connection is null");
                     break;
                 case 4:
                     x= new Undergraduate();
                     if(x.con !=null){
-                        ud.seeCourseDetails(x.con);}
+                        ud.seeCourseDetails(x.con);
+                        try{
+                            x.con.close();
+                            System.out.println("Connection closed.");
+
+                        }catch(SQLException e){
+                            System.out.println("Error closing connection: " + e.getMessage());
+                        }
+                    }
                     else
                         System.out.println("connection is null");
                     break;
                 case 5:
-                    System.out.println("See their timetables");
+                    System.out.println("See gpa");
                     break;
                 case 6:
-                    System.out.println("See notices");
+                    x= new Undergraduate();
+                    if(x.con !=null){
+                        ud.seeNotice(x.con);
+                        try{
+                            x.con.close();
+                            System.out.println("Connection closed.");
+
+                        }catch(SQLException e){
+                            System.out.println("Error closing connection: " + e.getMessage());
+                        }
+                    }
+                    else
+                        System.out.println("connection is null");
+                    //System.out.println("See notices");
                     break;
                 case 7:
-                    System.out.println("See their timetables");
+                    x= new Undergraduate();
+                    if(x.con !=null){
+                        tm.seeTimetable();
+                        try{
+                            x.con.close();
+                            System.out.println("Connection closed.");
+
+                        }catch(SQLException e){
+                            System.out.println("Error closing connection: " + e.getMessage());
+                        }
+                    }
+                    else
+                        System.out.println("connection is null");
                     break;
                 case 8:
                     System.out.println("Existing.........");
@@ -73,6 +133,7 @@ public class Undergraduate{
 
             }
         }while(choice != 8);
+
 
 
     }
