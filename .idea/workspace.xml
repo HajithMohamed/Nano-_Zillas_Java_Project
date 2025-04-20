@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/admin_pannell.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Main_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Notice_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Time_Table_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_User_Profiles_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Utils/MenuItems.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Views/ViewFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Admin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/AdminDashbord.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Admin_Time_Table.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Admin_notice.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Corses.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/Admin_Dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPaneel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Admin/adminPaneel.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/App.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,9 +36,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -51,6 +67,7 @@
     &quot;Application.JavaFX App.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Hajith__Mohamed&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -64,7 +81,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -114,7 +131,22 @@
       <workItem from="1744529380934" duration="2315000" />
       <workItem from="1744544180821" duration="7632000" />
       <workItem from="1744614162726" duration="2967000" />
-      <workItem from="1744637748504" duration="4387000" />
+      <workItem from="1744637748504" duration="4789000" />
+      <workItem from="1744651655972" duration="3189000" />
+      <workItem from="1744677506929" duration="3149000" />
+      <workItem from="1744721215681" duration="1201000" />
+      <workItem from="1744763980164" duration="2227000" />
+      <workItem from="1744809818434" duration="1803000" />
+      <workItem from="1744829194454" duration="1975000" />
+      <workItem from="1744850839313" duration="1886000" />
+      <workItem from="1744869489590" duration="5321000" />
+      <workItem from="1744889069615" duration="2903000" />
+      <workItem from="1744896168374" duration="593000" />
+      <workItem from="1744911237612" duration="548000" />
+      <workItem from="1744951816987" duration="3548000" />
+      <workItem from="1744963312928" duration="2615000" />
+      <workItem from="1745109316886" duration="1871000" />
+      <workItem from="1745149011394" duration="5846000" />
     </task>
     <servers />
   </component>

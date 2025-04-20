@@ -5,6 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.mini_project_java.Models.Model;
 
 public class Login_Controller {
 
@@ -19,7 +21,6 @@ public class Login_Controller {
 
     @FXML
     private void initialize() {
-        // Optional: Add listeners or validation
         System.out.println("Login controller initialized.");
     }
 
@@ -28,7 +29,7 @@ public class Login_Controller {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        System.out.println("Login button clicked"); // Debug line
+        System.out.println("Login button clicked"); // Debug
 
         if (username.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Please enter both username and password.");
@@ -36,8 +37,7 @@ public class Login_Controller {
         }
 
         if (username.equals("admin") && password.equals("1234")) {
-            showAlert(Alert.AlertType.INFORMATION, "Login successful!");
-            // TODO: Navigate to dashboard or next scene
+            onLogin();
         } else {
             showAlert(Alert.AlertType.ERROR, "Invalid username or password.");
         }
@@ -49,5 +49,11 @@ public class Login_Controller {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void onLogin(){
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showAdminWindow();
     }
 }
