@@ -72,44 +72,34 @@ public class Admin_User_Profiles_Controller implements Initializable {
         String email = userEmail.getText().trim();
         String role = userRole.getText().trim();
         String mobile = userMobileNo.getText().trim();
-        String password = "1234"; // placeholder
+        String password = userPassword.getText().trim(); // Default password or user input
 
-        try (Connection connectDB = DatabaseConnection.getConnection()) {
+        if (username.isEmpty() || fullName.isEmpty() || email.isEmpty() || role.isEmpty() || mobile.isEmpty()) {
+            showAlert("Validation Error", "Please fill in all fields.");
+            return;
+        }
 
+        Admin admin = new Admin();
+
+        try {
             if (userBeingEdited == null) {
-                String insertSQL = "INSERT INTO USERS (username, full_name, email, role, contact_number, password) VALUES (?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement ps = connectDB.prepareStatement(insertSQL)) {
-                    ps.setString(1, username);
-                    ps.setString(2, fullName);
-                    ps.setString(3, email);
-                    ps.setString(4, role);
-                    ps.setString(5, mobile);
-                    ps.setString(6, password);
-                    ps.executeUpdate();
-                }
-
-                showAlert("User Added", "User added successfully!");
+                // Add new user
+                admin.createUserProfiles(username, fullName, email, role, mobile, password, false);
+                showAlert("Success", "User added successfully!");
             } else {
-                String updateSQL = "UPDATE USERS SET full_name = ?, email = ?, role = ?, contact_number = ? WHERE username = ?";
-                try (PreparedStatement ps = connectDB.prepareStatement(updateSQL)) {
-                    ps.setString(1, fullName);
-                    ps.setString(2, email);
-                    ps.setString(3, role);
-                    ps.setString(4, mobile);
-                    ps.setString(5, username);
-                    ps.executeUpdate();
-                }
-
-                showAlert("User Edited", "User edited successfully!");
-                userBeingEdited = null;
+                // Edit existing user
+                admin.createUserProfiles(username, fullName, email, role, mobile, null, true);
+                showAlert("Success", "User updated successfully!");
+                userBeingEdited = null; // Reset the editing state
                 addUserButton.setText("Add User");
             }
 
+            // Reload the user data and clear the form
             loadUserDataFromDatabase();
             clearFields();
-
-        } catch (SQLException e) {
-            showAlert("DB Error", e.getMessage());
+        } catch (Exception e) {
+            showAlert("Error", "An error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -120,6 +110,7 @@ public class Admin_User_Profiles_Controller implements Initializable {
         userEmail.clear();
         userRole.clear();
         userMobileNo.clear();
+        userPassword.clear();
     }
 
     private void showAlert(String title, String message) {
@@ -185,8 +176,6 @@ public class Admin_User_Profiles_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Is User_Name null? " + (User_Name == null)); // DEBUG
-
         User_Name.setCellValueFactory(new PropertyValueFactory<>("username"));
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
         Role.setCellValueFactory(new PropertyValueFactory<>("role"));
