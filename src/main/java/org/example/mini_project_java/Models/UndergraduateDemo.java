@@ -16,7 +16,7 @@ public class UndergraduateDemo {
         System.out.println("Enter your student id");
         stid = sc.next();
         sc.nextLine();
-        if (studentExists(con)) {
+
             System.out.println("Enter your profile picture path");
             ppath = sc.nextLine();
 
@@ -40,27 +40,8 @@ public class UndergraduateDemo {
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-            }
-        }
+            }}
 
-
-    }
-
-    private boolean studentExists(Connection con) {
-        String sql = "select StudentId from undergraduate where StudentId =?";
-        try {
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, stid);
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                return true;
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return false;
-    }
 
     public void seeAttendance(Connection con) {
         Scanner sc = new Scanner(System.in);
@@ -171,6 +152,35 @@ public class UndergraduateDemo {
         }
     }
 
-    }
+    public void seeGPA(Connection con) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter you Student Id");
+        String stid = sc.next();
+
+
+        String sql = "SELECT c_code,c_name ,GPA FROM grade WHERE stid=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, stid);
+            ResultSet rs = pst.executeQuery();
+            boolean found = false;
+            while (rs.next()) {
+                found = true;
+                String c_code = rs.getString("c_code");
+                String c_name = rs.getString("c_name");
+                float GPA = rs.getFloat("GPA");
+                System.out.println(c_code + " " + c_name + " " + GPA);
+            }
+
+            if (!found) {
+                System.out.println("GPA not found");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error in see GPA");
+        }
+    }}
+
+
 
 

@@ -91,7 +91,19 @@ public class Undergraduate{
                         System.out.println("connection is null");
                     break;
                 case 5:
-                    System.out.println("See gpa");
+                    x= new Undergraduate();
+                    if(x.con !=null){
+                        ud.seeGPA(x.con);
+                        try{
+                            x.con.close();
+                            System.out.println("Connection closed.");
+
+                        }catch(SQLException e){
+                            System.out.println("Error closing connection: " + e.getMessage());
+                        }
+                    }
+                    else
+                        System.out.println("connection is null");
                     break;
                 case 6:
                     x= new Undergraduate();
