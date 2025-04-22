@@ -13,6 +13,7 @@ public class Undergraduate{
         int choice;
 
         do{
+
             System.out.println("1.Update your profile");
             System.out.println("2.See the attendance");
             System.out.println("3.See the Medical Details");

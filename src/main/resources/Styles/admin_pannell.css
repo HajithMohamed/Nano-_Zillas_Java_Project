@@ -1,0 +1,85 @@
+.logo {
+
+    -fx-alignment: center;
+}
+
+.logo_Text {
+    -fx-font-size: 1.5em;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+    /* General VBox sidebar */
+.nav-box {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+/* Title or Header */
+.nav-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Avatar / Image */
+.avatar {
+    -fx-fit-width: 60px;
+    -fx-fit-height: 60px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.3, 0, 1);
+    -fx-padding: 10 0 0 0;
+}
+
+/* Buttons */
+.nav-box Button {
+    -fx-background-color: #008080;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-min-width: 140px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Button hover effect */
+.nav-box Button:hover {
+    -fx-background-color: #006666;
+}
+
+/* Button when pressed */
+.nav-box Button:pressed {
+    -fx-background-color: #004c4c;
+}
+
+/* Footer text (if any) */
+.footer-label {
+    -fx-font-size: 12px;
+}
+.footer-button {
+    -fx-background-color: #008080;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-min-width: 140px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.footer-box {
+    -fx-background-color: #e0f7f7; /* light teal tint */
+    -fx-alignment: center;
+    -fx-border-color: #b2d8d8;
+    -fx-border-width: 1 0 0 0; /* top border only */
+}
+

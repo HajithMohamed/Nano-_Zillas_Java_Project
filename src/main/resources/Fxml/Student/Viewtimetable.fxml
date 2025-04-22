@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Timetable_Controller">
+
+    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
+
+        <!-- Timetable Section -->
+        <AnchorPane layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
+            <Text layoutX="323.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="View Timetable" wrappingWidth="212.15426635742188" />
+
+            <!-- Table to display timetable details -->
+            <TableView fx:id="timetableTable" layoutX="10.0" layoutY="140.0" prefHeight="250.0" prefWidth="809.0" styleClass="user_profile_Table">
+                <columns>
+                    <TableColumn fx:id="subCodeColumn" prefWidth="180.0" text="Subject Code" />
+                    <TableColumn fx:id="subNameColumn" prefWidth="250.0" text="Subject Name" />
+                    <TableColumn fx:id="sessionsColumn" prefWidth="368.0000244140625" text="Sessions" />
+                </columns>
+            </TableView>
+        </AnchorPane>
+    </AnchorPane>
+</AnchorPane>

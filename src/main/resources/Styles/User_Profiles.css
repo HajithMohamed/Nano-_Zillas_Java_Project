@@ -1,0 +1,91 @@
+/* Main container */
+.user_profile {
+    -fx-background-color: #f9f9f9;
+}
+
+/* Heading at the top */
+.user_profile_heading {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-text-alignment: center;
+}
+
+/* TableView styling */
+.user_profile_Table {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 5;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 1);
+    -fx-font-size: 1.em;
+}
+
+.user_profile_Table .column-header {
+    -fx-background-color: #008B8B;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* "Add New User" Section */
+.user_profile_Add_New_User {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10;
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 4);
+}
+
+/* Section heading */
+.user_profile_Add_New_User_Heading {
+    -fx-font-size: 1.8em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #008B8B;
+    -fx-text-alignment: center;
+}
+
+/* Labels inside the form */
+.user_profile_Add_New_User_Label {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #444444;
+}
+
+/* TextFields inside the form */
+.user_profile_Add_New_User_Text_Field {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 5;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 1em;
+    -fx-border-color: transparent;
+    -fx-pref-width: 300px;
+}
+
+.user_profile_Add_New_User_Text_Field:focused {
+    -fx-border-color: #008B8B;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+/* Add Button */
+.user_profile_Add_New_User_Button {
+    -fx-background-color: #008B8B;
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0, 0, 2);
+    -fx-font-weight: bold;
+}
+
+.user_profile_Add_New_User_Button:hover {
+    -fx-background-color: #006d6d;
+}
+.user_profile_Add_New_User_Text_Area {
+    -fx-background-color: #e2e8f0;       /* Light gray-blue background */
+    -fx-background-radius: 5;            /* Rounded corners */
+    -fx-padding: 6px 10px;               /* Top-bottom 6px, left-right 10px padding */
+    -fx-font-size: 1em;                  /* Inherits parent font size scaling */
+    -fx-border-color: transparent;       /* Hides border */
+}
