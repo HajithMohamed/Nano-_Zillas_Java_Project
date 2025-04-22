@@ -36,6 +36,13 @@
             <version>17.0.6</version>
         </dependency>
 
+        <!-- Correct MySQL Connector dependency -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.3.0</version>
+        </dependency>
+
         <!-- Optional UI enhancements -->
         <dependency>
             <groupId>org.controlsfx</groupId>
@@ -66,6 +73,8 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- dotenv for env file support -->
         <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
