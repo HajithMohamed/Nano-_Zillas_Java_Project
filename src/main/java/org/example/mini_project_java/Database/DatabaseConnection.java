@@ -5,30 +5,35 @@ import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class DatabaseConnection {
-    private static final Dotenv dotenv = Dotenv.configure()
-            .directory("src/main/resources")
-            .ignoreIfMissing()
-            .load();
+    private static Connection connection;
 
-    private static final String HOST = dotenv.get("DB_HOST");
-    private static final int PORT = Integer.parseInt(Objects.requireNonNull(dotenv.get("DB_PORT")));
-    private static final String DB_NAME = dotenv.get("DB_NAME");
-    private static final String USERNAME = dotenv.get("DB_USER");
-    private static final String PASSWORD = dotenv.get("DB_PASS");
-
-    public static Connection connection;
-
-    static {
+    public static Connection getConnection() {
         try {
-            String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME;
-            connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
-            System.out.println("✅ Database connected successfully.");
+            Dotenv dotenv = Dotenv.configure()
+                    .directory("src/main/resources")
+                    .ignoreIfMissing()
+                    .load();
+
+            String host = dotenv.get("DB_HOST", "localhost");
+            String port = dotenv.get("DB_PORT", "3306");
+            String dbName = dotenv.get("DB_NAME", "testdb");
+            String username = dotenv.get("DB_USER", "root");
+            String password = dotenv.get("DB_PASS", "");
+
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false";
+
+            return DriverManager.getConnection(url, username, password); // No caching here
         } catch (SQLException e) {
             System.out.println("❌ Database connection failed!");
             e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("❌ Unexpected error: " + e.getMessage());
+            e.printStackTrace();
         }
+
+        return null;
     }
+
 }
