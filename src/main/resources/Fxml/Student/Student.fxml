@@ -1,0 +1,22 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane fx:id="undergraduate_parent"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.mini_project_java.Controllers.Undergraduate.Student_main_controller">
+
+    <left>
+        <VBox spacing="10" styleClass="nav-box">
+            <Button fx:id="dashboard" text="Dashboard" onAction="#handleDashboard" />
+            <Button fx:id="profile" text="Profile" onAction="#handleProfile" />
+            <Button fx:id="courses" text="Courses" onAction="#handleCourses" />
+            <Button fx:id="notices" text="Notices" onAction="#handleNotices" />
+            <Button fx:id="timetable" text="Timetable" onAction="#handleTimetable" />
+        </VBox>
+    </left>
+
+    <center>
+        <fx:include source="edit_profile.fxml" />
+    </center>
+</BorderPane>
