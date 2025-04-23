@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.ViewNotice">
+
+    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
+
+        <!-- Notice Section -->
+        <AnchorPane layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
+            <Text layoutX="318.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="View Notices" wrappingWidth="212.15426635742188" />
+
+            <Button fx:id="viewNoticesButton" layoutX="400.0" layoutY="54.0" onAction="#viewNotices" styleClass="user_profile_Add_New_User_Button" text="View Notices" />
+
+            <!-- Table to display notice details -->
+            <TableView fx:id="noticeDetailsTable" layoutX="10.0" layoutY="100.0" prefHeight="150.0" prefWidth="809.0" styleClass="user_profile_Table">
+                <columns>
+                    <TableColumn fx:id="titleColumn" prefWidth="250.0" text="Title" />
+                    <TableColumn fx:id="descriptionColumn" prefWidth="350.0" text="Description" />
+                    <TableColumn fx:id="datePostedColumn" prefWidth="183.9998779296875" text="Date Posted" />
+                </columns>
+            </TableView>
+        </AnchorPane>
+    </AnchorPane>
+</AnchorPane>
