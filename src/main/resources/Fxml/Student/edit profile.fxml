@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.UpdateProfile">
@@ -25,14 +26,27 @@
             </columns>
         </TableView>
 
-        <!-- Section for editable fields -->
-        <Label layoutX="50.0" layoutY="270.0" styleClass="user_profile_Add_New_User_Label" text="Contact Number:" />
-        <TextField fx:id="phone" layoutX="200.0" layoutY="265.0" prefWidth="200.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <!-- Editable fields for user data -->
+        <Label layoutX="50.0" layoutY="270.0" styleClass="user_profile_Add_New_User_Label" text="Full Name:" />
+        <TextField fx:id="fullName" layoutX="200.0" layoutY="265.0" prefWidth="200.0" styleClass="user_profile_Add_New_User_Text_Field" editable="false" />
 
-        <Label layoutX="50.0" layoutY="320.0" styleClass="user_profile_Add_New_User_Label" text="Profile Picture:" />
-        <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="310.0" style="-fx-border-color: gray; -fx-border-width: 1;" />
-        <Button fx:id="chooseImageBtn" layoutX="310.0" layoutY="350.0" styleClass="user_profile_Add_New_User_Button" text="Choose Image" />
+        <Label layoutX="50.0" layoutY="320.0" styleClass="user_profile_Add_New_User_Label" text="Address:" />
+        <TextField fx:id="address" layoutX="200.0" layoutY="315.0" prefWidth="200.0" styleClass="user_profile_Add_New_User_Text_Field" editable="false" />
 
-        <Button fx:id="updateProfile" layoutX="600.0" layoutY="450.0" mnemonicParsing="false" styleClass="user_profile_Add_New_User_Button" text="Save Changes" />
+        <Label layoutX="50.0" layoutY="370.0" styleClass="user_profile_Add_New_User_Label" text="Contact Number:" />
+        <TextField fx:id="phone" layoutX="200.0" layoutY="365.0" prefWidth="200.0" styleClass="user_profile_Add_New_User_Text_Field" />
+
+        <Label layoutX="50.0" layoutY="420.0" styleClass="user_profile_Add_New_User_Label" text="Profile Picture:" />
+
+        <!-- Circle for profile picture -->
+        <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="410.0" style="-fx-border-color: gray; -fx-border-width: 1;">
+            <clip>
+                <Circle radius="50" centerX="50" centerY="50" />
+            </clip>
+        </ImageView>
+
+        <Button fx:id="chooseImageBtn" layoutX="310.0" layoutY="450.0" styleClass="user_profile_Add_New_User_Button" text="Choose Image" />
+
+        <Button fx:id="updateProfile" layoutX="600.0" layoutY="500.0" mnemonicParsing="false" styleClass="user_profile_Add_New_User_Button" text="Save Changes" />
     </AnchorPane>
 </AnchorPane>

@@ -1,4 +1,5 @@
-package org.example.mini_project_java.Models;
+package org.example.mini_project_java.Database;
+
 import java.sql.*;
 
 public class DbConnection {

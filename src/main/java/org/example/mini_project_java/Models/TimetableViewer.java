@@ -1,4 +1,6 @@
 package org.example.mini_project_java.Models;
+import org.example.mini_project_java.Database.DbConnection;
+
 import java.sql.* ;
 import java.util.Scanner;
             public class TimetableViewer{

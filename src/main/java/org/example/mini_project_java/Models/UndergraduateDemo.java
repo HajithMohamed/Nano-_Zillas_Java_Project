@@ -1,4 +1,6 @@
 package org.example.mini_project_java.Models;
+
+import org.example.mini_project_java.Database.DbConnection;
 import org.w3c.dom.ls.LSOutput;
 
 import java.sql.* ;
@@ -9,46 +11,74 @@ public class UndergraduateDemo {
     Scanner sc = new Scanner(System.in);
     String ppath;
     int contact;
-
+    DbConnection db = new DbConnection();
+   Connection  con= db.fetchConnection();
     public void updateProfile(Connection con) {
-        DbConnection db = new DbConnection();
-
         System.out.println("Enter your student id");
         stid = sc.next();
         sc.nextLine();
 
-            System.out.println("Enter your profile picture path");
-            ppath = sc.nextLine();
+        // Step 1: Retrieve current profile data
+        String selectSql = "SELECT ContactNumber, Profile,Email,stid ,address FROM undergraduate WHERE StudentId=?";
+        try {
+            PreparedStatement selectPst = con.prepareStatement(selectSql);
+            selectPst.setString(1, stid);
+            ResultSet rs = selectPst.executeQuery();
 
-            System.out.println("Enter your contact number");
-            contact = sc.nextInt();
+            if (rs.next()) {
+                // Step 2: Display current information
+                int currentContact = rs.getInt("ContactNumber");
+                String currentProfilePath = rs.getString("ProfilePath");
 
+                System.out.println("Current Contact Number: " + currentContact);
+                System.out.println("Current Profile Picture Path: " + currentProfilePath);
 
-            String sql = "UPDATE undergraduate SET ContactNumber=?,ProfilePath=?  WHERE StudentId=?";
-            try {
-                PreparedStatement pst = con.prepareStatement(sql);
-                pst.setInt(1, contact);
-                pst.setString(2, ppath);
-                pst.setString(3, stid);
+                // Step 3: Allow user to update information
+                System.out.println("Enter your new profile picture path (or press Enter to keep current):");
+                String newPath = sc.nextLine();
+                if (newPath.isEmpty()) {
+                    newPath = currentProfilePath; // Keep current if no new input
+                }
 
-                int rowsAffected = pst.executeUpdate();
+                System.out.println("Enter your new contact number (or press Enter to keep current):");
+                String newContactInput = sc.nextLine();
+                int newContact = currentContact; // Default to current contact
+                if (!newContactInput.isEmpty()) {
+                    newContact = Integer.parseInt(newContactInput); // Update if new input is provided
+                }
+
+                // Step 4: Update the profile
+                String updateSql = "UPDATE undergraduate SET ContactNumber=?, ProfilePath=? WHERE StudentId=?";
+                PreparedStatement updatePst = con.prepareStatement(updateSql);
+                updatePst.setInt(1, newContact);
+                updatePst.setString(2, newPath);
+                updatePst.setString(3, stid);
+
+                int rowsAffected = updatePst.executeUpdate();
 
                 if (rowsAffected > 0) {
                     System.out.println("Profile updated successfully");
-                } else
+                } else {
                     System.out.println("Profile update failed");
+                }
 
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }}
+            } else {
+                System.out.println("No profile found for the given student id.");
+            }
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid contact number format.");
+        }
+    }
 
     public void seeAttendance(Connection con) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your student id");
         String stid = sc.next();
 
-        String sql = "SELECT course_code,attendance_percentage FROM attendance WHERE Student_id=?";
+        String sql = "SELECT course_code,course_name ,attendance_percentage FROM attendance WHERE Student_id=?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, stid);
