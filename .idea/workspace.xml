@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Lecture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Tecninical_Officer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Undergratuate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_User_Profiles_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_User_Profiles_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Database/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Config/.env" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Models/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Models/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +94,10 @@
       <option name="presentableId" value="Default" />
       <updated>1745308801624</updated>
       <workItem from="1745308803732" duration="7031000" />
-      <workItem from="1745320351631" duration="1088000" />
+      <workItem from="1745320351631" duration="4694000" />
+      <workItem from="1745328973479" duration="8861000" />
+      <workItem from="1745345387640" duration="373000" />
+      <workItem from="1745405666638" duration="1280000" />
     </task>
     <servers />
   </component>
