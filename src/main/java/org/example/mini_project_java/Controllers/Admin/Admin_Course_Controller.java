@@ -36,27 +36,28 @@ public class Admin_Course_Controller implements Initializable {
     public TableColumn <Courses,String> Course_Action;
 
     private boolean isEditMode = false;
-    private String courseBeingEdited = null;
 
     private final ObservableList<Courses> courseList = FXCollections.observableArrayList();
 
     private void loadCourseDataFromDatabase() {
         courseList.clear();
-        try (Connection connectDB = DatabaseConnection.getConnection();
-             Statement statement = connectDB.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM COURSE")) {
+        try (Connection connectDB = DatabaseConnection.getConnection()) {
+            assert connectDB != null;
+            try (Statement statement = connectDB.createStatement();
+                 ResultSet resultSet = statement.executeQuery("SELECT * FROM COURSE")) {
 
-            while (resultSet.next()) {
-                String courseCode = resultSet.getString("course_code");
-                String courseTitle = resultSet.getString("course_title");
-                String lecId = resultSet.getString("lecturer_id");
-                int courseCredit = resultSet.getInt("course_credit");
-                String courseType = resultSet.getString("course_type");
-                int courseCreditHours = resultSet.getInt("credit_hours");
+                while (resultSet.next()) {
+                    String courseCode = resultSet.getString("course_code");
+                    String courseTitle = resultSet.getString("course_title");
+                    String lecId = resultSet.getString("lecturer_id");
+                    int courseCredit = resultSet.getInt("course_credit");
+                    String courseType = resultSet.getString("course_type");
+                    int courseCreditHours = resultSet.getInt("credit_hours");
 
-                courseList.add(new Courses(courseCode,courseTitle, lecId, courseCredit, courseType, courseCreditHours));
+                    courseList.add(new Courses(courseCode,courseTitle, lecId, courseCredit, courseType, courseCreditHours));
+                }
+
             }
-
         } catch (SQLException e) {
             showAlert("DB Error", "Error loading course data: " + e.getMessage());
         }
@@ -99,7 +100,7 @@ public class Admin_Course_Controller implements Initializable {
                 admin.addOrEditCourse(courseCodeValue, courseTitleValue, lecIdValue, courseCreditInt, courseTypeValue, courseCreditHoursInt, true);
                 showAlert("Success", "Course updated successfully!");
                 isEditMode = false;
-                courseBeingEdited = null;
+                String courseBeingEdited = null;
                 addCourse.setText("Add Course");
             }
 

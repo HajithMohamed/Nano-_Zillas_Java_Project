@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Courses.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Corses.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Corses.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,23 +95,13 @@
       <updated>1745308801624</updated>
       <workItem from="1745308803732" duration="7031000" />
       <workItem from="1745320351631" duration="4694000" />
-      <workItem from="1745328973479" duration="8501000" />
+      <workItem from="1745328973479" duration="8861000" />
+      <workItem from="1745345387640" duration="373000" />
+      <workItem from="1745405666638" duration="1280000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Courses.java</url>
-          <line>6</line>
-          <properties field="courseCredit" class="org.example.mini_project_java.Models.Courses" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
