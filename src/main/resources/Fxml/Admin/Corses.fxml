@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Course_Controller">
+    <Text layoutX="369.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_profile_heading" text="Course Details" />
+    <TableView fx:id="courseTable" layoutX="10.0" layoutY="63.0" prefHeight="374.0" prefWidth="829.0" styleClass="user_profile_Table">
+      <columns>
+          <TableColumn fx:id="course_Code" prefWidth="107.99999809265137" text="Course Code" />
+          <TableColumn fx:id="course_Title" prefWidth="164.80001831054688" text="Course Title" />
+          <TableColumn fx:id="lec_Id" prefWidth="116.79998779296875" text="Lecture Id" />
+          <TableColumn fx:id="course_Credit" prefWidth="117.60000610351562" text="Credits" />
+          <TableColumn fx:id="course_Type" prefWidth="113.59991455078125" text="Type" />
+          <TableColumn fx:id="course_Credit_Hours" prefWidth="88.7999267578125" text="Credit Hours" />
+         <TableColumn fx:id="Course_Action" prefWidth="108.0001220703125" text="Action" />
+      </columns>
+    </TableView>
+    <AnchorPane layoutX="7.0" layoutY="454.0" prefHeight="247.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
+        <Text layoutX="318.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Add New Course" wrappingWidth="212.15426635742188" />
+        <Label layoutX="23.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Course Code" />
+        <TextField fx:id="courseCode" layoutX="114.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <Label layoutX="424.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Course Title" />
+        <TextField fx:id="courseTitle" layoutX="508.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <Label layoutX="23.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label" text="Lecture Id :" />
+        <TextField fx:id="lecId" layoutX="114.0" layoutY="110.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <Label layoutX="424.0" layoutY="118.0" styleClass="user_profile_Add_New_User_Label" text="Credits : " />
+        <TextField fx:id="courseCredit" layoutX="508.0" layoutY="110.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <Label layoutX="23.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Type : " />
+        <TextField fx:id="courseType" layoutX="114.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <Label layoutX="424.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Credit Hours :" />
+        <TextField fx:id="courseCreditHours" layoutX="508.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        <Button fx:id="addCourse" layoutX="670.0" layoutY="209.0" mnemonicParsing="false" styleClass="user_profile_Add_New_User_Button" text="Add Course" />
+    </AnchorPane>
+</AnchorPane>
