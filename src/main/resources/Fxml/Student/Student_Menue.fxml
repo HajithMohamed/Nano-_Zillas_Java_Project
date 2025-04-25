@@ -1,46 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
 
-<VBox prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.mini_project_java.Controllers.Undergraduate.Stusdent_Menue_Controller">
-    <AnchorPane prefHeight="750.0" prefWidth="190.0" stylesheets="@../../Styles/admin_pannell.css">
-        <VBox.margin>
-            <Insets right="30.0"/>
-        </VBox.margin>
-        <VBox prefHeight="100.0" prefWidth="160.0" styleClass="logo" AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <Avatar radius="25.0">
-                <Image url="@../../Images/admin.png"/>
-            </Avatar>
-            <Text styleClass="logo_Text" text="Undergraduate Pannel" wrappingWidth="203.786"/>
-        </VBox>
-        <VBox layoutX="102.0" layoutY="74.0" prefHeight="400.0" prefWidth="210.0" styleClass="nav-box"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-30.0" AnchorPane.topAnchor="100.0">
-            <Button fx:id="studentprofile" mnemonicParsing="false" text="Update Profile"/>
-            <Button fx:id="attendance" mnemonicParsing="false" text="See Attendance"/>
-            <Button fx:id="medical" mnemonicParsing="false" text="See Medicals"/>
-            <Button fx:id="course" mnemonicParsing="false" text="See Course Details"/>
-            <Button fx:id="GPA" mnemonicParsing="false" text="See GPA"/>
-            <Button fx:id="seetimetable" mnemonicParsing="false" text="See Timetable"/>
-            <Button fx:id="seenotice" mnemonicParsing="false" text="See Notice"/>
-            <Line endX="120.0"/>
-            <Button mnemonicParsing="false" text="Log Out"/>
-        </VBox>
-        <VBox prefHeight="120.0" prefWidth="210.0" styleClass="footer-box" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-30.0">
-            <Text text="Report Suggestion / Bug?"/>
-            <Label prefHeight="49.0" prefWidth="197.0" styleClass="footer-label"
-                   text="Use this to report any Errors / suggestion"/>
-            <Button prefHeight="38.0" prefWidth="54.0" styleClass="footer-button" text="Report"/>
-        </VBox>
-    </AnchorPane>
-</VBox>
+<BorderPane fx:id="student_parent"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.mini_project_java.Controllers.Undergraduate.Student">
+
+    <left>
+        <fx:include source="Studentpannel.fxml"/>
+    </left>
+
+    <center>
+        <fx:include source="StudentDAshboard.fxml"/>
+    </center>
+</BorderPane>

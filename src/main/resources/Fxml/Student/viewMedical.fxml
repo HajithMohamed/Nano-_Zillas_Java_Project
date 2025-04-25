@@ -19,7 +19,7 @@
          <Label layoutX="27.0" layoutY="85.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
          <TextField fx:id="studentIdField" layoutX="114.0" layoutY="79.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
-         <TableView fx:id="medicalRecordsTable" layoutX="9.0" layoutY="154.0" prefHeight="110.0" prefWidth="809.0" styleClass="user_profile_Table">
+         <TableView fx:id="medicalRecordsTable" layoutX="9.0" layoutY="154.0" prefHeight="491.0" prefWidth="810.0" styleClass="user_profile_Table">
             <columns>
                <TableColumn fx:id="courseCodeColumn" prefWidth="180.0" text="Course Code" />
                <TableColumn fx:id="studentIdColumn" prefWidth="180.0" text="Student ID" />
