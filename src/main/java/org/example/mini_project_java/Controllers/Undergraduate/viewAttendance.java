@@ -7,10 +7,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 import java.sql.*;
 
 public class viewAttendance {
+
+    public AnchorPane studentAttandance;
 
     // === Model Class for Attendance Records ===
     public static class AttendanceRecord {

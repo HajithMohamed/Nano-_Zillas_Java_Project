@@ -9,7 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import org.example.mini_project_java.Database.DatabaseConnection;
-import org.example.mini_project_java.Models.*;
+import org.example.mini_project_java.Models.Admin;
+import org.example.mini_project_java.Models.Courses;
 
 import java.net.URL;
 import java.sql.*;
@@ -17,112 +18,202 @@ import java.util.ResourceBundle;
 
 public class Admin_Course_Controller implements Initializable {
 
-
-    @FXML public TextField courseTitle;
-    @FXML public TextField lecId;
-    @FXML public TextField courseCredit;
-    @FXML public TextField courseType;
-    @FXML public TextField courseCreditHours;
-    @FXML public Button addCourse;
+    @FXML
     public TextField courseCode;
-
-    public TableView <Courses> courseTable;
-    public TableColumn <Courses,String>course_Title;
-    public TableColumn <Courses,String> course_Code;
-    public TableColumn <Courses,String> lec_Id;
-    public TableColumn <Courses,String> course_Credit;
-    public TableColumn <Courses,String> course_Type;
-    public TableColumn <Courses,String> course_Credit_Hours;
-    public TableColumn <Courses,String> Course_Action;
-
-    private boolean isEditMode = false;
-
-    private final ObservableList<Courses> courseList = FXCollections.observableArrayList();
-
-    private void loadCourseDataFromDatabase() {
-        courseList.clear();
-        try (Connection connectDB = DatabaseConnection.getConnection()) {
-            assert connectDB != null;
-            try (Statement statement = connectDB.createStatement();
-                 ResultSet resultSet = statement.executeQuery("SELECT * FROM COURSE")) {
-
-                while (resultSet.next()) {
-                    String courseCode = resultSet.getString("course_code");
-                    String courseTitle = resultSet.getString("course_title");
-                    String lecId = resultSet.getString("lecturer_id");
-                    int courseCredit = resultSet.getInt("course_credit");
-                    String courseType = resultSet.getString("course_type");
-                    int courseCreditHours = resultSet.getInt("credit_hours");
-
-                    courseList.add(new Courses(courseCode,courseTitle, lecId, courseCredit, courseType, courseCreditHours));
-                }
-
-            }
-        } catch (SQLException e) {
-            showAlert("DB Error", "Error loading course data: " + e.getMessage());
-        }
-    }
+    @FXML
+    public TextField courseTitle;
+    @FXML
+    public TextField lecId;
+    @FXML
+    public TextField courseCredit;
+    @FXML
+    public TextField courseType;
+    @FXML
+    public TextField courseCreditHours;
+    @FXML
+    public Button addCourse;
 
     @FXML
-    private void handleAddOrEditCourse(ActionEvent event) {
-        String courseCodeValue = courseCode.getText().trim();
-        String courseTitleValue = courseTitle.getText().trim();
-        String lecIdValue = lecId.getText().trim();
-        String courseCreditValue = courseCredit.getText().trim();
-        String courseTypeValue = courseType.getText().trim();
-        String courseCreditHoursValue = courseCreditHours.getText().trim();
+    private TableView<Courses> course_Table;
 
-        // Validate input fields
-        if (courseCodeValue.isEmpty() || courseTitleValue.isEmpty() || lecIdValue.isEmpty() || courseCreditValue.isEmpty() || courseTypeValue.isEmpty() || courseCreditHoursValue.isEmpty()) {
-            showAlert("Validation Error", "Please fill in all fields.");
+    @FXML
+    private TableColumn<Courses, String> Course_Code;
+
+    @FXML
+    private TableColumn<Courses, String> Course_Title;
+
+    @FXML
+    private TableColumn<Courses, Void> Course_Action;
+    @FXML
+    public TableColumn<Courses, String> Lecture_Id;
+    @FXML
+    public TableColumn<Courses, Integer> Course_Credit;
+    @FXML
+    public TableColumn<Courses, String> Course_Type;
+    @FXML
+    public TableColumn<Courses, Integer> Course_Credit_Hours;
+
+    private final ObservableList<Courses> courseData = FXCollections.observableArrayList();
+    private Courses courseBeingEdited = null;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Course_Code.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
+        Course_Title.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
+        Lecture_Id.setCellValueFactory(new PropertyValueFactory<>("lectureId"));
+        Course_Credit.setCellValueFactory(new PropertyValueFactory<>("courseCredit"));
+        Course_Type.setCellValueFactory(new PropertyValueFactory<>("courseType"));
+        Course_Credit_Hours.setCellValueFactory(new PropertyValueFactory<>("courseCreditHours"));
+
+        loadCourseData();
+        addDeleteButtonToTable();
+        course_Table.setItems(courseData);
+        addCourse.setOnAction(this::handleAddOrUpdateCourse);
+    }
+
+    private void handleAddOrUpdateCourse(ActionEvent event) {
+        String courseCodeText = courseCode.getText().trim();
+        String courseTitleText = courseTitle.getText().trim();
+        String lecturerId = lecId.getText().trim();
+        String creditText = courseCredit.getText().trim();
+        String type = courseType.getText().trim();
+        String creditHoursText = courseCreditHours.getText().trim();
+
+        if (courseCodeText.isEmpty() || courseTitleText.isEmpty() || lecturerId.isEmpty()
+                || creditText.isEmpty() || type.isEmpty() || creditHoursText.isEmpty()) {
+            showAlert("Validation Error", "Please fill all fields.");
             return;
         }
 
-        int courseCreditInt;
-        int courseCreditHoursInt;
+        int credit, creditHours;
         try {
-            courseCreditInt = Integer.parseInt(courseCreditValue);
-            courseCreditHoursInt = Integer.parseInt(courseCreditHoursValue);
+            credit = Integer.parseInt(creditText);
+            creditHours = Integer.parseInt(creditHoursText);
         } catch (NumberFormatException e) {
-            showAlert("Validation Error", "Course Credit and Credit Hours must be numeric.");
+            showAlert("Validation Error", "Credit and Credit Hours must be numbers.");
             return;
         }
 
         Admin admin = new Admin();
 
         try {
-            if (!isEditMode) {
-                // Add new course
-                admin.addOrEditCourse(courseCodeValue, courseTitleValue, lecIdValue, courseCreditInt, courseTypeValue, courseCreditHoursInt, false);
-                showAlert("Success", "Course added successfully!");
+            if (courseBeingEdited == null) {
+                if (!admin.courseExists(courseCodeText)) {
+                    admin.addOrEditCourse(courseCodeText, courseTitleText, lecturerId, credit, type, creditHours, false);
+                    showAlert("Success", "Course added successfully.");
+                } else {
+                    Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Course already exists. Update it?", ButtonType.YES, ButtonType.NO);
+                    confirm.setTitle("Confirm Update");
+                    confirm.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.YES) {
+                            try {
+                                admin.addOrEditCourse(courseCodeText, courseTitleText, lecturerId, credit, type, creditHours, true);
+                                showAlert("Success", "Course updated successfully.");
+                                loadCourseData();
+                            } catch (SQLException e) {
+                                showAlert("Error", "Failed to update course: " + e.getMessage());
+                            }
+                        }
+                    });
+                    return;
+                }
             } else {
-                // Edit existing course
-                admin.addOrEditCourse(courseCodeValue, courseTitleValue, lecIdValue, courseCreditInt, courseTypeValue, courseCreditHoursInt, true);
-                showAlert("Success", "Course updated successfully!");
-                isEditMode = false;
-                String courseBeingEdited = null;
+                admin.addOrEditCourse(courseCodeText, courseTitleText, lecturerId, credit, type, creditHours, true);
+                showAlert("Success", "Course updated successfully.");
+                courseBeingEdited = null;
                 addCourse.setText("Add Course");
             }
 
-            // Clear the form
-            clearCourseFields();
-        } catch (Exception e) {
-            if (e.getMessage().contains("Course code already exists")) {
-                showAlert("Error", "The course code already exists. Please use a different course code.");
-            } else {
-                showAlert("Error", "An error occurred: " + e.getMessage());
-            }
-            e.printStackTrace();
+            loadCourseData();
+            clearFields();
+
+        } catch (SQLException e) {
+            showAlert("Error", "Database error: " + e.getMessage());
         }
     }
 
-    private void clearCourseFields() {
+    private void loadCourseData() {
+        courseData.clear();
+        try (Connection connectDB = DatabaseConnection.getConnection();
+             PreparedStatement statement = connectDB.prepareStatement("SELECT * FROM COURSE");
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                courseData.add(new Courses(
+                        resultSet.getString("course_code"),
+                        resultSet.getString("course_title"),
+                        resultSet.getString("lecturer_id"),
+                        resultSet.getInt("course_credit"),
+                        resultSet.getString("course_type"),
+                        resultSet.getInt("credit_hours")
+                ));
+            }
+        } catch (SQLException e) {
+            showAlert("Error", "Failed to load course data: " + e.getMessage());
+        }
+    }
+
+
+
+    private void clearFields() {
         courseCode.clear();
         courseTitle.clear();
         lecId.clear();
         courseCredit.clear();
         courseType.clear();
         courseCreditHours.clear();
+    }
+
+    private void addDeleteButtonToTable() {
+        Course_Action.setCellFactory(param -> new TableCell<>() {
+            private final Button deleteButton = new Button("Delete");
+            private final Button editButton = new Button("Edit");
+            private final HBox actionButtons = new HBox(10, editButton, deleteButton);
+
+            {
+                deleteButton.setOnAction(event -> {
+                    Courses course = getTableView().getItems().get(getIndex());
+                    Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
+                            "Are you sure you want to delete course: " + course.getCourseCode() + "?",
+                            ButtonType.YES, ButtonType.NO);
+                    confirm.setTitle("Confirm Delete");
+
+                    confirm.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.YES) {
+                            try {
+                                new Admin().deleteCourse(course.getCourseCode());
+                                showAlert("Success", "Course deleted successfully.");
+                                loadCourseData();
+                            } catch (SQLException e) {
+                                showAlert("Error", "Failed to delete course: " + e.getMessage());
+                            }
+                        }
+                    });
+                });
+
+                editButton.setOnAction(event -> {
+                    Courses course = getTableView().getItems().get(getIndex());
+                    courseCode.setText(course.getCourseCode());
+                    courseTitle.setText(course.getCourseTitle());
+                    lecId.setText(course.getLectureId());
+                    courseCredit.setText(String.valueOf(course.getCourseCredit()));
+                    courseType.setText(course.getCourseType());
+                    courseCreditHours.setText(String.valueOf(course.getCourseCreditHours()));
+                    courseBeingEdited = course;
+                    addCourse.setText("Update Course");
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(actionButtons);
+                }
+            }
+        });
     }
 
     private void showAlert(String title, String message) {
@@ -133,18 +224,5 @@ public class Admin_Course_Controller implements Initializable {
         alert.showAndWait();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        course_Code.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
-        course_Title.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
-        lec_Id.setCellValueFactory(new PropertyValueFactory<>("lectureId"));
-        course_Credit.setCellValueFactory(new PropertyValueFactory<>("courseCredit"));
-        course_Type.setCellValueFactory(new PropertyValueFactory<>("courseType"));
-        course_Credit_Hours.setCellValueFactory(new PropertyValueFactory<>("courseCreditHours"));
 
-
-        loadCourseDataFromDatabase();
-        courseTable.setItems(courseList);
-
-    }
 }

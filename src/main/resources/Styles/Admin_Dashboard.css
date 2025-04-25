@@ -4,16 +4,22 @@
     -fx-font-family: 'Segoe UI', sans-serif;
 }
 
+/* Main dashboard container */
+.admin_dashboard {
+    -fx-background-color: #007b7b; /* Ensure background consistency */
+}
+
 /* White card container */
 .admin_dashboard_card {
-    -fx-background-color: #ffff;
+    -fx-background-color: #ffffff;
     -fx-background-radius: 12;
     -fx-padding: 20;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 4);
     -fx-alignment: center;
 }
 
-.admin_dashboard_card_anchor{
+/* AnchorPane inside the card */
+.admin_dashboard_card_anchor {
     -fx-alignment: center;
 }
 
@@ -22,42 +28,108 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: #1a1a1a;
+    -fx-padding: 0 0 15 0; /* Add some spacing below the header */
+}
+
+/* Style for the profile image (ImageView) */
+.profilIeImage {
+    -fx-fit-to-height: 150;
+    -fx-fit-to-width: 150;
+    -fx-shape: "M75,0 A75,75 0 1,1 75,150 A75,75 0 1,1 75,0"; /* Circular shape */
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 2;
+    -fx-border-radius: 75; /* Ensure border is circular */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 8, 0, 0, 2);
+}
+
+/* Style for the Change button */
+.profileImageChangeButton {
+    -fx-background-color: white; /* Teal background */
+    -fx-text-fill: black;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50; /* Circular button */
+    -fx-pref-width: 40;
+    -fx-pref-height: 40;
+    -fx-alignment: center;
+    -fx-content-display: center;
+    -fx-text-alignment: center;
+    -fx-padding: 0;
+    /* Remove default text and set a plus sign */
+    -fx-text: "+";
+    /* Position the button relative to the ImageView */
+    -fx-translate-x: 50; /* Adjust to overlap bottom-right of the image */
+    -fx-translate-y: -50; /* Adjust to overlap bottom-right of the image */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+/* Hover effect for the Change button */
+.profileImageChangeButton:hover {
+    -fx-background-color: #005f5f; /* Darker teal on hover */
+    -fx-cursor: hand;
+}
+
+/* Style for the notification icon */
+.adminNortification {
+    -fx-text-fill: black; /* White icon color to contrast with teal background */
+    -fx-font-size: 28px; /* Adjust size for visibility */
+    -fx-padding: 10;
+    -fx-background-color: transparent; /* No background */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2); /* Subtle shadow */
+}
+
+/* Add a badge-like indicator for unread notifications */
+.adminNortification .ikonli-font-icon {
+    -fx-icon-color: white; /* Ensure the icon itself is white */
+}
+
+/* Optional: Add a badge (red dot) for notifications using a pseudo-like effect */
+.adminNortification:hover {
+    -fx-text-fill: #e0e0e0; /* Lighter color on hover */
+    -fx-cursor: hand;
 }
 
 /* Labels for form fields */
 .admin_dashboard_grid_label {
-    -fx-font-size:1.2em;
+    -fx-font-size: 1.2em;
     -fx-text-fill: #333333;
+    -fx-padding: 5 0 5 0; /* Add spacing around labels */
 }
 
 /* Input text fields */
 .admin_dashboard_grid_text_field {
     -fx-pref-width: 450;
-    -fx-background-radius: 6;
-    -fx-border-radius: 6;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
     -fx-background-color: #e2e8f0;
     -fx-border-color: #cccccc;
     -fx-border-width: 1;
-    -fx-padding: 8 12;
-    -fx-font-size: 13px;
+    -fx-padding: 10 15;
+    -fx-font-size: 14px;
+    -fx-margin: 5 0 5 0; /* Add spacing between fields */
 }
-.admin_dashboard_grid_text_field:focused{
-    -fx-border-color: #008B8B;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5;
+
+/* Focused state for text fields */
+.admin_dashboard_grid_text_field:focused {
+    -fx-border-color: #007b7b;
+    -fx-border-width: 2;
+    -fx-background-color: #f5faff;
 }
 
 /* Update profile button */
 .admin_dashboard_grid_button {
-    -fx-background-color: #008080;
+    -fx-background-color: #007b7b;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-background-radius: 6;
+    -fx-background-radius: 8;
     -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-alignment: center;
 }
 
+/* Hover effect for the Update button */
 .admin_dashboard_grid_button:hover {
-    -fx-background-color: #006666;
+    -fx-background-color: #005f5f;
     -fx-cursor: hand;
 }
 
@@ -66,7 +138,4 @@
     -fx-font-size: 14px;
     -fx-text-fill: white;
     -fx-padding: 10;
-}
-
-.admin_dashboard {
 }
