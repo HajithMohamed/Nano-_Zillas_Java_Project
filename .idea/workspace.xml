@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Student_main_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Student.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/edit profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/edit_profile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Student/Student_oannel.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Models/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/mini_project_java/Views/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/UndergraduateDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/UndergraduateDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Student_Menue.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Student_Menue.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Studentpannel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Studentpannel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewnotice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewnotice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,17 +62,24 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Dharshika&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dhars/OneDrive/Desktop/Nano-_Zillas_Java_Project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.mini_project_java.Controllers.Admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dhars\OneDrive\Desktop\Nano-_Zillas_Java_Project\src\main\java\org\example\mini_project_java\Models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\Nano-_Zillas_Java_Project\src\main\resources" />
@@ -77,7 +88,7 @@
   <component name="RunManager">
     <configuration name="Java app" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
-      <module name="demo" />
+      <module name="Mini_Project_Java" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Documents\javafx-sdk-24\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,6 +125,11 @@
       <workItem from="1745328973479" duration="8861000" />
       <workItem from="1745345387640" duration="373000" />
       <workItem from="1745405666638" duration="1280000" />
+      <workItem from="1745436602027" duration="6274000" />
+      <workItem from="1745504816403" duration="3221000" />
+      <workItem from="1745578966519" duration="285000" />
+      <workItem from="1745579821473" duration="467000" />
+      <workItem from="1745580509902" duration="1740000" />
     </task>
     <servers />
   </component>

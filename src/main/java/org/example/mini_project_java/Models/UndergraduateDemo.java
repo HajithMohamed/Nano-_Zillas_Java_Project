@@ -7,78 +7,56 @@ import java.sql.* ;
 import java.util.Scanner;
 
 public class UndergraduateDemo {
+    DbConnection db = new DbConnection();
+    Connection con=db.fetchConnection();
     String stid;
     Scanner sc = new Scanner(System.in);
     String ppath;
     int contact;
-    DbConnection db = new DbConnection();
-   Connection  con= db.fetchConnection();
+
     public void updateProfile(Connection con) {
+        // Scanner for input
         System.out.println("Enter your student id");
-        stid = sc.next();
-        sc.nextLine();
+        stid = sc.next();  // Assuming student ID is entered here
 
-        // Step 1: Retrieve current profile data
-        String selectSql = "SELECT ContactNumber, Profile,Email,stid ,address FROM undergraduate WHERE StudentId=?";
+        System.out.println("Enter your profile picture path");
+        ppath = sc.next();  // Assuming the profile picture path is entered here
+
+        System.out.println("Enter your contact number");
+        contact = sc.nextInt();  // Assuming the contact number is entered here
+
+        // SQL query to update profile
+        String sql = "UPDATE students s JOIN users u ON s.student_id = u.user_id " +
+                "SET u.Contact_number = ?, u.profile_picture = ? " +
+                "WHERE s.registration_number = ?";
+
         try {
-            PreparedStatement selectPst = con.prepareStatement(selectSql);
-            selectPst.setString(1, stid);
-            ResultSet rs = selectPst.executeQuery();
+            PreparedStatement pst = con.prepareStatement(sql);
 
-            if (rs.next()) {
-                // Step 2: Display current information
-                int currentContact = rs.getInt("ContactNumber");
-                String currentProfilePath = rs.getString("ProfilePath");
+            // Set the values for the parameters in the query
+            pst.setInt(1, contact);  // Set contact number
+            pst.setString(2, ppath);  // Set profile picture path
+            pst.setString(3, stid);   // Set student ID
 
-                System.out.println("Current Contact Number: " + currentContact);
-                System.out.println("Current Profile Picture Path: " + currentProfilePath);
+            // Execute the update query
+            int rowsAffected = pst.executeUpdate();
 
-                // Step 3: Allow user to update information
-                System.out.println("Enter your new profile picture path (or press Enter to keep current):");
-                String newPath = sc.nextLine();
-                if (newPath.isEmpty()) {
-                    newPath = currentProfilePath; // Keep current if no new input
-                }
-
-                System.out.println("Enter your new contact number (or press Enter to keep current):");
-                String newContactInput = sc.nextLine();
-                int newContact = currentContact; // Default to current contact
-                if (!newContactInput.isEmpty()) {
-                    newContact = Integer.parseInt(newContactInput); // Update if new input is provided
-                }
-
-                // Step 4: Update the profile
-                String updateSql = "UPDATE undergraduate SET ContactNumber=?, ProfilePath=? WHERE StudentId=?";
-                PreparedStatement updatePst = con.prepareStatement(updateSql);
-                updatePst.setInt(1, newContact);
-                updatePst.setString(2, newPath);
-                updatePst.setString(3, stid);
-
-                int rowsAffected = updatePst.executeUpdate();
-
-                if (rowsAffected > 0) {
-                    System.out.println("Profile updated successfully");
-                } else {
-                    System.out.println("Profile update failed");
-                }
-
+            if (rowsAffected > 0) {
+                System.out.println("Profile updated successfully");
             } else {
-                System.out.println("No profile found for the given student id.");
+                System.out.println("Profile update failed");
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid contact number format.");
         }
     }
-
     public void seeAttendance(Connection con) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your student id");
         String stid = sc.next();
 
-        String sql = "SELECT course_code,course_name ,attendance_percentage FROM attendance WHERE Student_id=?";
+        String sql = "SELECT course_code,session_date,course_name,session_type ,attendance_status FROM attendance_summary WHERE student_id=?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, stid);
@@ -87,8 +65,11 @@ public class UndergraduateDemo {
             while (rs.next()) {
                 found = true;
                 String c_code = rs.getString("course_code");
-                float attendance = rs.getFloat("attendance_percentage");
-                System.out.println(c_code + " " + attendance);
+                String c_name = rs.getString("course_name");
+                String session_type = rs.getString("session_type");
+                String session_date= rs.getString("session_date");
+                String attendanceStatus= rs.getString("attendance_status");
+                System.out.println(c_code + " " + attendanceStatus+" "+session_type+" "+session_date);
             }
 
             if (!found) {
@@ -103,7 +84,7 @@ public class UndergraduateDemo {
         System.out.println("Enter your student id");
         String stid = sc.next();
 
-        String sql = "SELECT c_code,stid,subdate,description FROM medical_records WHERE Stid=?";
+        String sql = "SELECT course_id,student_id,submission_date,aprproval_status FROM medical_requests_view WHERE student_id=?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, stid);
@@ -111,10 +92,10 @@ public class UndergraduateDemo {
             boolean found=false;
             while (rs.next()) {
                 found = true;
-                String c_code = rs.getString("c_code");
-                String stuid = rs.getString("stid");
-                String subdate = rs.getString("subdate");
-                String description = rs.getString("description");
+                String c_code = rs.getString("course_id");
+                String stuid = rs.getString("student_id");
+                String subdate = rs.getString("submission_date");
+                String description = rs.getString("aprproval_status");
                 System.out.println(c_code + " " + stuid + " " + subdate + " " + description);
             }
 
@@ -126,21 +107,22 @@ public class UndergraduateDemo {
         }
     }
     public void seeCourseDetails(Connection con) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Your Department(ICT/ET/BST)");
-        String dep=sc.next().toUpperCase();//avoid the case sensitivity
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Enter Your Department(ICT/ET/BST)");
+//        String dep=sc.next().toUpperCase();//avoid the case sensitivity
 
-        String sql = "SELECT c_code,c_name FROM courses WHERE department=?";
+        String sql = "SELECT course_code,course_name,credits FROM course_details_view";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, dep);
+//            pst.setString(1, dep);
             ResultSet rs = pst.executeQuery();
             boolean found=false;
             while (rs.next()) {
                 found = true;
-                String c_code = rs.getString("c_code");
-                String c_name = rs.getString("c_name");
-                System.out.println(c_code + " " + c_name);
+                String c_code = rs.getString("course_code");
+                String c_name = rs.getString("course_name");
+                int credits = rs.getInt("credits");
+                System.out.println(c_code + " " + c_name+" "+credits);
             }
 
             if (!found) {
@@ -154,23 +136,22 @@ public class UndergraduateDemo {
     }
 
     public void seeNotice(Connection con) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your Department (ICT/ET/BST)");
-        String department = sc.next();
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Enter your Department (ICT/ET/BST)");
+//        String department = sc.next();
 
 
-        String sql = "SELECT title,description ,date_posted FROM notice WHERE department=?";
+        String sql = "SELECT title,content FROM notice_view";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, department);
+//            pst.setString(1, department);
             ResultSet rs = pst.executeQuery();
             boolean found=false;
             while (rs.next()) {
                 found = true;
                 String title = rs.getString("title");
-                String description = rs.getString("description");
-                String date_posted = rs.getString("date_posted");
-                System.out.println(title + " " + description + " " + date_posted);
+                String description = rs.getString("content");
+                System.out.println(title + " " + description);
             }
 
             if (!found) {
@@ -188,7 +169,7 @@ public class UndergraduateDemo {
         String stid = sc.next();
 
 
-        String sql = "SELECT c_code,c_name ,GPA FROM grade WHERE stid=?";
+        String sql = "SELECT semester,sgpa ,cgpa FROM gpa WHERE student_id=?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, stid);
@@ -196,10 +177,10 @@ public class UndergraduateDemo {
             boolean found = false;
             while (rs.next()) {
                 found = true;
-                String c_code = rs.getString("c_code");
-                String c_name = rs.getString("c_name");
-                float GPA = rs.getFloat("GPA");
-                System.out.println(c_code + " " + c_name + " " + GPA);
+                String semester = rs.getString("semester");
+                float cgpa = rs.getFloat("cgpa");
+                float sgpa = rs.getFloat("sgpa");
+                System.out.println(semester + " " + cgpa + " " +sgpa);
             }
 
             if (!found) {
@@ -209,7 +190,54 @@ public class UndergraduateDemo {
             e.printStackTrace();
             System.out.println("error in see GPA");
         }
-    }}
+    }
+    public void seeTimetable(Connection con) {
+//        String department;
+//        Connection con;
+//        String level;
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Select your department(ICT/BST/ET)");
+//        department = sc.next().toUpperCase();
+//        System.out.println("Select your Level(I/II/II/IV)");
+//        level=sc.next();
+        DbConnection db = new DbConnection();
+        con=db.fetchConnection();//A
+        if (con != null) {
+            String sql = "SELECT course_code,course_name, location,start_time,end_time FROM timetable WHERE department =? and level=?";
+            try {
+                PreparedStatement pst = con.prepareStatement(sql);
+//                pst.setString(1, department);
+//                pst.setString(2,level);
+                ResultSet rs = pst.executeQuery();
+                boolean found = false;
+                while (rs.next()) {
+                    found = true;
+                    String sub_code = rs.getString("course_code");
+                    String sub_name = rs.getString("course_name");
+                    String start_time = rs.getString("start_time");
+                    String end_time = rs.getString("end_time");
+                    String location = rs.getString("location");
+                    System.out.println(sub_code + " " + location+ sub_name + " " + start_time+" "+end_time);
+                }
+
+                if (!found) {
+                    System.out.println("timetable not found");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("error in getting timetable");
+            }
+            finally{
+                try{
+                    con.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                    System.out.println("error in closing connection");
+                }
+            }
+        }
+    }
+}
 
 
 
