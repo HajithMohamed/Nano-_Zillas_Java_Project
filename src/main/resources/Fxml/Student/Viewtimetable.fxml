@@ -10,7 +10,7 @@
     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
         <!-- Timetable Section -->
-        <AnchorPane layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
+        <AnchorPane fx:id="studentTimeTable" layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
             <Text layoutX="323.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="View Timetable" wrappingWidth="212.15426635742188" />
 
             <!-- Table to display timetable details -->

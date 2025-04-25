@@ -1,5 +1,6 @@
 package org.example.mini_project_java.Controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -50,31 +51,33 @@ public class Login_Controller {
     }
 
     private void navigateToRoleBasedView(Users user) {
-        // Close the login window
-        Stage stage = (Stage) loginButton.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
+        System.out.println("Navigate to " + user.getRole() + " Window");
 
-        // Navigate to the appropriate view based on the user's role
         switch (user.getRole().toLowerCase()) {
             case "admin":
                 Model.getInstance().getViewFactory().showAdminWindow();
                 break;
             case "student":
-                // Model.getInstance().getViewFactory().showStudentWindow();
                 Model.getInstance().getViewFactory().showUndergraduateWindow();
-                System.out.println("Navigate to Student Window");
                 break;
             case "technical_officer":
-                // Model.getInstance().getViewFactory().showTechnicalOfficerWindow();
+                // Implement as needed
                 System.out.println("Navigate to Technical Officer Window");
                 break;
             case "lecture":
-                // Model.getInstance().getViewFactory().showLectureWindow();
+                // Implement as needed
                 System.out.println("Navigate to Lecture Window");
                 break;
             default:
                 showAlert(Alert.AlertType.ERROR, "Login Error", "Unknown role: " + user.getRole());
+                return;
         }
+
+        // Close the login window after showing the next stage
+        Platform.runLater(() -> {
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
+        });
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {

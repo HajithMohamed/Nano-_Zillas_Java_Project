@@ -16,6 +16,7 @@ import org.example.mini_project_java.Utils.MenuItems;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Admin_Controller implements Initializable {
@@ -127,7 +128,7 @@ public class Admin_Controller implements Initializable {
     }
 
     private void onMenuItemSelected(String menuItem) {
-        Model.getInstance().getViewFactory().getAdminSelectedMenueItem().set(menuItem);
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(menuItem);
         System.out.println(menuItem + " selected");
     }
 
@@ -180,7 +181,7 @@ public class Admin_Controller implements Initializable {
     private void setDefaultProfileImage() {
         if (profileImage != null) {
             try {
-                profileImage.setImage(new Image(getClass().getResourceAsStream("/images/default_profile.png")));
+                profileImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/default_profile.png"))));
             } catch (Exception e) {
                 System.err.println("Failed to load default profile image: " + e.getMessage());
             }
