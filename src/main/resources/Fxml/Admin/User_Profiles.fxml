@@ -1,60 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_User_Profiles_Controller">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_User_Profiles_Controller">
 
-    <TableView fx:id="User_Profile_Table_View" layoutX="14.0" layoutY="109.0" prefHeight="363.0" prefWidth="822.0" styleClass="user_profile_Table"
-               AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="109.0">
+    <TableView fx:id="User_Profile_Table_View" layoutX="14.0" layoutY="109.0" prefHeight="363.0" prefWidth="902.0" styleClass="user_profile_Table" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="109.0">
         <columns>
-            <TableColumn fx:id="User_Name" prefWidth="99.99999" text="User Name"/>
-            <TableColumn fx:id="Name" prefWidth="221.6" text="Name"/>
-            <TableColumn fx:id="Role" prefWidth="88.8" text="Role"/>
-            <TableColumn fx:id="Email" prefWidth="241.6" text="Email"/>
-            <TableColumn fx:id="Mobile" prefWidth="169.6" text="Mobile No"/>
-            <TableColumn fx:id="userAction" prefWidth="160.0" text="Action"/>
+            <TableColumn fx:id="User_Name" prefWidth="100.0" text="User Name" />
+            <TableColumn fx:id="Name" prefWidth="166.40007781982422" text="Name" />
+            <TableColumn fx:id="Role" prefWidth="113.5999755859375" text="Role" />
+            <TableColumn fx:id="Email" prefWidth="168.80001831054688" text="Email" />
+            <TableColumn fx:id="Mobile" minWidth="0.0" prefWidth="81.60003662109375" text="Mobile No" />
+            <TableColumn fx:id="user_Password" maxWidth="200.0" prefWidth="125.5999755859375" text="Password" />
+         <TableColumn fx:id="userAction" maxWidth="128.0" minWidth="0.0" prefWidth="128.0" text="Action" />
         </columns>
     </TableView>
 
-    <Pane layoutY="80.0" prefHeight="5.0" prefWidth="850.0" style="-fx-background-color: black;"
-          AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0"/>
+    <Pane layoutY="80.0" prefHeight="5.0" prefWidth="850.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
 
-    <Text layoutX="335.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          style="-fx-fill: black; -fx-font-size: 2em; -fx-font-weight: bold;" styleClass="user_profile_heading"
-          text="User's Details" wrappingWidth="180.28753662109375"/>
+    <Text layoutX="335.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: black; -fx-font-size: 2em; -fx-font-weight: bold;" styleClass="user_profile_heading" text="User's Details" wrappingWidth="180.28753662109375" />
 
-    <AnchorPane layoutX="14.0" layoutY="488.0" prefHeight="248.0" prefWidth="822.0"
-                styleClass="user_profile_Add_New_User">
+    <AnchorPane layoutX="14.0" layoutY="488.0" prefHeight="290.0" prefWidth="902.0" styleClass="user_profile_Add_New_User">
 
-        <Text layoutX="317.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Add New User"
-              wrappingWidth="161.75"/>
+        <Text layoutX="317.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Add New User" wrappingWidth="161.75" />
 
-        <Label layoutX="23.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="User Name : "/>
-        <TextField fx:id="userName" layoutX="98.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field"/>
+        <Label layoutX="23.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="User Name : " />
+        <TextField fx:id="userName" layoutX="98.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
-        <Label layoutX="424.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="First Name : "/>
-        <TextField fx:id="firstName" layoutX="508.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field"/>
+        <Label layoutX="424.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Full Name : " />
+        <TextField fx:id="fullName" layoutX="508.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
-        <Label layoutX="23.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label" text="Last Name : "/>
-        <TextField fx:id="lastName" layoutX="98.0" layoutY="112.0" styleClass="user_profile_Add_New_User_Text_Field"/>
+        <Label layoutX="23.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label" text="Password  : " />
+        <TextField fx:id="userPassword" layoutX="98.0" layoutY="112.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
-        <Label layoutX="424.0" layoutY="118.0" styleClass="user_profile_Add_New_User_Label" text="Role : "/>
-        <TextField fx:id="userRole" layoutX="508.0" layoutY="110.0" styleClass="user_profile_Add_New_User_Text_Field"/>
+        <Label layoutX="424.0" layoutY="118.0" styleClass="user_profile_Add_New_User_Label" text="Role : " />
+        <TextField fx:id="userRole" layoutX="508.0" layoutY="110.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
-        <Label layoutX="23.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Email : "/>
-        <TextField fx:id="userEmail" layoutX="98.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field"/>
+        <Label layoutX="23.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Email : " />
+        <TextField fx:id="userEmail" layoutX="98.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
-        <Label layoutX="424.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Mobile No : "/>
-        <TextField fx:id="userMobileNo" layoutX="508.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field"/>
+        <Label layoutX="424.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Mobile No : " />
+        <TextField fx:id="userMobileNo" layoutX="508.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
         <!-- Password Field -->
 
-        <Button fx:id="addUserButton" layoutX="670.0" layoutY="209.0" mnemonicParsing="false"
-                styleClass="user_profile_Add_New_User_Button" text="Add User"/>
+        <Button fx:id="addUserButton" layoutX="670.0" layoutY="209.0" mnemonicParsing="false" styleClass="user_profile_Add_New_User_Button" text="Add User" />
     </AnchorPane>
 </AnchorPane>

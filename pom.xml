@@ -35,7 +35,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.6</version>
         </dependency>
-
         <!-- Correct MySQL Connector dependency -->
         <dependency>
             <groupId>com.mysql</groupId>

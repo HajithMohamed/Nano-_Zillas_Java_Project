@@ -61,6 +61,7 @@ public class Login_Controller {
                 break;
             case "student":
                 // Model.getInstance().getViewFactory().showStudentWindow();
+                Model.getInstance().getViewFactory().showUndergraduateWindow();
                 System.out.println("Navigate to Student Window");
                 break;
             case "technical_officer":
