@@ -4,15 +4,33 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="modify_course" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.UndergraduateDetailsControllers">
 
-    <!-- Page Heading -->
+    <!-- Main Heading -->
     <Text layoutX="251.0" layoutY="40.0" styleClass="user_profile_heading" text="Undergraduate Details" />
 
-    <!-- Student Details Table -->
-    <TableView fx:id="studentTable" layoutX="60.0" layoutY="100.0" prefHeight="400.0" prefWidth="680.0" styleClass="user_profile_Table">
+    <!-- Sub Heading -->
+    <Text layoutX="274.0" layoutY="75.0" styleClass="user_profile_heading" text="Department of ICT" />
+
+    <!-- Form Layout -->
+    <VBox alignment="CENTER_LEFT" layoutX="51.0" layoutY="100.0" spacing="15.0">
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
+    </VBox>
+
+    <!-- TableView for Student Details -->
+    <TableView fx:id="studentTable" layoutX="81.0" layoutY="133.0" prefHeight="350.0" prefWidth="730.0" styleClass="user_profile_Table">
         <columns>
             <TableColumn fx:id="studentIdColumn" prefWidth="150.0" text="Student ID">
                 <cellValueFactory>
@@ -32,13 +50,12 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn fx:id="courseColumn" prefWidth="150.0" text="Course">
+            <TableColumn fx:id="courseColumn" prefWidth="178.0" text="Course">
                 <cellValueFactory>
                     <PropertyValueFactory property="course" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
-   <Text layoutX="274.0" layoutY="75.0" styleClass="user_profile_heading" text="Department of ICT" />
 
 </AnchorPane>
