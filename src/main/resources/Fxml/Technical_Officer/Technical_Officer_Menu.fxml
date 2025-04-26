@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="TechOffPan" prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.Stusdent_Menue_Controller">
+<VBox fx:id="TechOffPan" prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Menu_controller">
     <AnchorPane prefHeight="738.0" prefWidth="214.0" stylesheets="@../../Styles/admin_pannell.css">
         <VBox.margin>
             <Insets right="30.0" />
@@ -21,7 +21,7 @@
             <Button fx:id="techAttandence" mnemonicParsing="false" text="Attendance" />
             <Button fx:id="techMedical" mnemonicParsing="false" text="Medical Records" />
             <Line endX="120.0" />
-            <Button fx:id="techMedical" mnemonicParsing="false" text="Profile" />
+            <Button fx:id="techDashboard" mnemonicParsing="false" text="Profile" />
             <Button mnemonicParsing="false" text="Log Out" />
         </VBox>
         <VBox prefHeight="120.0" prefWidth="210.0" styleClass="footer-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-30.0">

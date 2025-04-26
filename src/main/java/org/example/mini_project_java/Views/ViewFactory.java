@@ -15,6 +15,24 @@ public class ViewFactory {
 
     private final StringProperty adminSelectedMenuItem;
     private final StringProperty studentSelectedMenuItem;
+    private final StringProperty lectureSelectedMenuItem;
+    private final StringProperty technicalOfficerSelectedMenuItem;
+
+    public String getTechnicalOfficerSelectedMenuItem() {
+        return technicalOfficerSelectedMenuItem.get();
+    }
+
+    public StringProperty technicalOfficerSelectedMenuItemProperty() {
+        return technicalOfficerSelectedMenuItem;
+    }
+
+    public String getLectureSelectedMenuItem() {
+        return lectureSelectedMenuItem.get();
+    }
+
+    public StringProperty lectureSelectedMenuItemProperty() {
+        return lectureSelectedMenuItem;
+    }
 
     // Admin views
     private AnchorPane dashboardView;
@@ -37,6 +55,8 @@ public class ViewFactory {
     private AnchorPane technicalOfficerDashboardView;
 
     public ViewFactory() {
+        this.lectureSelectedMenuItem = new SimpleStringProperty("") ;
+        this.technicalOfficerSelectedMenuItem = new SimpleStringProperty("") ;
         this.studentSelectedMenuItem = new SimpleStringProperty("");
         this.adminSelectedMenuItem = new SimpleStringProperty("");
     }
@@ -61,7 +81,7 @@ public class ViewFactory {
 
     public AnchorPane getDashboardView(boolean reload) {
         if (dashboardView == null || reload) {
-            dashboardView = loadView("/Fxml/Admin/AdminDashbord.fxml", "Dashboard view could not be loaded.");
+            dashboardView = loadView("/Fxml/Admin/AdminDeshbord.fxml", "Dashboard view could not be loaded.");
         }
         return dashboardView;
     }
@@ -176,6 +196,41 @@ public class ViewFactory {
         }
         return UndergraduateTimeTableView;
     }
+
+    //--------- Technical Officer view methods ----------
+    public AnchorPane getTechnicalOfficerAttendanceView() {
+        return getTechnicalOfficerAttendanceView(false);
+    }
+
+    public AnchorPane getTechnicalOfficerAttendanceView(boolean reload) {
+        if (tecnicalOfficerAttandanceView == null || reload) {
+            tecnicalOfficerAttandanceView = loadView("/Fxml/TechnicalOfficer/Technical_Officer_Attendance.fxml", "Technical Officer Attendance view could not be loaded.");
+        }
+        return tecnicalOfficerAttandanceView;
+    }
+
+    public AnchorPane getTechnicalOfficerMedicalView() {
+        return getTechnicalOfficerMedicalView(false);
+    }
+
+    public AnchorPane getTechnicalOfficerMedicalView(boolean reload) {
+        if (technicalOfficerMedicalView == null || reload) {
+            technicalOfficerMedicalView = loadView("/Fxml/TechnicalOfficer/Technical_Officer_Medical.fxml", "Technical Officer Medical view could not be loaded.");
+        }
+        return technicalOfficerMedicalView;
+    }
+
+    public AnchorPane getTechnicalOfficerDashboardView() {
+        return getTechnicalOfficerDashboardView(false);
+    }
+
+    public AnchorPane getTechnicalOfficerDashboardView(boolean reload) {
+        if (technicalOfficerDashboardView == null || reload) {
+            technicalOfficerDashboardView = loadView("/Fxml/TechnicalOfficer/Technical_Officer_Dashboard.fxml", "Technical Officer Dashboard view could not be loaded.");
+        }
+        return technicalOfficerDashboardView;
+    }
+
 
     // -------- Window Display Methods --------
     public void showLoginWindow() {
