@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_profile" stylesheets="@../../Styles/TechnicalOfficer.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Medical_Controller">
+<AnchorPane fx:id="AttupdMedSub" prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_profile" stylesheets="@../../Styles/TechnicalOfficer.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Medical_Controller">
 
     <VBox layoutX="32.0" layoutY="34.0" prefHeight="523.0" prefWidth="780.0" spacing="15.0">
 

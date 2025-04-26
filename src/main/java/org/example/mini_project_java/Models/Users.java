@@ -130,7 +130,7 @@ public abstract class Users {
                                     resultSet.getString("contact_number"),
                                     resultSet.getString("profile_picture")
                             );
-                        case "technical_officer":
+                        case "technical officer":
                             return new Tecninical_Officer(
                                     inputUsername,
                                     storedPassword,
