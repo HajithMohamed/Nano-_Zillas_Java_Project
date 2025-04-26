@@ -4,65 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60fc9ad8-6dfe-4d0a-9dfb-118d97ef2e52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_officer_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Student_Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Stusdent_menu_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/UpdateProfile_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewCourse_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/viewMedical_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Utils/studentMenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Utils/techOfficerMenuItems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Studentpannel.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/student.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Course_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Main_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Main_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_User_Profiles_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_User_Profiles_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Student_main_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Stusdent_Menue_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/UpdateProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewGrade_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewGrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewNotice_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewTimetable_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/ViewTimetable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/viewAttendance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/viewMedical.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Database/DbConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Lecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Lecture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Tecninical_Officer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Tecninical_Officer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/TimetableViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/UndergraduateDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Undergratuate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Undergratuate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/AdminDashbord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/AdminDashbord.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Corses.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/Corses.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/User_Profiles.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Student.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Student_Menue.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewnotice.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/edit_profile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Attendance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Attendance.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Medical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Medical.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Offiicer_Deshboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Offiicer_Deshboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/Admin_Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/Admin_Dashboard.css" afterDir="false" />
-    </list>
+    <list default="true" id="60fc9ad8-6dfe-4d0a-9dfb-118d97ef2e52" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +48,7 @@
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging Jafran",
+    "git-widget-placeholder": "Jafran",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Admin/Desktop/jafran_java/Nano-_Zillas_Java_Project/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml",
     "list.type.of.created.stylesheet": "CSS",
