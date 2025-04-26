@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="modify_course" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.UploadMarkController">
+
+    <!-- Page Heading -->
+    <Text layoutX="279.0" layoutY="31.0" styleClass="user_profile_heading" text="Upload Marks" />
+
+    <!-- Department Heading -->
+    <Text layoutX="262.0" layoutY="60.0" styleClass="user_profile_heading" text="Department of ICT" />
+
+    <!-- Course Selection -->
+    <Text layoutX="464.0" layoutY="109.0" styleClass="user_profile_Add_New_User_Label" text="Course Code:" />
+    <ComboBox fx:id="courseComboBox" layoutX="544.0" layoutY="85.0" prefWidth="250.0" styleClass="user_profile_Add_New_User_Text_Field" />
+
+    <!-- Exam Type -->
+    <Text layoutX="66.0" layoutY="167.0" styleClass="user_profile_Add_New_User_Label" text="Exam Type:" />
+    <ComboBox fx:id="examTypeComboBox" layoutX="135.0" layoutY="142.0" prefWidth="250.0" promptText="Select Exam Type" styleClass="user_profile_Add_New_User_Text_Field" />
+
+    <!-- Marks Form -->
+    <VBox alignment="CENTER_LEFT" layoutX="60.0" layoutY="210.0" spacing="15.0">
+
+        <!-- Student ID -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
+        <!-- Marks -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
+    </VBox>
+
+    <!-- Marks Table -->
+    <TableView fx:id="marksTable" layoutX="60.0" layoutY="225.0" prefHeight="250.0" prefWidth="730.0" styleClass="user_profile_Table">
+        <columns>
+            <TableColumn fx:id="studentIdColumn" prefWidth="143.0" text="Student ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentId" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="studentNameColumn" prefWidth="214.0" text="Course Code">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="marksColumn" prefWidth="182.0" text="Exam Type">
+                <cellValueFactory>
+                    <PropertyValueFactory property="marks" />
+                </cellValueFactory>
+            </TableColumn>
+         <TableColumn fx:id="marksColumn1" maxWidth="321.0" minWidth="-1.0" prefWidth="180.0" text="Marks">
+            <cellValueFactory>
+               <PropertyValueFactory property="marks" />
+            </cellValueFactory>
+         </TableColumn>
+        </columns>
+    </TableView>
+
+    <!-- Upload Marks Button -->
+    <Button fx:id="uploadMarksButton" layoutX="337.0" layoutY="620.0" styleClass="user_profile_Add_New_User_Button" text="Upload Marks" />
+      <Text layoutX="67.0" layoutY="114.0" styleClass="user_profile_Add_New_User_Label" text="Student ID:" />
+      <TextField fx:id="studentIdField" layoutX="135.0" layoutY="89.0" prefWidth="300.0" promptText="Enter Student ID" styleClass="user_profile_Add_New_User_Text_Field" />
+      <Text layoutX="487.0" layoutY="163.0" styleClass="user_profile_Add_New_User_Label" text="Marks:" />
+      <TextField fx:id="marksField" layoutX="542.0" layoutY="146.0" prefWidth="300.0" promptText="Enter Marks" styleClass="user_profile_Add_New_User_Text_Field" />
+
+</AnchorPane>

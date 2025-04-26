@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="700.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.">
+
+<!-- Title -->
+<Text layoutX="190.0" layoutY="40.0" styleClass="user_profile_heading" text="Course Material Management" />
+
+<!-- Horizontal Line -->
+<Line endX="660" endY="55" startX="40" startY="55" stroke="#cccccc" />
+
+<!-- Course Selection -->
+<Text layoutX="110.0" layoutY="109.0" styleClass="user_profile_Add_New_User_Label" text="Select Course:" />
+<ComboBox fx:id="courseComboBox" layoutX="220.0" layoutY="85.0" prefWidth="300.0" styleClass="user_profile_Add_New_User_Text_Field" />
+
+<!-- Add Material Section -->
+<Text layoutX="89.0" layoutY="151.0" styleClass="user_profile_Add_New_User_Label" text="Add New Material:" />
+<TextField fx:id="materialTextField" layoutX="220.0" layoutY="131.0" prefWidth="300.0" styleClass="user_profile_Add_New_User_Text_Field" />
+<Button fx:id="addMaterialButton" layoutX="403.0" layoutY="231.0" styleClass="user_profile_Add_New_User_Button" text="Add Material" />
+   <ComboBox fx:id="courseComboBox1" layoutX="220.0" layoutY="172.0" prefWidth="300.0" styleClass="user_profile_Add_New_User_Text_Field" />
+   <Text layoutX="151.0" layoutY="196.0" styleClass="user_profile_Add_New_User_Label" text="Week:" />
+
+</AnchorPane>

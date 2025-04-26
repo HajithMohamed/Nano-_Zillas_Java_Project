@@ -6,20 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0dca136a-051a-49b5-9fa5-86fa93da73f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/View_Attendance_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Notice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Notice_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Notice_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Notice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Notice.java" afterDir="false" />
     </list>
-    <list default="true" id="0dca136a-051a-49b5-9fa5-86fa93da73f8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,11 +26,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="JsbtTreeLayoutManager">
-    <layout place="tools.popupGrunt">
-      <scroll-view-position x="0" y="0" />
-    </layout>
   </component>
   <component name="GitHubPullRequestSearchHistory">{
     &quot;lastFilter&quot;: {
@@ -63,43 +48,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Java app.executor&quot;: &quot;Run&quot;,
-    &quot;Application.java app.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in Mini_Project_Java.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dharshika&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/jafran_java/Nano-_Zillas_Java_Project/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.Java app.executor": "Run",
+    "Application.java app.executor": "Run",
+    "JUnit.All in Mini_Project_Java.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Hajith__Mohamed",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/jafran_java/Nano-_Zillas_Java_Project/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.Java app">
     <configuration name="Java app" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
-      <module name="Mini_Project_Java" />
-      <option name="VM_PARAMETERS" value="java --module-path &quot;C:\Users\dhars\OneDrive\Desktop\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml -cp out org.example.mini_project_java.App" />
+      <module name="demo" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../Users/dhars/OneDrive/Desktop/javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-preview" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="All in Mini_Project_Java" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mini_Project_Java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <module name="demo" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Documents\javafx-sdk-24\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$USER_HOME$/Documents/javafx-sdk-24/lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -108,11 +89,6 @@
       <item itemvalue="Application.Java app" />
       <item itemvalue="JUnit.All in Mini_Project_Java" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in Mini_Project_Java" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -126,28 +102,10 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0dca136a-051a-49b5-9fa5-86fa93da73f8" name="Changes" comment="" />
-      <created>1745429924881</created>
+      <created>1745681850023</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745427378348</updated>
-      <workItem from="1745427380729" duration="5795000" />
-      <workItem from="1745433235300" duration="432000" />
-      <workItem from="1745455453320" duration="2372000" />
-      <workItem from="1745503773471" duration="4909000" />
-      <workItem from="1745512853428" duration="3835000" />
-      <workItem from="1745580097633" duration="2434000" />
-      <workItem from="1745587039184" duration="8490000" />
-      <workItem from="1745603458941" duration="5475000" />
-      <workItem from="1745609070842" duration="145000" />
-      <workItem from="1745637676972" duration="7229000" />
-      <workItem from="1745648071997" duration="4105000" />
-      <workItem from="1745692693707" duration="2382000" />
-      <updated>1745429924881</updated>
-      <workItem from="1745429927289" duration="3329000" />
-      <workItem from="1745512975359" duration="1421000" />
-      <workItem from="1745580457915" duration="13280000" />
-      <workItem from="1745649196658" duration="4591000" />
-      <workItem from="1745675048240" duration="2958000" />
+      <updated>1745681850023</updated>
     </task>
     <servers />
   </component>
