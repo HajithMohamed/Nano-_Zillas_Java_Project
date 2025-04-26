@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_profile" stylesheets="@../../Styles/TechnicalOfficer.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Attendance_controller">
+<AnchorPane fx:id="techAttendance" prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_profile" stylesheets="@../../Styles/TechnicalOfficer.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Attendance_controller">
 
    <!-- Page Heading -->
    <Text layoutX="275.0" layoutY="26.0" styleClass="technical_officer_heading" text="Level 1 Semester 2 Attentance" />
@@ -28,5 +28,4 @@
          <TableColumn fx:id="attendanceColumn" prefWidth="200.0" text="Attendance" />
       </columns>
    </TableView>
-
 </AnchorPane>

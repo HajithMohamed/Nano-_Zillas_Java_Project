@@ -20,4 +20,8 @@ public class Model {
     public ViewFactory getViewFactory() {
         return viewFactory;
     }
+
+    public String getLoggedInUsername() {
+        return null;
+    }
 }
