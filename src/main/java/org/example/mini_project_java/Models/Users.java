@@ -118,6 +118,7 @@ public abstract class Users {
                                     role,
                                     resultSet.getString("contact_number"),
                                     resultSet.getString("profile_picture")
+
                             );
                         case "student":
                             return new Undergratuate(

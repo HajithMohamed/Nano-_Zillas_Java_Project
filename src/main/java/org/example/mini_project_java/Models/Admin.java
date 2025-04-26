@@ -18,63 +18,61 @@ public  class Admin extends Users {
         super(username, password, name, email, role, mobile_no);
     }
 
-    @Override
-    public void updateProfile() {
 
-    }
+
+
 
     public Admin getAdminDetails(String username) {
-        try (Connection connectDB = DatabaseConnection.getConnection()) {
-            String selectSQL = "SELECT username, full_name, email, role, contact_number, profile_picture, password FROM USERS WHERE username = ? AND role = 'Admin'";
-            try (PreparedStatement ps = connectDB.prepareStatement(selectSQL)) {
-                ps.setString(1, username);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    return new Admin(
-                            rs.getString("username"),
-                            rs.getString("password"),
-                            rs.getString("full_name"),
-                            rs.getString("email"),
-                            rs.getString("role"),
-                            rs.getString("contact_number")
-                    ) {
-                        @Override
-                        public String getProfilePicture() {
-                            try {
-                                return rs.getString("profile_picture");
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                                return null;
-                            }
-                        }
-                    };
+        String query = "SELECT * FROM USERS WHERE username = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String name = rs.getString("full_name");
+                String email = rs.getString("email");
+                String role = rs.getString("role");
+                String mobileNo = rs.getString("contact_number");
+                String password = rs.getString("password");
+                String profilePic = rs.getString("profile_picture");
+
+                if ("Admin".equalsIgnoreCase(role)) {
+                    return new Admin(username, password, name, email, role, mobileNo, profilePic);
                 }
             }
+
         } catch (SQLException e) {
+            System.err.println("Error fetching admin details: " + e.getMessage());
             e.printStackTrace();
         }
+
         return null;
     }
 
-    // Update admin profile
-    public void updateProfile(String username, String fullName, String email, String role, String mobile, String password, String profilePicture) {
+
+    @Override
+    public void updateProfile() {
         try (Connection connectDB = DatabaseConnection.getConnection()) {
-            String hashedPassword = password != null && !password.isEmpty() ? BCrypt.hashpw(password, BCrypt.gensalt()) : null;
+            String hashedPassword = (getPassword() != null && !getPassword().isEmpty())
+                    ? BCrypt.hashpw(getPassword(), BCrypt.gensalt())
+                    : null;
 
             String updateSQL = "UPDATE USERS SET full_name = ?, email = ?, role = ?, contact_number = ?, profile_picture = ?" +
                     (hashedPassword != null ? ", password = ?" : "") +
                     " WHERE username = ?";
             try (PreparedStatement ps = connectDB.prepareStatement(updateSQL)) {
-                ps.setString(1, fullName);
-                ps.setString(2, email);
-                ps.setString(3, role);
-                ps.setString(4, mobile);
-                ps.setString(5, profilePicture);
+                ps.setString(1, getName());
+                ps.setString(2, getEmail());
+                ps.setString(3, getRole());
+                ps.setString(4, getMobileNo());
+                ps.setString(5, getProfilePicture());
                 if (hashedPassword != null) {
                     ps.setString(6, hashedPassword);
-                    ps.setString(7, username);
+                    ps.setString(7, getUsername());
                 } else {
-                    ps.setString(6, username);
+                    ps.setString(6, getUsername());
                 }
                 ps.executeUpdate();
             }
@@ -82,6 +80,7 @@ public  class Admin extends Users {
             e.printStackTrace();
         }
     }
+
 
     public Admin() {
         // Default constructor
@@ -168,6 +167,4 @@ public  class Admin extends Users {
             deleteStmt.executeUpdate();
         }
     }
-
-
 }

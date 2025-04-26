@@ -76,7 +76,7 @@ public class ViewFactory {
         return timeTableView;
     }
     public AnchorPane getTimeTableView() {
-        return getNoticeView(false);
+        return getTimeTableView(false);
     }
     public AnchorPane getCourseView(boolean reload) {
         if(courseView == null || reload){
@@ -85,7 +85,7 @@ public class ViewFactory {
         return courseView;
     }
     public AnchorPane getCourseView() {
-        return courseView;
+        return getCourseView(false);
     }
 
 

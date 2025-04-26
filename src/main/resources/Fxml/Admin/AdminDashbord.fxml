@@ -31,14 +31,14 @@
 
         <AnchorPane prefHeight="281.0" prefWidth="700.0" styleClass="admin_dashboard_card_anchor">
             <Label layoutX="74.0" layoutY="28.0" styleClass="admin_dashboard_grid_label" text="User Name:" />
-            <Label layoutX="76.0" layoutY="72.0" styleClass="admin_dashboard_grid_label" text="First Name:" />
-            <Label layoutX="76.0" layoutY="117.0" styleClass="admin_dashboard_grid_label" text="Last Name:" />
+            <Label layoutX="76.0" layoutY="72.0" styleClass="admin_dashboard_grid_label" text="Full Name : " />
+            <Label layoutX="76.0" layoutY="117.0" styleClass="admin_dashboard_grid_label" text="Password : " />
             <Label layoutX="76.0" layoutY="162.0" styleClass="admin_dashboard_grid_label" text="Email:" />
             <Label layoutX="78.0" layoutY="203.0" styleClass="admin_dashboard_grid_label" text="Mobile No:" />
 
             <TextField fx:id="admin_username" layoutX="198.0" layoutY="21.0" styleClass="admin_dashboard_grid_text_field" />
-            <TextField fx:id="fName" layoutX="198.0" layoutY="64.0" styleClass="admin_dashboard_grid_text_field" />
-            <TextField fx:id="lName" layoutX="198.0" layoutY="110.0" styleClass="admin_dashboard_grid_text_field" />
+            <TextField fx:id="adminFullName" layoutX="198.0" layoutY="64.0" styleClass="admin_dashboard_grid_text_field" />
+            <TextField fx:id="adminPassword" layoutX="198.0" layoutY="110.0" styleClass="admin_dashboard_grid_text_field" />
             <TextField fx:id="email" layoutX="198.0" layoutY="155.0" styleClass="admin_dashboard_grid_text_field" />
             <TextField fx:id="mobileNo" layoutX="198.0" layoutY="196.0" styleClass="admin_dashboard_grid_text_field" />
         </AnchorPane>
