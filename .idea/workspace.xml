@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
+    <list default="true" id="60fc9ad8-6dfe-4d0a-9dfb-118d97ef2e52" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Attendance_controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Deshboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Medical_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Menu_controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Attendance.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Medical.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Offiicer_Deshboard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/TechnicalOfficer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,102 +24,80 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="Dharshika" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AKMJafran&quot;
+  }
 }</component>
-  <component name="ProjectId" id="2w4lbeo7mYl4Yg3IjAWYhdRHxb7" />
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/HajithMohamed/Nano-_Zillas_Java_Project.git&quot;,
+    &quot;accountId&quot;: &quot;f6e37720-710c-4fc0-844e-2ee7e8ede920&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2w8j6F0s3aKGu0Ie5LSmwUsx7Os" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Java app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Hajith__Mohamed",
+    "git-widget-placeholder": "Jafran",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/jafran_java/Nano-_Zillas_Java_Project/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.example.mini_project_java.Controllers.Admin" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projects\Nano-_Zillas_Java_Project\src\main\resources" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Java app" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
-      <module name="demo" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Documents\javafx-sdk-24\lib&quot; --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-  </component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="" />
-      <created>1745308801624</created>
+      <changelist id="60fc9ad8-6dfe-4d0a-9dfb-118d97ef2e52" name="Changes" comment="" />
+      <created>1745429924881</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745308801624</updated>
-      <workItem from="1745308803732" duration="7031000" />
-      <workItem from="1745320351631" duration="4694000" />
-      <workItem from="1745328973479" duration="8861000" />
-      <workItem from="1745345387640" duration="373000" />
-      <workItem from="1745405666638" duration="1280000" />
-      <workItem from="1745411958062" duration="439000" />
+      <updated>1745429924881</updated>
+      <workItem from="1745429927289" duration="3329000" />
+      <workItem from="1745512975359" duration="1421000" />
+      <workItem from="1745580457915" duration="13280000" />
+      <workItem from="1745649196658" duration="4591000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

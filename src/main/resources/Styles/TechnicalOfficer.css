@@ -1,0 +1,51 @@
+/* Main container */
+.technical_officer_profile {
+    -fx-background-color: #f9f9f9;
+}
+
+/* Page heading */
+.technical_officer_heading {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-text-alignment: center;
+}
+
+/* Labels inside course details */
+.technical_officer_label {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #444444;
+}
+
+/* TextFields for course input */
+.technical_officer_textfield {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 5;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 1em;
+    -fx-border-color: transparent;
+    -fx-pref-width: 300px;
+}
+
+.technical_officer_textfield:focused {
+    -fx-border-color: #008B8B;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+/* TableView for attendance */
+.technical_officer_table {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 5;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 1);
+    -fx-font-size: 1em;
+}
+
+.technical_officer_table .column-header {
+    -fx-background-color: #008B8B;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_profile" stylesheets="@../../Styles/TechnicalOfficer.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Medical_Controller">
+
+    <VBox layoutX="32.0" layoutY="34.0" prefHeight="523.0" prefWidth="780.0" spacing="15.0">
+
+        <!-- Page Title -->
+        <Text styleClass="technical_officer_heading" text="Attendance Update - Medical Submissions" textAlignment="CENTER" wrappingWidth="769.61328125" />
+
+        <!-- Filters Section -->
+        <HBox spacing="20">
+            <Label styleClass="technical_officer_label" text="Subject:" />
+            <ComboBox fx:id="subjectComboBox" prefWidth="200" styleClass="technical_officer_combobox" />
+
+            <Label styleClass="technical_officer_label" text="Week:" />
+            <ComboBox fx:id="weekComboBox" prefWidth="150" styleClass="technical_officer_combobox" />
+
+            <Button fx:id="filterButton" styleClass="technical_officer_button" text="Filter" />
+        </HBox>
+
+        <!-- Table View -->
+        <TableView fx:id="studentTable" prefHeight="436.0" prefWidth="774.0" styleClass="technical_officer_table">
+            <columns>
+                <TableColumn fx:id="studentIdColumn" prefWidth="150" text="M_Student ID" />
+                <TableColumn fx:id="studentNameColumn" prefWidth="250" text="M_Student Name" />
+                <TableColumn fx:id="actionColumn" prefWidth="376.0" text="Mark Attendance" />
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
