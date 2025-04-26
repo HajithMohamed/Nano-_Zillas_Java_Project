@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="modify_course" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.ModifyCourseController">
+
+    <!-- Title -->
+    <HBox alignment="CENTER" layoutX="70.0" layoutY="30.0" prefWidth="560.0">
+        <Text styleClass="user_profile_heading" text="Course Material Management" textAlignment="CENTER" />
+    </HBox>
+
+    <!-- Form layout -->
+    <VBox alignment="CENTER" layoutX="70.0" layoutY="100.0" spacing="20.0">
+
+        <!-- Lecturer ID -->
+        <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="418.0" spacing="20.0">
+            <Text styleClass="user_profile_Add_New_User_Label" text="Lecturer ID:" />
+            <TextField fx:id="lecturerIdField" prefHeight="31.0" prefWidth="255.0" styleClass="user_profile_Add_New_User_Text_Field">
+            <HBox.margin>
+               <Insets left="15.0" />
+            </HBox.margin></TextField>
+        </HBox>
+
+        <!-- Course Selection -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <Text styleClass="user_profile_Add_New_User_Label" text="Select Course:" />
+            <ComboBox fx:id="courseComboBox" prefWidth="300.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        </HBox>
+
+        <!-- Week Selection -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <Text styleClass="user_profile_Add_New_User_Label" text="Select Week:" />
+            <ComboBox fx:id="weekComboBox" prefHeight="39.0" prefWidth="297.0" styleClass="user_profile_Add_New_User_Text_Field">
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin></ComboBox>
+        </HBox>
+
+        <!-- Add Material -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <Text styleClass="user_profile_Add_New_User_Label" text="Add Material:" />
+            <TextField fx:id="materialTextField" prefWidth="300.0" styleClass="user_profile_Add_New_User_Text_Field" />
+        </HBox>
+
+        <!-- View Material -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" />
+
+        <!-- Existing Materials Table -->
+        <Text styleClass="user_profile_Add_New_User_Label" text="Existing Materials:" />
+
+        <TableView fx:id="materialsTableView" prefHeight="200.0" prefWidth="560.0" styleClass="user_profile_Add_New_User_Text_Field">
+
+            <columns>
+                <TableColumn fx:id="weekColumn" prefWidth="150.0" styleClass="user_profile_Add_New_User_Button" text="Week" />
+                <TableColumn fx:id="materialColumn" prefWidth="390.0" styleClass="user_profile_Add_New_User_Button" text="Material" />
+            </columns>
+        </TableView>
+
+    </VBox>
+      <Button fx:id="addMaterialButton" alignment="CENTER" layoutX="504.0" layoutY="267.0" prefHeight="39.0" prefWidth="141.0" styleClass="user_profile_Add_New_User_Button" text=" Add Material" />
+      <Button fx:id="viewMaterialButton" alignment="CENTER_RIGHT" layoutX="656.0" layoutY="267.0" styleClass="user_profile_Add_New_User_Button" text="View Material" textAlignment="CENTER" />
+
+</AnchorPane>

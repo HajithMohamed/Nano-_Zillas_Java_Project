@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="modify_course" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.DisplayMedicalAttendanceController">
+
+    <Text layoutX="150.0" layoutY="57.0" styleClass="user_profile_heading" text="Undergraduate Attendance &amp; Medical Records" />
+
+    <TableView fx:id="attendanceMedicalTable" layoutX="52.0" layoutY="120.0" prefHeight="420.0" prefWidth="680.0" styleClass="user_profile_Table">
+
+        <columns>
+            <TableColumn fx:id="studentIdColumn" prefWidth="130.0" text="Student ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentId" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="studentNameColumn" prefWidth="180.0" text="Student Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentName" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="attendanceColumn" prefWidth="140.0" text="Attendance (%)">
+                <cellValueFactory>
+                    <PropertyValueFactory property="attendance" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="medicalColumn" prefWidth="230.0" text="Medical Records">
+                <cellValueFactory>
+                    <PropertyValueFactory property="medical" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+   <Text layoutX="295.0" layoutY="96.0" styleClass="user_profile_heading" text="Department of ICT" />
+</AnchorPane>

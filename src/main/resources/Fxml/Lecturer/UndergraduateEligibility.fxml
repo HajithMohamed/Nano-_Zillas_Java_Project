@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="modify_course" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.UndergraduateEligibilityController">
+
+    <!-- Page Heading -->
+    <Text layoutX="201.0" layoutY="48.0" styleClass="user_profile_heading" text="Eligibility Status of Undergraduate " />
+
+    <!-- Eligibility Table -->
+    <TableView fx:id="eligibilityTable" layoutX="60.0" layoutY="119.0" prefHeight="400.0" prefWidth="680.0" styleClass="user_profile_Table">
+        <columns>
+            <TableColumn fx:id="studentIdColumn" prefWidth="200.0" text="Student ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentId" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="studentNameColumn" prefWidth="280.0" text="Student Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="eligibilityColumn" prefWidth="200.0" text="Eligibility">
+                <cellValueFactory>
+                    <PropertyValueFactory property="eligibility" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+   <Text layoutX="295.0" layoutY="91.0" styleClass="user_profile_heading" text="Department of ICT" />
+
+</AnchorPane>

@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="">
+    <list default="true" id="9ecb8f29-4e4c-4928-ae60-7fe499299129" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/DisplayMedicalAttendanceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerDashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerPannelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/ModifyCourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateDetailsControllers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateEligibilityController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateMarksGpaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UploadMarkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/ViewNoticeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/DisplayMedicalAttendance.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/LecturerDashboard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/LecturerPannel.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/ModifyCourse.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateDetails.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateEligibility.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateMarksGpa.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UploadMark.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/ViewNotice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,15 +34,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Dharshika" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,20 +55,20 @@
     </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2w4lbeo7mYl4Yg3IjAWYhdRHxb7" />
+  <component name="ProjectId" id="2wDhILHUOmF2CFDIJfEjTPMJk8k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Java app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Hajith__Mohamed",
+    "git-widget-placeholder": "Kaviya",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ramar/AppData/Local/SceneBuilder/SceneBuilder.exe",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,30 +76,16 @@
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.example.mini_project_java.Controllers.Admin" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projects\Nano-_Zillas_Java_Project\src\main\resources" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="Java app" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
-      <module name="demo" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Admin\Documents\javafx-sdk-24\lib&quot; --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
+      <module name="Nano-_Zillas_Java_Project" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Nano-_Zillas_Java_Project" />
       <option name="filePath" />
       <method v="2" />
     </configuration>
@@ -96,17 +101,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="804be2a5-9290-4963-8e94-07b2b3a80135" name="Changes" comment="" />
-      <created>1745308801624</created>
+      <changelist id="9ecb8f29-4e4c-4928-ae60-7fe499299129" name="Changes" comment="" />
+      <created>1745581971941</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745308801624</updated>
-      <workItem from="1745308803732" duration="7031000" />
-      <workItem from="1745320351631" duration="4694000" />
-      <workItem from="1745328973479" duration="8861000" />
-      <workItem from="1745345387640" duration="373000" />
-      <workItem from="1745405666638" duration="1280000" />
-      <workItem from="1745411958062" duration="439000" />
+      <updated>1745581971941</updated>
+      <workItem from="1745581977951" duration="5934000" />
+      <workItem from="1745642591568" duration="1102000" />
+      <workItem from="1745649847371" duration="2691000" />
     </task>
     <servers />
   </component>
