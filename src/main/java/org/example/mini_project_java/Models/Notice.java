@@ -56,7 +56,7 @@ public class Notice {
     public void createOrEditNotice(String title, String content, String role, boolean isEdit, int noticeId) {
         try (Connection connectDB = DatabaseConnection.getConnection()) {
             if (!isEdit) {
-                String insertSQL = "INSERT INTO NOTICE (title, content, role) VALUES (?, ?, ?)";
+                String insertSQL = "INSERT INTO NOTICES (title, content, role) VALUES (?, ?, ?)";
                 try (PreparedStatement ps = connectDB.prepareStatement(insertSQL)) {
                     ps.setString(1, title);
                     ps.setString(2, content);
@@ -64,7 +64,7 @@ public class Notice {
                     ps.executeUpdate();
                 }
             } else {
-                String updateSQL = "UPDATE NOTICE SET title = ?, content = ?, role = ? WHERE notice_id = ?";
+                String updateSQL = "UPDATE NOTICES SET title = ?, content = ?, role = ? WHERE notice_id = ?";
                 try (PreparedStatement ps = connectDB.prepareStatement(updateSQL)) {
                     ps.setString(1, title);
                     ps.setString(2, content);
@@ -81,7 +81,7 @@ public class Notice {
     // Delete Notice
     public void deleteNotice(int notice_id) {
         try (Connection connectDB = DatabaseConnection.getConnection();
-             PreparedStatement deleteStmt = connectDB.prepareStatement("DELETE FROM NOTICE WHERE notice_id = ?")) {
+             PreparedStatement deleteStmt = connectDB.prepareStatement("DELETE FROM NOTICES WHERE notice_id = ?")) {
             deleteStmt.setInt(1, notice_id);
             deleteStmt.executeUpdate();
         } catch (SQLException e) {
@@ -91,7 +91,7 @@ public class Notice {
 
     // View Notice
     public Notice viewNotice(int notice_id) {
-        String query = "SELECT * FROM NOTICE WHERE notice_id = ?";
+        String query = "SELECT * FROM NOTICES WHERE notice_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
