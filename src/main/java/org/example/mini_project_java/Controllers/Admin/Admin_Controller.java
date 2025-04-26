@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.mini_project_java.Models.Admin;
@@ -21,47 +22,22 @@ import java.util.ResourceBundle;
 
 public class Admin_Controller implements Initializable {
 
-    @FXML
-    private Button userProfile;
-
-    @FXML
-    private Button course;
-
-    @FXML
-    private Button notice;
-
-    @FXML
-    private Button timetable;
-
-    @FXML
-    private Button dashboard;
-
-    @FXML
-    private TextField admin_username;
-
-    @FXML
-    private TextField adminFullName;
-
-    @FXML
-    private TextField adminPassword;
-
-    @FXML
-    private TextField email;
-
-    @FXML
-    private TextField mobileNo;
-
-    @FXML
-    private Button update_btn;
-
-    @FXML
-    private Button profileImageChangeButton;
-
-    @FXML
-    private ImageView profileImage;
-
-    @FXML
-    private Icon adminNortification;
+    @FXML private Text welcomeText;
+    @FXML private Text profileHeading;
+    @FXML private Button userProfile;
+    @FXML private Button course;
+    @FXML private Button notice;
+    @FXML private Button timetable;
+    @FXML private Button dashboard;
+    @FXML private TextField admin_username;
+    @FXML private TextField adminFullName;
+    @FXML private TextField adminPassword;
+    @FXML private TextField email;
+    @FXML private TextField mobileNo;
+    @FXML private Button update_btn;
+    @FXML private Button profileImageChangeButton;
+    @FXML private ImageView profileImage;
+    @FXML private Icon adminNortification;
 
     private Admin adminModel;
     private File selectedImageFile;
@@ -72,10 +48,8 @@ public class Admin_Controller implements Initializable {
         addListeners();
         adminModel = new Admin();
 
-        // Check FXML bindings
         checkFXMLBindings();
 
-        // Set button actions if buttons are not null
         if (profileImageChangeButton != null) {
             profileImageChangeButton.setOnAction(event -> changeProfileImage());
         }
@@ -83,22 +57,16 @@ public class Admin_Controller implements Initializable {
             update_btn.setOnAction(event -> updateProfile());
         }
 
-        // Load admin details with dynamic username
         String username = getLoggedInUsername();
         loadAdminDetails(username);
     }
 
     private void addListeners() {
-        if (dashboard != null)
-            dashboard.setOnAction(event -> onMenuItemSelected(MenuItems.DASHBOARD));
-        if (userProfile != null)
-            userProfile.setOnAction(event -> onMenuItemSelected(MenuItems.USER_PROFILE));
-        if (course != null)
-            course.setOnAction(event -> onMenuItemSelected(MenuItems.COURSE));
-        if (notice != null)
-            notice.setOnAction(event -> onMenuItemSelected(MenuItems.NOTICE));
-        if (timetable != null)
-            timetable.setOnAction(event -> onMenuItemSelected(MenuItems.TIMETABLE));
+        if (dashboard != null) dashboard.setOnAction(event -> onMenuItemSelected(MenuItems.DASHBOARD));
+        if (userProfile != null) userProfile.setOnAction(event -> onMenuItemSelected(MenuItems.USER_PROFILE));
+        if (course != null) course.setOnAction(event -> onMenuItemSelected(MenuItems.COURSE));
+        if (notice != null) notice.setOnAction(event -> onMenuItemSelected(MenuItems.NOTICE));
+        if (timetable != null) timetable.setOnAction(event -> onMenuItemSelected(MenuItems.TIMETABLE));
     }
 
     private void onMenuItemSelected(String menuItem) {
@@ -110,7 +78,7 @@ public class Admin_Controller implements Initializable {
         String username = Model.getInstance().getLoggedInUsername();
         if (username == null) {
             System.err.println("No logged-in user found. Using fallback username.");
-            return "ADMIN/RUH/TEC/001"; // Fallback for testing
+            return "ADMIN/RUH/TEC/001";
         }
         return username;
     }
@@ -135,6 +103,14 @@ public class Admin_Controller implements Initializable {
             currentProfilePicturePath = admin.getProfilePicture();
             System.out.println("Admin details loaded: " + admin.getUsername() + ", " + admin.getName());
 
+            // ✨ Update welcome message and heading
+            if (welcomeText != null) {
+                welcomeText.setText("Welcome " + admin.getName() + "!");
+            }
+            if (profileHeading != null) {
+                profileHeading.setText(admin.getName() + "'s Profile Details");
+            }
+
             if (currentProfilePicturePath != null && !currentProfilePicturePath.isEmpty() && profileImage != null) {
                 try {
                     File imageFile = new File(currentProfilePicturePath);
@@ -151,7 +127,6 @@ public class Admin_Controller implements Initializable {
                     setDefaultProfileImage();
                 }
             } else {
-                System.out.println("No profile picture set or image view is null.");
                 setDefaultProfileImage();
             }
         } else {
@@ -159,7 +134,6 @@ public class Admin_Controller implements Initializable {
             showAlert("Error", "Failed to load admin profile details for username: " + username);
         }
     }
-
 
     private void setDefaultProfileImage() {
         if (profileImage != null) {
@@ -179,7 +153,6 @@ public class Admin_Controller implements Initializable {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Profile Image");
-
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
         );
@@ -212,30 +185,26 @@ public class Admin_Controller implements Initializable {
             String password = adminPassword.getText();
             String emailText = email.getText();
             String mobile = mobileNo.getText();
-            String role = "Admin"; // Fixed role for admin
+            String role = "Admin";
             String profilePicture = selectedImageFile != null ? selectedImageFile.getAbsolutePath() : currentProfilePicturePath;
 
-            // Basic validation
             if (username.isEmpty() || fullName.trim().isEmpty() || emailText.isEmpty()) {
                 showAlert("Validation Error", "Username, full name, and email cannot be empty.");
                 return;
             }
 
-            // Validate email format
             if (!emailText.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                 showAlert("Validation Error", "Invalid email format.");
                 return;
             }
 
             adminModel.updateProfile();
-
             currentProfilePicturePath = profilePicture;
             selectedImageFile = null;
 
             showAlert("Success", "Profile updated successfully.");
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Failed to update profile: " + e.getMessage());
             showAlert("Error", "Failed to update profile: " + e.getMessage());
         }
     }
@@ -249,32 +218,16 @@ public class Admin_Controller implements Initializable {
     }
 
     private void checkFXMLBindings() {
-        if (admin_username == null) {
-            System.err.println("admin_username is null. Ensure fx:id='admin_username' is set in Admin.fxml.");
-        }
-        if (adminFullName == null) {
-            System.err.println("adminFullName is null. Ensure fx:id='adminFullName' is set in Admin.fxml.");
-        }
-        if (adminPassword == null) {
-            System.err.println("adminPassword is null. Ensure fx:id='adminPassword' is set in Admin.fxml.");
-        }
-        if (email == null) {
-            System.err.println("email is null. Ensure fx:id='email' is set in Admin.fxml.");
-        }
-        if (mobileNo == null) {
-            System.err.println("mobileNo is null. Ensure fx:id='mobileNo' is set in Admin.fxml.");
-        }
-        if (profileImageChangeButton == null) {
-            System.err.println("profileImageChangeButton is null. Ensure fx:id='profileImageChangeButton' is set in Admin.fxml.");
-        }
-        if (update_btn == null) {
-            System.err.println("update_btn is null. Ensure fx:id='update_btn' is set in Admin.fxml.");
-        }
-        if (profileImage == null) {
-            System.err.println("profileImage is null. Ensure fx:id='profileImage' is set in Admin.fxml.");
-        }
-        if (adminNortification == null) {
-            System.err.println("adminNortification is null. Ensure fx:id='adminNortification' is set in Admin.fxml.");
-        }
+        if (welcomeText == null) System.err.println("welcomeText is null. Check fx:id='welcomeText' in Admin.fxml.");
+        if (profileHeading == null) System.err.println("profileHeading is null. Check fx:id='profileHeading' in Admin.fxml.");
+        if (admin_username == null) System.err.println("admin_username is null.");
+        if (adminFullName == null) System.err.println("adminFullName is null.");
+        if (adminPassword == null) System.err.println("adminPassword is null.");
+        if (email == null) System.err.println("email is null.");
+        if (mobileNo == null) System.err.println("mobileNo is null.");
+        if (profileImageChangeButton == null) System.err.println("profileImageChangeButton is null.");
+        if (update_btn == null) System.err.println("update_btn is null.");
+        if (profileImage == null) System.err.println("profileImage is null.");
+        if (adminNortification == null) System.err.println("adminNortification is null.");
     }
 }

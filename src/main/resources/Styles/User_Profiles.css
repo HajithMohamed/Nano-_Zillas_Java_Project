@@ -58,7 +58,7 @@
     -fx-padding: 6px 10px;
     -fx-font-size: 1em;
     -fx-border-color: transparent;
-    -fx-pref-width: 300px;
+    -fx-pref-width: 350px;
 }
 
 .user_profile_Add_New_User_Text_Field:focused {
@@ -89,3 +89,11 @@
     -fx-font-size: 1em;                  /* Inherits parent font size scaling */
     -fx-border-color: transparent;       /* Hides border */
 }
+.user_profile_Add_New_User_Text_Field2 {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 5;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 1em;
+    -fx-border-color: transparent;
+    -fx-pref-width: 100px;}
+

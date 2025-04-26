@@ -9,43 +9,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Notice_Controller">
-    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile"
-                stylesheets="@../../Styles/User_Profiles.css">
-        <Text layoutX="369.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              styleClass="user_profile_heading" text="Notice Details"/>
-        <TableView layoutX="22.0" layoutY="63.0" prefHeight="354.0" prefWidth="848.0"
-                   styleClass="user_profile_Table">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Notice_Controller">
+    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
+        <Text layoutX="369.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_profile_heading" text="Notice Details" />
+        <TableView layoutX="22.0" layoutY="63.0" prefHeight="354.0" prefWidth="848.0" styleClass="user_profile_Table">
             <columns>
-                <TableColumn prefWidth="132.79996490478516" text="Notice ID"/>
-                <TableColumn prefWidth="238.39996337890625" text="Topic"/>
-                <TableColumn prefWidth="308.8000183105469" text="Content"/>
-                <TableColumn prefWidth="138.4000244140625" text="Action"/>
+                <TableColumn fx:id="noticeId" prefWidth="132.79996490478516" text="Notice ID" />
+                <TableColumn fx:id="noticeRole" prefWidth="131.20004272460938" text="Role" />
+                <TableColumn fx:id="noticeTitle" prefWidth="147.199951171875" text="Title" />
+                <TableColumn fx:id="noticeContent" minWidth="0.0" prefWidth="272.7999572753906" text="Content" />
+            <TableColumn fx:id="noticeAction" maxWidth="255.19989013671875" prefWidth="141.5999755859375" text="Action" />
             </columns>
         </TableView>
-        <AnchorPane layoutX="7.0" layoutY="454.0" prefHeight="230.0" prefWidth="830.0"
-                    styleClass="user_profile_Add_New_User" AnchorPane.bottomAnchor="10.0"
-                    AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-            <Text layoutX="318.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Add New Notice"
-                  wrappingWidth="212.15426635742188"/>
-            <Label layoutX="23.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Notice Id :"/>
-            <TextField fx:id="noticeId" layoutX="114.0" layoutY="62.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="424.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Notice Topic : "/>
-            <TextField fx:id="noticeTopic" layoutX="508.0" layoutY="62.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Button fx:id="addNotice" layoutX="679.0" layoutY="236.0" mnemonicParsing="false"
-                    styleClass="user_profile_Add_New_User_Button" text="Add Notice"/>
-            <Label layoutX="23.0" layoutY="159.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Notice Content : "/>
-            <TextArea fx:id="noticeContent" layoutX="130.0" layoutY="112.0" prefHeight="112.0" prefWidth="678.0"
-                      styleClass="user_profile_Add_New_User_Text_Area"/>
+        <AnchorPane layoutX="7.0" layoutY="454.0" prefHeight="230.0" prefWidth="830.0" styleClass="user_profile_Add_New_User" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <Text layoutX="318.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Add New Notice" wrappingWidth="212.15426635742188" />
+            <Label layoutX="30.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Notice Id :" />
+            <TextField fx:id="notice_Id" layoutX="101.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="424.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Notice Topic : " />
+            <TextField fx:id="noticeTopic" layoutX="508.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Button fx:id="addNotice" layoutX="679.0" layoutY="236.0" mnemonicParsing="false" styleClass="user_profile_Add_New_User_Button" text="Add Notice" />
+            <Label layoutX="408.0" layoutY="158.0" styleClass="user_profile_Add_New_User_Label" text="Notice Content : " />
+            <TextArea fx:id="notice_Content" layoutX="508.0" layoutY="112.0" prefHeight="112.0" prefWidth="300.0" styleClass="user_profile_Add_New_User_Text_Area" />
+         <TextField fx:id="notice_Role" layoutX="101.0" layoutY="152.0" styleClass="user_profile_Add_New_User_Text_Field" />
+         <Label layoutX="37.0" layoutY="158.0" styleClass="user_profile_Add_New_User_Label" text="Role :" />
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>

@@ -11,8 +11,8 @@ import java.util.ResourceBundle;
 
 public class Technical_officer_controller implements Initializable {
 
-
     public BorderPane technical_officer_parent;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

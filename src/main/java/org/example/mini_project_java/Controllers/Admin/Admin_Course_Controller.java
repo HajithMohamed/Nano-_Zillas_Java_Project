@@ -215,7 +215,6 @@ public class Admin_Course_Controller implements Initializable {
             }
         });
     }
-
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -223,6 +222,4 @@ public class Admin_Course_Controller implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
 }
