@@ -5,6 +5,10 @@ public class Tecninical_Officer extends Users {
         super(username, password, name, email, role,password);
     }
 
+    public Tecninical_Officer(String username, String password, String name, String email, String role, String mobile_no, String profilePicture) {
+        super(username, password, name, email, role, mobile_no, profilePicture);
+    }
+
     @Override
     public void updateProfile() {
         // Specific implementation for Admin

@@ -1,4 +1,3 @@
-// Updated Users.java
 package org.example.mini_project_java.Models;
 
 import org.example.mini_project_java.Database.DatabaseConnection;
@@ -15,8 +14,19 @@ public abstract class Users {
     private String email;
     private String role;
     private String mobile_no;
+    private String profilePicture;
 
     public Users() {}
+
+    public Users(String username, String password, String name, String email, String role, String mobile_no, String profilePicture) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.role = role;
+        this.mobile_no = mobile_no;
+        this.profilePicture = profilePicture;
+    }
 
     public Users(String username, String password, String name, String email, String role, String mobile_no) {
         this.username = username;
@@ -27,9 +37,7 @@ public abstract class Users {
         this.mobile_no = mobile_no;
     }
 
-    // Getters and Setters omitted for brevity...
-
-
+    // Getters and Setters
     public String getUsername() {
         return username;
     }
@@ -70,12 +78,20 @@ public abstract class Users {
         this.role = role;
     }
 
-    public String getMobile_no() {
+    public String getMobileNo() {
         return mobile_no;
     }
 
-    public void setMobile_no(String mobile_no) {
+    public void setMobileNo(String mobile_no) {
         this.mobile_no = mobile_no;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public static Users login(String inputUsername, String inputPassword) {
@@ -94,17 +110,46 @@ public abstract class Users {
                 if (storedPassword.equals(inputPassword)) {
                     switch (role.toLowerCase()) {
                         case "admin":
-                            return new Admin(inputUsername, storedPassword, resultSet.getString("full_name"),
-                                    resultSet.getString("email"), role, resultSet.getString("contact_number"));
+                            return new Admin(
+                                    inputUsername,
+                                    storedPassword,
+                                    resultSet.getString("full_name"),
+                                    resultSet.getString("email"),
+                                    role,
+                                    resultSet.getString("contact_number"),
+                                    resultSet.getString("profile_picture")
+
+                            );
                         case "student":
-                            return new Undergratuate (inputUsername, storedPassword, resultSet.getString("name"),
-                                    resultSet.getString("email"), role, resultSet.getString("mobile_no"));
+                            return new Undergratuate(
+                                    inputUsername,
+                                    storedPassword,
+                                    resultSet.getString("full_name"),
+                                    resultSet.getString("email"),
+                                    role,
+                                    resultSet.getString("contact_number"),
+                                    resultSet.getString("profile_picture")
+                            );
                         case "technical_officer":
-                            return new Tecninical_Officer(inputUsername, storedPassword, resultSet.getString("name"),
-                                    resultSet.getString("email"), role, resultSet.getString("mobile_no"));
-                        case "lecture":
-                            return new Lecture(inputUsername, storedPassword, resultSet.getString("name"),
-                                    resultSet.getString("email"), role, resultSet.getString("mobile_no"));
+                            return new Tecninical_Officer(
+                                    inputUsername,
+                                    storedPassword,
+                                    resultSet.getString("full_name"),
+                                    resultSet.getString("email"),
+                                    role,
+                                    resultSet.getString("contact_number"),
+                                    resultSet.getString("profile_picture")
+                            );
+                        case "lecturer": // Corrected typo from "lecture" to "lecturer"
+                            return new Lecture(
+                                    inputUsername,
+                                    storedPassword,
+                                    resultSet.getString("full_name"),
+                                    resultSet.getString("email"),
+                                    role,
+                                    resultSet.getString("contact_number"),
+                                    resultSet.getString("profile_picture")
+                            );
                         default:
                             System.out.println("⚠️ Unknown role: " + role);
                             return null;
@@ -127,6 +172,4 @@ public abstract class Users {
     }
 
     public abstract void updateProfile();
-
-
 }
