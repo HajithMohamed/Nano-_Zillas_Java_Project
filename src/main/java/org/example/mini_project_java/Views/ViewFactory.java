@@ -37,13 +37,6 @@ public class ViewFactory {
     }
 
     // -------- Student MenuItem Methods --------
-    public void getStudentSelectedMenuItem() {
-        studentSelectedMenuItem.get();
-    }
-
-    public void setStudentSelectedMenuItem(String item) {
-        this.studentSelectedMenuItem.set(item);
-    }
 
     public StringProperty studentSelectedMenuItemProperty() {
         return studentSelectedMenuItem;
@@ -54,9 +47,7 @@ public class ViewFactory {
         return adminSelectedMenuItem;
     }
 
-    public void setAdminSelectedMenuItem(String item) {
-        this.adminSelectedMenuItem.set(item);
-    }
+
 
     // -------- Admin Views --------
     public AnchorPane getDashboardView() {
@@ -65,7 +56,7 @@ public class ViewFactory {
 
     public AnchorPane getDashboardView(boolean reload) {
         if (dashboardView == null || reload) {
-            dashboardView = loadView("/Fxml/Admin/Dashboard.fxml", "Dashboard view could not be loaded.");
+            dashboardView = loadView("/Fxml/Admin/AdminDashbord.fxml", "Dashboard view could not be loaded.");
         }
         return dashboardView;
     }
@@ -109,7 +100,7 @@ public class ViewFactory {
 
     public AnchorPane getCourseView(boolean reload) {
         if (courseView == null || reload) {
-            courseView = loadView("/Fxml/Admin/Courses.fxml", "Courses view could not be loaded.");
+            courseView = loadView("/Fxml/Admin/Corses.fxml", "Courses view could not be loaded.");
         }
         return courseView;
     }
