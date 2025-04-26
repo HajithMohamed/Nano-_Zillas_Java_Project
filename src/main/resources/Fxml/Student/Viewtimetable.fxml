@@ -11,7 +11,7 @@
 
         <!-- Timetable Section -->
         <AnchorPane fx:id="studentTimeTable" layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
-            <Text layoutX="323.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="View Timetable" wrappingWidth="212.15426635742188" />
+            <Text layoutX="315.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Time Table " wrappingWidth="212.15426635742188" />
 
             <!-- Table to display timetable details -->
             <TableView fx:id="timetableTable" layoutX="10.0" layoutY="140.0" prefHeight="444.0" prefWidth="810.0" styleClass="user_profile_Table">
@@ -23,6 +23,7 @@
                <TableColumn fx:id="sessionsColumn2" prefWidth="139.20010375976562" text="End_time" />
                 </columns>
             </TableView>
+         <Text layoutX="274.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Department of ICT" wrappingWidth="212.15426635742188" />
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>
