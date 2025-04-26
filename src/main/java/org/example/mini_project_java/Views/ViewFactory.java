@@ -219,7 +219,7 @@ public class ViewFactory {
 
     public AnchorPane getDashboardView(boolean reload) {
         if (dashboardView == null || reload) {
-            dashboardView = loadView("/Fxml/Admin/AdminDashboard.fxml", "Dashboard view could not be loaded.");
+            dashboardView = loadView("/Fxml/Admin/AdminDashbord.fxml", "Dashboard view could not be loaded.");
         }
         return dashboardView;
     }
@@ -263,7 +263,7 @@ public class ViewFactory {
 
     public AnchorPane getCourseView(boolean reload) {
         if (courseView == null || reload) {
-            courseView = loadView("/Fxml/Admin/Courses.fxml", "Courses view could not be loaded.");
+            courseView = loadView("/Fxml/Admin/Corses.fxml", "Courses view could not be loaded.");
         }
         return courseView;
     }

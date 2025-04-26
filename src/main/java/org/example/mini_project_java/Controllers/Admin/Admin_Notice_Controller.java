@@ -2,171 +2,193 @@ package org.example.mini_project_java.Controllers.Admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import org.example.mini_project_java.Database.DatabaseConnection;
+import javafx.util.Callback;
 import org.example.mini_project_java.Models.Notice;
+import org.example.mini_project_java.Database.DatabaseConnection;
 
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Admin_Notice_Controller implements Initializable {
 
+    public TableView <Notice>noticeTable;
     @FXML
-    public TableColumn<Notice, Integer> noticeId;
+    private TableColumn<Notice, Integer> noticeId;
     @FXML
-    public TableColumn<Notice, String> noticeTitle;
+    private TableColumn<Notice, String> noticeRole;
     @FXML
-    public TableColumn<Notice, String> noticeContent;
+    private TableColumn<Notice, String> noticeTitle;
     @FXML
-    public TableColumn<Notice, String> noticeRole;
+    private TableColumn<Notice, String> noticeContent;
     @FXML
-    public TableColumn<Notice, Void> noticeAction;
+    private TableColumn<Notice, Void> noticeAction;
 
     @FXML
-    public TextField notice_Id;
+    private TextField notice_Id;
     @FXML
-    public TextField noticeTopic;
+    private TextField noticeTopic;
     @FXML
-    public TextArea notice_Content;
+    private TextArea notice_Content;
     @FXML
-    public TextField notice_Role;
+    private TextField notice_Role;
     @FXML
-    public Button addNotice;
-
+    private Button addNotice;
     @FXML
-    private TableView<Notice> notice_Table;
 
-    private final ObservableList<Notice> noticeData = FXCollections.observableArrayList();
-    private Notice noticeBeingEdited = null;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        noticeId.setCellValueFactory(new PropertyValueFactory<>("notice_id"));
-        noticeTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        noticeContent.setCellValueFactory(new PropertyValueFactory<>("content"));
-        noticeRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+    private final ObservableList<Notice> noticeList = FXCollections.observableArrayList();
 
-        loadNoticeData();
-        addEditDeleteButtons();
-        notice_Table.setItems(noticeData);
+    private boolean isEditMode = false;
+    private int editNoticeId = -1;
 
-        addNotice.setOnAction(this::handleAddOrUpdateNotice);
+
+
+    private void loadNotices() {
+        noticeList.clear();
+        String query = "SELECT * FROM NOTICES";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("notice_id");
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+                String role = rs.getString("role");
+
+                Notice notice = new Notice(id, title, content, role);
+                noticeList.add(notice);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        noticeTable.setItems(noticeList);
     }
 
-    private void handleAddOrUpdateNotice(ActionEvent event) {
-        String title = noticeTopic.getText().trim();
-        String content = notice_Content.getText().trim();
-        String role = notice_Role.getText().trim();
+    private void handleAddOrUpdateNotice() {
+        String title = noticeTopic.getText();
+        String content = notice_Content.getText();
+        String role = notice_Role.getText();
 
         if (title.isEmpty() || content.isEmpty() || role.isEmpty()) {
-            showAlert("Validation Error", "Please fill all fields.");
+            showAlert(Alert.AlertType.ERROR, "Please fill in all fields.");
             return;
         }
 
-        Notice noticeModel = new Notice(0, title, content, role);
+        Notice notice = new Notice(0, title, content, role);
 
-        try {
-            if (noticeBeingEdited == null) {
-                noticeModel.createOrEditNotice(title, content, role, false, 0);
-                showAlert("Success", "Notice added successfully.");
-            } else {
-                noticeModel.createOrEditNotice(title, content, role, true, noticeBeingEdited.getNotice_id());
-                showAlert("Success", "Notice updated successfully.");
-                noticeBeingEdited = null;
-                addNotice.setText("Add Notice");
-            }
-            loadNoticeData();
-            clearFields();
-        } catch (Exception e) {
-            showAlert("Error", "Database error: " + e.getMessage());
+        if (!isEditMode) {
+            // Create new notice
+            notice.createOrEditNotice(title, content, role, false, 0);
+            showAlert(Alert.AlertType.INFORMATION, "Notice added successfully!");
+        } else {
+            // Update existing notice
+            notice.createOrEditNotice(title, content, role, true, editNoticeId);
+            showAlert(Alert.AlertType.INFORMATION, "Notice updated successfully!");
+            isEditMode = false;
+            addNotice.setText("Add Notice");
         }
+
+        clearForm();
+        loadNotices();
     }
 
-    private void loadNoticeData() {
-        noticeData.clear();
-        try (Connection connectDB = DatabaseConnection.getConnection();
-             PreparedStatement statement = connectDB.prepareStatement("SELECT notice_id, title, content, role FROM NOTICES");
-             ResultSet rs = statement.executeQuery()) {
+    private void addActionButtonsToTable() {
+        Callback<TableColumn<Notice, Void>, TableCell<Notice, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Notice, Void> call(final TableColumn<Notice, Void> param) {
+                return new TableCell<>() {
 
-            while (rs.next()) {
-                noticeData.add(new Notice(
-                        rs.getInt("notice_id"),
-                        rs.getString("title"),
-                        rs.getString("content"),
-                        rs.getString("role")
-                ));
+                    private final Button editBtn = new Button("Edit");
+                    private final Button deleteBtn = new Button("Delete");
+                    private final HBox managebtn = new HBox(editBtn, deleteBtn);
+
+                    {
+                        managebtn.setSpacing(10);
+
+                        editBtn.setOnAction(event -> {
+                            Notice selectedNotice = getTableView().getItems().get(getIndex());
+                            populateFormForEdit(selectedNotice);
+                        });
+
+                        deleteBtn.setOnAction(event -> {
+                            Notice selectedNotice = getTableView().getItems().get(getIndex());
+                            deleteNotice(selectedNotice.getNotice_id());
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(managebtn);
+                        }
+                    }
+                };
             }
-        } catch (SQLException e) {
-            showAlert("Error", "Failed to load notices: " + e.getMessage());
-        }
+        };
+
+        noticeAction.setCellFactory(cellFactory);
     }
 
-    private void clearFields() {
+    private void populateFormForEdit(Notice notice) {
+        notice_Id.setText(String.valueOf(notice.getNotice_id()));
+        notice_Role.setText(notice.getRole());
+        noticeTopic.setText(notice.getTitle());
+        notice_Content.setText(notice.getContent());
+
+        isEditMode = true;
+        editNoticeId = notice.getNotice_id();
+        addNotice.setText("Update Notice");
+    }
+
+    private void deleteNotice(int id) {
+        Notice notice = new Notice(0, "", "", "");
+        notice.deleteNotice(id);
+        showAlert(Alert.AlertType.INFORMATION, "Notice deleted successfully!");
+
+        loadNotices();
+    }
+
+    private void clearForm() {
         notice_Id.clear();
+        notice_Role.clear();
         noticeTopic.clear();
         notice_Content.clear();
-        notice_Role.clear();
     }
 
-    private void addEditDeleteButtons() {
-        noticeAction.setCellFactory(param -> new TableCell<>() {
-            private final Button editButton = new Button("Edit");
-            private final Button deleteButton = new Button("Delete");
-            private final HBox actionButtons = new HBox(10, editButton, deleteButton);
-
-            {
-                editButton.setOnAction(event -> {
-                    Notice notice = getTableView().getItems().get(getIndex());
-                    notice_Id.setText(String.valueOf(notice.getNotice_id()));
-                    noticeTopic.setText(notice.getTitle());
-                    notice_Content.setText(notice.getContent());
-                    notice_Role.setText(notice.getRole());
-                    noticeBeingEdited = notice;
-                    addNotice.setText("Update Notice");
-                });
-
-                deleteButton.setOnAction(event -> {
-                    Notice notice = getTableView().getItems().get(getIndex());
-                    Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
-                            "Are you sure you want to delete this notice?", ButtonType.YES, ButtonType.NO);
-                    confirm.setTitle("Confirm Delete");
-                    confirm.showAndWait().ifPresent(response -> {
-                        if (response == ButtonType.YES) {
-                            try {
-                                new Notice(0, null, null, null).deleteNotice(notice.getNotice_id());
-                                showAlert("Success", "Notice deleted successfully.");
-                                loadNoticeData();
-                            } catch (Exception e) {
-                                showAlert("Error", "Failed to delete notice: " + e.getMessage());
-                            }
-                        }
-                    });
-                });
-            }
-
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(actionButtons);
-                }
-            }
-        });
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
+    private void showAlert(Alert.AlertType alertType, String message) {
+        Alert alert = new Alert(alertType);
         alert.setContentText(message);
-        alert.showAndWait();
+        alert.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Set up table columns
+        noticeId.setCellValueFactory(new PropertyValueFactory<>("notice_id"));
+        noticeRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+        noticeTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        noticeContent.setCellValueFactory(new PropertyValueFactory<>("content"));
+
+        addActionButtonsToTable();
+
+        loadNotices();
+
+        addNotice.setOnAction(e -> handleAddOrUpdateNotice());
     }
 }

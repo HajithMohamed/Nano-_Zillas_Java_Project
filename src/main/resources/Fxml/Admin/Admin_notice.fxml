@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Notice_Controller">
     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
         <Text layoutX="369.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_profile_heading" text="Notice Details" />
-        <TableView layoutX="22.0" layoutY="63.0" prefHeight="354.0" prefWidth="848.0" styleClass="user_profile_Table">
+        <TableView fx:id="noticeTable" layoutX="22.0" layoutY="63.0" prefHeight="354.0" prefWidth="848.0" styleClass="user_profile_Table">
             <columns>
                 <TableColumn fx:id="noticeId" prefWidth="132.79996490478516" text="Notice ID" />
                 <TableColumn fx:id="noticeRole" prefWidth="131.20004272460938" text="Role" />
