@@ -14,11 +14,11 @@ public class Student_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().addListener((obs, oldVal, newVal) -> {
+        Model.getInstance().getViewFactory().studentSelectedMenuItemProperty().addListener((obs, oldVal, newVal) -> {
             Node view = null;
             switch (newVal) {
                 case studentMenuItem.DASHBOARD:
-                    view = Model.getInstance().getViewFactory().getUndergraduateDashboardeView();
+                    view = Model.getInstance().getViewFactory().getUndergraduateDashboardView();
                     break;
                 case studentMenuItem.COURSE:
                     view = Model.getInstance().getViewFactory().getUndergraduateCoursesView();

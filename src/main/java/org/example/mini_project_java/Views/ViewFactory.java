@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ViewFactory {
+
     private final StringProperty adminSelectedMenuItem;
+    private final StringProperty studentSelectedMenuItem;
 
     // Admin views
     private AnchorPane dashboardView;
@@ -20,8 +22,6 @@ public class ViewFactory {
     private AnchorPane timeTableView;
     private AnchorPane noticeView;
     private AnchorPane courseView;
-
-
 
     // Undergraduate views
     private AnchorPane undergraduateCoursesView;
@@ -32,11 +32,30 @@ public class ViewFactory {
     private AnchorPane UndergraduateTimeTableView;
 
     public ViewFactory() {
+        this.studentSelectedMenuItem = new SimpleStringProperty("");
         this.adminSelectedMenuItem = new SimpleStringProperty("");
     }
 
+    // -------- Student MenuItem Methods --------
+    public void getStudentSelectedMenuItem() {
+        studentSelectedMenuItem.get();
+    }
+
+    public void setStudentSelectedMenuItem(String item) {
+        this.studentSelectedMenuItem.set(item);
+    }
+
+    public StringProperty studentSelectedMenuItemProperty() {
+        return studentSelectedMenuItem;
+    }
+
+    // -------- Admin MenuItem Methods --------
     public StringProperty getAdminSelectedMenuItem() {
         return adminSelectedMenuItem;
+    }
+
+    public void setAdminSelectedMenuItem(String item) {
+        this.adminSelectedMenuItem.set(item);
     }
 
     // -------- Admin Views --------
@@ -54,43 +73,46 @@ public class ViewFactory {
     public AnchorPane getUserProfileView() {
         return getUserProfileView(false);
     }
+
     public AnchorPane getUserProfileView(boolean reload) {
         if (userProfileView == null || reload) {
             userProfileView = loadView("/Fxml/Admin/User_Profiles.fxml", "User profile view could not be loaded.");
         }
         return userProfileView;
     }
-    public AnchorPane getNoticeView(boolean reload) {
-        if (noticeView == null || reload) {
-            noticeView = loadView("/Fxml/Admin/Admin_notice.fxml", "User profile view could not be loaded.");
-        }
-        return noticeView;
-    }
+
     public AnchorPane getNoticeView() {
         return getNoticeView(false);
     }
-    public AnchorPane getTimeTableView(boolean reload) {
-        if (timeTableView == null || reload) {
-            timeTableView = loadView("/Fxml/Admin/Admin_Time_Table.fxml", "User profile view could not be loaded.");
+
+    public AnchorPane getNoticeView(boolean reload) {
+        if (noticeView == null || reload) {
+            noticeView = loadView("/Fxml/Admin/Admin_notice.fxml", "Notice view could not be loaded.");
         }
-        return timeTableView;
+        return noticeView;
     }
+
     public AnchorPane getTimeTableView() {
         return getTimeTableView(false);
     }
-    public AnchorPane getCourseView(boolean reload) {
-        if(courseView == null || reload){
-            courseView = loadView("/Fxml/Admin/Courses.fxml", "User profile view could not be loaded.");
+
+    public AnchorPane getTimeTableView(boolean reload) {
+        if (timeTableView == null || reload) {
+            timeTableView = loadView("/Fxml/Admin/Admin_Time_Table.fxml", "Time Table view could not be loaded.");
         }
-        return courseView;
+        return timeTableView;
     }
+
     public AnchorPane getCourseView() {
         return getCourseView(false);
     }
 
-
-
-
+    public AnchorPane getCourseView(boolean reload) {
+        if (courseView == null || reload) {
+            courseView = loadView("/Fxml/Admin/Courses.fxml", "Courses view could not be loaded.");
+        }
+        return courseView;
+    }
 
     // -------- Undergraduate Views --------
     public AnchorPane getUndergraduateCoursesView() {
@@ -126,13 +148,13 @@ public class ViewFactory {
         return undergraduateAttendanceView;
     }
 
-    public AnchorPane getUndergraduateDashboardeView() {
+    public AnchorPane getUndergraduateDashboardView() {
         return getUndergraduateDashboardView(false);
     }
 
     public AnchorPane getUndergraduateDashboardView(boolean reload) {
         if (undergraduateDashboardView == null || reload) {
-            undergraduateDashboardView = loadView("/Fxml/Student/StudentDAshboard.fxml", "Attendance view could not be loaded.");
+            undergraduateDashboardView = loadView("/Fxml/Student/StudentDAshboard.fxml", "Dashboard view could not be loaded.");
         }
         return undergraduateDashboardView;
     }
@@ -143,22 +165,21 @@ public class ViewFactory {
 
     public AnchorPane getUndergraduateMedicalView(boolean reload) {
         if (undergraduateMedicalView == null || reload) {
-            undergraduateMedicalView = loadView("/Fxml/Student/viewMedical.fxml", "Attendance view could not be loaded.");
+            undergraduateMedicalView = loadView("/Fxml/Student/viewMedical.fxml", "Medical view could not be loaded.");
         }
         return undergraduateMedicalView;
     }
+
     public AnchorPane getUndergraduateTimeTableView() {
         return getUndergraduateTimeTableView(false);
     }
 
     public AnchorPane getUndergraduateTimeTableView(boolean reload) {
         if (UndergraduateTimeTableView == null || reload) {
-            UndergraduateTimeTableView = loadView("/Fxml/Student/Viewtimtable.fxml", "Attendance view could not be loaded.");
+            UndergraduateTimeTableView = loadView("/Fxml/Student/Viewtimetable.fxml", "Time Table view could not be loaded.");
         }
         return UndergraduateTimeTableView;
     }
-
-
 
     // -------- Window Display Methods --------
     public void showLoginWindow() {
@@ -189,7 +210,9 @@ public class ViewFactory {
     }
 
     public void closeStage(Stage stage) {
-        stage.close();
+        if (stage != null) {
+            stage.close();
+        }
     }
 
     // -------- Helper Methods --------
@@ -199,7 +222,7 @@ public class ViewFactory {
         } catch (IOException e) {
             e.printStackTrace();
             showError(errorMessage);
-            return new AnchorPane(); // Return empty view as fallback
+            return new AnchorPane(); // Return empty fallback view
         }
     }
 

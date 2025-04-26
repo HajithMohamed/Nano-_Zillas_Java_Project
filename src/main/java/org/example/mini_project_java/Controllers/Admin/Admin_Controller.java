@@ -229,9 +229,8 @@ public class Admin_Controller implements Initializable {
 
             adminModel.updateProfile();
 
-            // Update current profile picture path after successful update
             currentProfilePicturePath = profilePicture;
-            selectedImageFile = null; // Reset selected image file
+            selectedImageFile = null;
 
             showAlert("Success", "Profile updated successfully.");
         } catch (Exception e) {
