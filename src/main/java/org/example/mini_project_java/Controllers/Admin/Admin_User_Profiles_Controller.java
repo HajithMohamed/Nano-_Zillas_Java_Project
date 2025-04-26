@@ -57,7 +57,7 @@ public class Admin_User_Profiles_Controller implements Initializable {
         userList.clear();
         try (Connection connectDB = DatabaseConnection.getConnection();
              Statement statement = connectDB.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS")) {
+             ResultSet resultSet = statement.executeQuery("SELECT username, full_name, email, role, contact_number, password FROM USERS")) {
 
             while (resultSet.next()) {
                 String username = resultSet.getString("username");
@@ -150,9 +150,8 @@ public class Admin_User_Profiles_Controller implements Initializable {
     }
 
     private void fillFormWithUser(Users user) {
-        String[] names = user.getName().split(" ", 2);
-        fullName.setText(names.length > 0 ? names[0] : "");
-        userPassword.setText(names.length > 1 ? names[1] : "");
+        fullName.setText(user.getName());
+        userPassword.setText(user.getPassword());
         userName.setText(user.getUsername());
         userEmail.setText(user.getEmail());
         userRole.setText(user.getRole());
