@@ -17,7 +17,7 @@ public class Admin_Main_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Model.getInstance().getViewFactory().getAdminSelectedMenueItem().addListener((obs, oldVal, newVal) -> {
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().addListener((obs, oldVal, newVal) -> {
             Node view = null;
             switch (newVal) {
                 case MenuItems.DASHBOARD:
@@ -33,7 +33,7 @@ public class Admin_Main_Controller implements Initializable {
                     view = Model.getInstance().getViewFactory().getNoticeView();
                     break;
                 case MenuItems.TIMETABLE:
-                    view = Model.getInstance().getViewFactory().getTimetableView();
+                    view = Model.getInstance().getViewFactory().getTimeTableView();
                     break;
             }
             if (view != null) {

@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.ViewGrade">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.ViewGrade_controller">
 
-    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
+    <AnchorPane fx:id="studentGrade" layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
         <!-- Grade Details Section -->
         <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="510.0" prefWidth="857.0" styleClass="user_profile_Add_New_User">

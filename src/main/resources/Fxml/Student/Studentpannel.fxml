@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.Stusdent_Menue_Controller">
+<VBox prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.Stusdent_menu_controller">
 
     <AnchorPane prefHeight="750.0" prefWidth="190.0" stylesheets="@../../Styles/admin_pannell.css">
 
@@ -24,15 +24,14 @@
 
         <!-- Navigation Menu -->
         <VBox layoutX="102.0" layoutY="74.0" prefHeight="400.0" prefWidth="210.0" styleClass="nav-box" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-30.0" AnchorPane.topAnchor="100.0">
-         <Button fx:id="userProfile2" mnemonicParsing="false" text="UpdateProfile" />
-         <Button fx:id="userProfile1" mnemonicParsing="false" text="ViewAttendance" />
-            <Button fx:id="userProfile" mnemonicParsing="false" text="ViewCourse" />
-            <Button fx:id="course" mnemonicParsing="false" text="ViewMedical" />
-            <Button fx:id="notice" mnemonicParsing="false" text="ViewGrade" />
-            <Button fx:id="timetable" mnemonicParsing="false" text="ViewTimeTable" />
-            <Button fx:id="dashboard" mnemonicParsing="false" text="ViewNotice" />
+         <Button fx:id="studentProfile" mnemonicParsing="false" text="UpdateProfile" />
+         <Button fx:id="studentAttendance" mnemonicParsing="false" text="ViewAttendance" />
+            <Button fx:id="studentCourse" mnemonicParsing="false" text="ViewCourse" />
+            <Button fx:id="studentMedical" mnemonicParsing="false" text="ViewMedical" />
+            <Button fx:id="studentGrade" mnemonicParsing="false" text="ViewGrade" />
+            <Button fx:id="studentTimeTable" mnemonicParsing="false" text="ViewTimeTable" />
             <Line endX="120.0" />
-            <Button mnemonicParsing="false" text="Log Out" />
+            <Button fx:id="studentLogout" mnemonicParsing="false" text="Log Out" />
         </VBox>
 
         <!-- Footer Section -->

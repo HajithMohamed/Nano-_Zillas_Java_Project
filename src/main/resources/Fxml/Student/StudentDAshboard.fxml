@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.StudentClass">
+<AnchorPane fx:id="studentDashbord" prefHeight="750.0" prefWidth="850.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.UpdateProfile_controller">
 
     <Text layoutX="24.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Welcome Student!" />
 
     <VBox layoutX="228.0" layoutY="59.0" prefHeight="499.0" prefWidth="690.0" styleClass="admin_dashboard_card" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="139.19999999999993" AnchorPane.topAnchor="59.0">
-      <Avatar radius="75.0">
-         <image>
-            <Image url="@../../Images/admin.png" />
-         </image>
-      </Avatar>
 
         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Student's Profile Details" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
 
         <AnchorPane prefHeight="281.0" prefWidth="700.0" styleClass="admin_dashboard_card_anchor">
             <Label layoutX="74.0" layoutY="28.0" styleClass="admin_dashboard_grid_label" text="User Name:" />
@@ -30,13 +25,17 @@
             <Label layoutX="76.0" layoutY="162.0" styleClass="admin_dashboard_grid_label" text="Email:" />
             <Label layoutX="78.0" layoutY="203.0" styleClass="admin_dashboard_grid_label" text="Mobile No:" />
 
-            <TextField fx:id="userName" layoutX="198.0" layoutY="21.0" styleClass="admin_dashboard_grid_text_field" />
+            <TextField fx:id="userName" layoutX="184.0" layoutY="22.0" styleClass="admin_dashboard_grid_text_field" />
             <TextField fx:id="fName" layoutX="198.0" layoutY="64.0" styleClass="admin_dashboard_grid_text_field" />
             <TextField fx:id="lName" layoutX="198.0" layoutY="110.0" styleClass="admin_dashboard_grid_text_field" />
             <TextField fx:id="email" layoutX="198.0" layoutY="155.0" styleClass="admin_dashboard_grid_text_field" />
-            <TextField fx:id="mobileNo" layoutX="198.0" layoutY="196.0" styleClass="admin_dashboard_grid_text_field" />
+            <TextField fx:id="mobileNo" layoutX="198.0" layoutY="196.0" styleClass="admin_dashboard_grid_text_field" AnchorPane.topAnchor="196.0" />
         </AnchorPane>
-      <Button fx:id="update_btn" mnemonicParsing="false" prefHeight="34.0" prefWidth="161.0" styleClass="admin_dashboard_grid_button" text="Update" />
+      <Button fx:id="update_btn" mnemonicParsing="false" prefHeight="41.0" prefWidth="149.0" styleClass="admin_dashboard_grid_button" text="Update">
+         <VBox.margin>
+            <Insets left="500.0" />
+         </VBox.margin>
+      </Button>
 
         <padding>
             <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />

@@ -1,5 +1,4 @@
 package org.example.mini_project_java.Controllers.Undergraduate;
 
-public class viewMedical {
-
+public class ViewGrade_controller {
 }

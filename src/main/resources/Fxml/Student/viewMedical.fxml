@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.viewMedical">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.viewMedical_controller">
 
    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
       <!-- Medical Details Section -->
-      <AnchorPane layoutX="7.0" layoutY="10.0" prefHeight="220.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
+      <AnchorPane fx:id="studentMedical" layoutX="7.0" layoutY="10.0" prefHeight="220.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
          <Text layoutX="299.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="See Medical Details" wrappingWidth="322.5542907714844" />
 
          <Label layoutX="27.0" layoutY="85.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
