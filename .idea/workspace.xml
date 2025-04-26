@@ -4,6 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="60fc9ad8-6dfe-4d0a-9dfb-118d97ef2e52" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Attendance_controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Deshboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Medical_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Menu_controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Attendance.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Medical.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Offiicer_Deshboard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/TechnicalOfficer.css" afterDir="false" />
     <list default="true" id="0dca136a-051a-49b5-9fa5-86fa93da73f8" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Stusdent_menu_controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -24,6 +34,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -32,6 +43,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AKMJafran&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/HajithMohamed/Nano-_Zillas_Java_Project.git&quot;,
+    &quot;accountId&quot;: &quot;f6e37720-710c-4fc0-844e-2ee7e8ede920&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2w8j6F0s3aKGu0Ie5LSmwUsx7Os" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -40,6 +68,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Jafran",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/jafran_java/Nano-_Zillas_Java_Project/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.java app.executor&quot;: &quot;Run&quot;,
@@ -80,6 +129,15 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="60fc9ad8-6dfe-4d0a-9dfb-118d97ef2e52" name="Changes" comment="" />
+      <created>1745429924881</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745429924881</updated>
+      <workItem from="1745429927289" duration="3329000" />
+      <workItem from="1745512975359" duration="1421000" />
+      <workItem from="1745580457915" duration="13280000" />
+      <workItem from="1745649196658" duration="4591000" />
       <changelist id="0dca136a-051a-49b5-9fa5-86fa93da73f8" name="Changes" comment="" />
       <created>1745427378348</created>
       <option name="number" value="Default" />
@@ -101,5 +159,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
