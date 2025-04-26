@@ -14,6 +14,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Admin_User_Profiles_Controller implements Initializable {
@@ -36,16 +38,16 @@ public class Admin_User_Profiles_Controller implements Initializable {
     @FXML public Button addUserButton;
 
     private final ObservableList<Users> userList = FXCollections.observableArrayList();
+    private final List<String> validRoles = Arrays.asList("student", "admin", "lecturer", "technical_officer");
     private Users userBeingEdited = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Fix: Use property names that match the Users class
+        // Set up table columns
         User_Name.setCellValueFactory(new PropertyValueFactory<>("username"));
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
         Role.setCellValueFactory(new PropertyValueFactory<>("role"));
         Email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        // Fix: Changed from "contact_number" to "mobileNo" to match getMobileNo()
         mobile_no.setCellValueFactory(new PropertyValueFactory<>("mobileNo"));
         user_Password.setCellValueFactory(new PropertyValueFactory<>("password"));
 
@@ -69,58 +71,70 @@ public class Admin_User_Profiles_Controller implements Initializable {
                 String mobileNo = resultSet.getString("contact_number");
                 String password = resultSet.getString("password");
 
-                // Fix: Corrected class names and role cases
                 switch (role.toLowerCase()) {
                     case "student" -> userList.add(new Undergratuate(username, password, name, email, role, mobileNo));
                     case "admin" -> userList.add(new Admin(username, password, name, email, role, mobileNo));
                     case "lecturer" -> userList.add(new Lecture(username, password, name, email, role, mobileNo));
-                    case "technical officer" -> userList.add(new Tecninical_Officer(username, password, name, email, role, mobileNo));
+                    case "technical_officer" -> userList.add(new Tecninical_Officer(username, password, name, email, role, mobileNo));
                     default -> System.out.println("Unknown role: " + role);
                 }
             }
 
         } catch (SQLException e) {
             showAlert("DB Error", "Error loading data: " + e.getMessage());
-            e.printStackTrace(); // Added for better debugging
+            e.printStackTrace();
         }
     }
 
     public void btnAddOrEdit(ActionEvent event) {
-        String FullName = fullName.getText().trim();
+        String fullNameText = fullName.getText().trim();
         String username = userName.getText().trim();
         String email = userEmail.getText().trim();
-        String role = userRole.getText().trim();
+        String rawRole = userRole.getText().trim();
         String mobile = userMobileNo.getText().trim();
         String password = userPassword.getText().trim();
 
-        if (username.isEmpty() || FullName.isEmpty() || email.isEmpty() || role.isEmpty() || mobile.isEmpty()) {
+        if (username.isEmpty() || fullNameText.isEmpty() || email.isEmpty() || rawRole.isEmpty() || mobile.isEmpty()) {
             showAlert("Validation Error", "Please fill in all fields.");
+            return;
+        }
+
+        // Normalize and validate role
+        String role = normalizeRole(rawRole);
+        if (!validRoles.contains(role)) {
+            showAlert("Validation Error", "Invalid role. Valid roles are: " + String.join(", ", validRoles));
             return;
         }
 
         Admin admin = new Admin();
 
-        try {
-            if (userBeingEdited == null) {
-                // Hash the password before saving
-                String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-                admin.createUserProfiles(username, FullName, email, role, mobile, hashedPassword, false);
-                showAlert("Success", "User added successfully!");
-            } else {
-                // Update the user without changing the password if password field is empty
-                String updatedPassword = password.isEmpty() ? null : BCrypt.hashpw(password, BCrypt.gensalt());
-                admin.createUserProfiles(username, FullName, email, role, mobile, updatedPassword, true);
-                showAlert("Success", "User updated successfully!");
-                userBeingEdited = null;
-                addUserButton.setText("Add User");
-            }
-
-            loadUserDataFromDatabase(); // Reload data after changes
-            clearFields();
-        } catch (Exception e) {
-            showAlert("Error", "An error occurred: " + e.getMessage());
-            e.printStackTrace();
+        if (userBeingEdited == null) {
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+            admin.createUserProfiles(username, fullNameText, email, role, mobile, hashedPassword, false);
+            showAlert("Success", "User added successfully!");
+        } else {
+            String updatedPassword = password.isEmpty() ? null : BCrypt.hashpw(password, BCrypt.gensalt());
+            admin.createUserProfiles(username, fullNameText, email, role, mobile, updatedPassword, true);
+            showAlert("Success", "User updated successfully!");
+            userBeingEdited = null;
+            addUserButton.setText("Add User");
         }
+
+        loadUserDataFromDatabase();
+        clearFields();
+    }
+
+    private String normalizeRole(String rawRole) {
+        // Convert to lowercase and replace spaces with underscores
+        String normalized = rawRole.toLowerCase().replace(" ", "_");
+        // Map common variations to valid roles
+        return switch (normalized) {
+            case "technical_officer", "technicalofficer", "technical officer" -> "technical_officer";
+            case "student" -> "student";
+            case "admin" -> "admin";
+            case "lecturer", "lecture" -> "lecturer";
+            default -> normalized;
+        };
     }
 
     private void addButtonToTable() {
@@ -146,29 +160,23 @@ public class Admin_User_Profiles_Controller implements Initializable {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(hbox);
-                }
+                setGraphic(empty ? null : hbox);
             }
         });
     }
 
     private void fillFormWithUser(Users user) {
         fullName.setText(user.getName());
-        // Don't display password for security
         userName.setText(user.getUsername());
         userEmail.setText(user.getEmail());
         userRole.setText(user.getRole());
         userMobileNo.setText(user.getMobileNo());
-        userPassword.clear(); // do not fill password for security
+        userPassword.clear();
     }
 
     private void deleteUser(Users user) {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Delete User");
-        confirm.setHeaderText(null);
         confirm.setContentText("Are you sure you want to delete user: " + user.getUsername() + "?");
 
         confirm.showAndWait().ifPresent(response -> {
@@ -209,3 +217,4 @@ public class Admin_User_Profiles_Controller implements Initializable {
         alert.showAndWait();
     }
 }
+
