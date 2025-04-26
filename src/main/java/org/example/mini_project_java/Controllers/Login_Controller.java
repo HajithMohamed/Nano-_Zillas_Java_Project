@@ -31,7 +31,7 @@ public class Login_Controller {
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
         System.out.println("Attempting login with: " + username);
-
+        System.out.println(password);
         if (username.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Login Error", "Please enter both username and password.");
             return;
@@ -61,15 +61,16 @@ public class Login_Controller {
             case "student":
                 Model.getInstance().getViewFactory().showUndergraduateWindow();
                 break;
-            case "technical_officer":
-                System.out.println("Technical Officer window not yet implemented.");
+            case "technical officer":
+                System.out.println("case working");
+                Model.getInstance().getViewFactory().showTechnicalOfficerWindow();
                 break;
             case "lecture":
                 System.out.println("Lecture window not yet implemented.");
                 break;
             default:
                 showAlert(Alert.AlertType.ERROR, "Login Error", "Unknown role: " + user.getRole());
-                return;
+
         }
 
         // Close the login window

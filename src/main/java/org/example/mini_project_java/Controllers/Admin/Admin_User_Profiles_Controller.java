@@ -23,8 +23,8 @@ public class Admin_User_Profiles_Controller implements Initializable {
     @FXML public TableColumn<Users, String> Name;
     @FXML public TableColumn<Users, String> Role;
     @FXML public TableColumn<Users, String> Email;
-    @FXML public TableColumn<Users, String> Mobile;
-    @FXML public TableColumn<Users, String>  user_Password;
+    @FXML public TableColumn<Users, String> mobile_no;
+    @FXML public TableColumn<Users, String> user_Password;
     @FXML public TableColumn<Users, Void> userAction;
 
     @FXML public TextField userName;
@@ -40,11 +40,13 @@ public class Admin_User_Profiles_Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Fix: Use property names that match the Users class
         User_Name.setCellValueFactory(new PropertyValueFactory<>("username"));
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
         Role.setCellValueFactory(new PropertyValueFactory<>("role"));
         Email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        Mobile.setCellValueFactory(new PropertyValueFactory<>("mobile_no"));
+        // Fix: Changed from "contact_number" to "mobileNo" to match getMobileNo()
+        mobile_no.setCellValueFactory(new PropertyValueFactory<>("mobileNo"));
         user_Password.setCellValueFactory(new PropertyValueFactory<>("password"));
 
         loadUserDataFromDatabase();
@@ -67,16 +69,19 @@ public class Admin_User_Profiles_Controller implements Initializable {
                 String mobileNo = resultSet.getString("contact_number");
                 String password = resultSet.getString("password");
 
-                switch (role) {
-                    case "Student" -> userList.add(new Undergratuate(username, password, name, email, role, mobileNo));
-                    case "Admin" -> userList.add(new Admin(username, password, name, email, role, mobileNo));
-                    case "Lecture" -> userList.add(new Lecture(username, password, name, email, role, mobileNo));
-                    case "Technical officer" -> userList.add(new Tecninical_Officer(username, password, name, email, role, mobileNo));
+                // Fix: Corrected class names and role cases
+                switch (role.toLowerCase()) {
+                    case "student" -> userList.add(new Undergratuate(username, password, name, email, role, mobileNo));
+                    case "admin" -> userList.add(new Admin(username, password, name, email, role, mobileNo));
+                    case "lecturer" -> userList.add(new Lecture(username, password, name, email, role, mobileNo));
+                    case "technical officer" -> userList.add(new Tecninical_Officer(username, password, name, email, role, mobileNo));
+                    default -> System.out.println("Unknown role: " + role);
                 }
             }
 
         } catch (SQLException e) {
             showAlert("DB Error", "Error loading data: " + e.getMessage());
+            e.printStackTrace(); // Added for better debugging
         }
     }
 
@@ -102,14 +107,15 @@ public class Admin_User_Profiles_Controller implements Initializable {
                 admin.createUserProfiles(username, FullName, email, role, mobile, hashedPassword, false);
                 showAlert("Success", "User added successfully!");
             } else {
-                // Update the user without changing the password
-                admin.createUserProfiles(username, FullName, email, role, mobile, null, true);
+                // Update the user without changing the password if password field is empty
+                String updatedPassword = password.isEmpty() ? null : BCrypt.hashpw(password, BCrypt.gensalt());
+                admin.createUserProfiles(username, FullName, email, role, mobile, updatedPassword, true);
                 showAlert("Success", "User updated successfully!");
                 userBeingEdited = null;
                 addUserButton.setText("Add User");
             }
 
-            loadUserDataFromDatabase();
+            loadUserDataFromDatabase(); // Reload data after changes
             clearFields();
         } catch (Exception e) {
             showAlert("Error", "An error occurred: " + e.getMessage());
@@ -151,7 +157,7 @@ public class Admin_User_Profiles_Controller implements Initializable {
 
     private void fillFormWithUser(Users user) {
         fullName.setText(user.getName());
-        userPassword.setText(user.getPassword());
+        // Don't display password for security
         userName.setText(user.getUsername());
         userEmail.setText(user.getEmail());
         userRole.setText(user.getRole());
@@ -170,9 +176,14 @@ public class Admin_User_Profiles_Controller implements Initializable {
                 try (Connection connectDB = DatabaseConnection.getConnection();
                      PreparedStatement ps = connectDB.prepareStatement("DELETE FROM USERS WHERE username = ?")) {
                     ps.setString(1, user.getUsername());
-                    ps.executeUpdate();
-                    showAlert("Success", "User deleted successfully.");
-                    loadUserDataFromDatabase();
+                    int rowsAffected = ps.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        showAlert("Success", "User deleted successfully.");
+                        loadUserDataFromDatabase();
+                    } else {
+                        showAlert("Warning", "No user was deleted. User may no longer exist in database.");
+                    }
                 } catch (SQLException e) {
                     showAlert("DB Error", "Failed to delete user: " + e.getMessage());
                     e.printStackTrace();

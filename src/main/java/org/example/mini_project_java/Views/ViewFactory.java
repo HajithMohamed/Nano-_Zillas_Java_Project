@@ -49,20 +49,19 @@ public class ViewFactory {
     private AnchorPane undergraduateMedicalView;
     private AnchorPane UndergraduateTimeTableView;
 
-    //Technical officer Views
-    private AnchorPane tecnicalOfficerAttandanceView;
+    // Technical Officer views
+    private AnchorPane technicalOfficerAttendanceView;
     private AnchorPane technicalOfficerMedicalView;
     private AnchorPane technicalOfficerDashboardView;
 
     public ViewFactory() {
-        this.lectureSelectedMenuItem = new SimpleStringProperty("") ;
-        this.technicalOfficerSelectedMenuItem = new SimpleStringProperty("") ;
+        this.lectureSelectedMenuItem = new SimpleStringProperty("");
+        this.technicalOfficerSelectedMenuItem = new SimpleStringProperty("");
         this.studentSelectedMenuItem = new SimpleStringProperty("");
         this.adminSelectedMenuItem = new SimpleStringProperty("");
     }
 
     // -------- Student MenuItem Methods --------
-
     public StringProperty studentSelectedMenuItemProperty() {
         return studentSelectedMenuItem;
     }
@@ -72,8 +71,6 @@ public class ViewFactory {
         return adminSelectedMenuItem;
     }
 
-
-
     // -------- Admin Views --------
     public AnchorPane getDashboardView() {
         return getDashboardView(false);
@@ -81,7 +78,7 @@ public class ViewFactory {
 
     public AnchorPane getDashboardView(boolean reload) {
         if (dashboardView == null || reload) {
-            dashboardView = loadView("/Fxml/Admin/AdminDeshbord.fxml", "Dashboard view could not be loaded.");
+            dashboardView = loadView("/Fxml/Admin/AdminDashbord.fxml", "Dashboard view could not be loaded.");
         }
         return dashboardView;
     }
@@ -197,16 +194,16 @@ public class ViewFactory {
         return UndergraduateTimeTableView;
     }
 
-    //--------- Technical Officer view methods ----------
+    // -------- Technical Officer Views --------
     public AnchorPane getTechnicalOfficerAttendanceView() {
         return getTechnicalOfficerAttendanceView(false);
     }
 
     public AnchorPane getTechnicalOfficerAttendanceView(boolean reload) {
-        if (tecnicalOfficerAttandanceView == null || reload) {
-            tecnicalOfficerAttandanceView = loadView("/Fxml/TechnicalOfficer/Technical_Officer_Attendance.fxml", "Technical Officer Attendance view could not be loaded.");
+        if (technicalOfficerAttendanceView == null || reload) {
+            technicalOfficerAttendanceView = loadView("/Fxml/Technical_Officer/Technical_Officer_Attendance.fxml", "Technical Officer Attendance view could not be loaded.");
         }
-        return tecnicalOfficerAttandanceView;
+        return technicalOfficerAttendanceView;
     }
 
     public AnchorPane getTechnicalOfficerMedicalView() {
@@ -215,7 +212,7 @@ public class ViewFactory {
 
     public AnchorPane getTechnicalOfficerMedicalView(boolean reload) {
         if (technicalOfficerMedicalView == null || reload) {
-            technicalOfficerMedicalView = loadView("/Fxml/TechnicalOfficer/Technical_Officer_Medical.fxml", "Technical Officer Medical view could not be loaded.");
+            technicalOfficerMedicalView = loadView("/Fxml/Technical_Officer/Technical_Officer_Medical.fxml", "Technical Officer Medical view could not be loaded.");
         }
         return technicalOfficerMedicalView;
     }
@@ -226,11 +223,10 @@ public class ViewFactory {
 
     public AnchorPane getTechnicalOfficerDashboardView(boolean reload) {
         if (technicalOfficerDashboardView == null || reload) {
-            technicalOfficerDashboardView = loadView("/Fxml/TechnicalOfficer/Technical_Officer_Dashboard.fxml", "Technical Officer Dashboard view could not be loaded.");
+            technicalOfficerDashboardView = loadView("/Fxml/Technical_Officer/Technical_Offiicer_Deshboard.fxml", "Technical Officer Dashboard view could not be loaded.");
         }
         return technicalOfficerDashboardView;
     }
-
 
     // -------- Window Display Methods --------
     public void showLoginWindow() {
@@ -245,6 +241,11 @@ public class ViewFactory {
 
     public void showUndergraduateWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Student/student.fxml"));
+        createStage(loader);
+    }
+
+    public void showTechnicalOfficerWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Technical_Officer/Technical_Officer.fxml"));
         createStage(loader);
     }
 
