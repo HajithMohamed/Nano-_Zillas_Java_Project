@@ -20,8 +20,6 @@ public  class Admin extends Users {
 
 
 
-
-
     public Admin getAdminDetails(String username) {
         String query = "SELECT * FROM USERS WHERE username = ?";
         try (Connection conn = DatabaseConnection.getConnection();
