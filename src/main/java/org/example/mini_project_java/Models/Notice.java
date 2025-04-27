@@ -89,29 +89,4 @@ public class Notice {
         }
     }
 
-    // View Notice
-    public Notice viewNotice(int notice_id) {
-        String query = "SELECT * FROM NOTICES WHERE notice_id = ?";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setInt(1, notice_id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                int id = rs.getInt("notice_id");
-                String title = rs.getString("title");
-                String content = rs.getString("content");
-                String role = rs.getString("role");
-
-                return new Notice(id, title, content, role);
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error fetching notice details: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

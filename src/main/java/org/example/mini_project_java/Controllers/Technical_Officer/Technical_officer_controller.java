@@ -4,7 +4,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import org.example.mini_project_java.Models.Model;
-import org.example.mini_project_java.Utils.techOfficerMenuItems;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,13 +18,13 @@ public class Technical_officer_controller implements Initializable {
         Model.getInstance().getViewFactory().technicalOfficerSelectedMenuItemProperty().addListener((obs, oldVal, newVal) -> {
             Node view = null;
             switch (newVal) {
-                case techOfficerMenuItems.DASHBOARD:
+                case "DASHBOARD":
                     view = Model.getInstance().getViewFactory().getTechnicalOfficerDashboardView();
                     break;
-                case techOfficerMenuItems.ATTENDANCE:
+                case "ATTENDANCE":
                     view = Model.getInstance().getViewFactory().getTechnicalOfficerAttendanceView();
                     break;
-                case techOfficerMenuItems.MEDICAL:
+                case "MEDICAL":
                     view = Model.getInstance().getViewFactory().getTechnicalOfficerMedicalView();
                     break;
             }
