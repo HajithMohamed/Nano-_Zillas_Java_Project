@@ -16,6 +16,9 @@ public class Undergratuate extends Users {
         super(username, password, name, email, role, mobileNo, profilePicture);
     }
 
+    public Undergratuate() {
+    }
+
     // Method to view course details
     public List<Courses> viewCourseDetails() {
         List<Courses> courseList = new ArrayList<>();
