@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import org.example.mini_project_java.Models.Model;
 import org.example.mini_project_java.Models.Users;
 
+import java.sql.SQLException;
+
 public class Login_Controller {
 
     @FXML
@@ -27,7 +29,7 @@ public class Login_Controller {
     }
 
     @FXML
-    private void handleLoginButtonAction() {
+    private void handleLoginButtonAction() throws SQLException {
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
         System.out.println("Attempting login with: " + username);
@@ -37,16 +39,11 @@ public class Login_Controller {
             return;
         }
 
-        try {
-            Users user = Users.login(username, password);
-            if (user != null) {
-                navigateToRoleBasedView(user);
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
-            }
-        } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Login Error", "An error occurred while logging in:\n" + e.getMessage());
-            e.printStackTrace();
+        Users user = Users.login(username, password);
+        if (user != null) {
+            navigateToRoleBasedView(user);
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");
         }
     }
 
@@ -62,10 +59,10 @@ public class Login_Controller {
                 Model.getInstance().getViewFactory().showUndergraduateWindow();
                 break;
             case "technical_officer":
-                System.out.println("Technical Officer window not yet implemented.");
+                Model.getInstance().getViewFactory().showTechnicalOfficerWindow();
                 break;
-            case "lecture":
-                System.out.println("Lecture window not yet implemented.");
+            case "lecturer":
+                Model.getInstance().getViewFactory().showLecturerWindow();
                 break;
             default:
                 showAlert(Alert.AlertType.ERROR, "Login Error", "Unknown role: " + user.getRole());
