@@ -45,6 +45,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "<unknown>",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ramar/AppData/Local/SceneBuilder/SceneBuilder.exe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Nano-_Zillas_Java_Project" />
     "Application.App.executor": "Run",
     "Application.Demo.executor": "Run",
     "Application.Java app.executor": "Run",
@@ -72,6 +88,7 @@
       <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
       <module name="demo" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/openjfx-24_windows-x64_bin-sdk/javafx-sdk-24/lib --add-modules javafx.controls,javafx.fxml" />
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,10 +121,20 @@
       <created>1745681850023</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+
+      <updated>1745581971941</updated>
+      <workItem from="1745581977951" duration="5934000" />
+      <workItem from="1745642591568" duration="1102000" />
+      <workItem from="1745649847371" duration="5469000" />
+
       <updated>1745681850023</updated>
       <workItem from="1745685626732" duration="1923000" />
+
+      <workItem from="1745729351076" duration="1092000" />
+
       <workItem from="1745729351076" duration="4336000" />
       <workItem from="1745749291896" duration="4784000" />
+
     </task>
     <servers />
   </component>
