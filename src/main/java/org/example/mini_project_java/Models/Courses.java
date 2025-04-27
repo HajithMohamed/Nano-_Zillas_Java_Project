@@ -1,69 +1,58 @@
-package org.example.mini_project_java.Models;
+package org.example.mini_project_java.Controllers.Undergraduate;
 
-public class Courses {
-    String courseCode;
-    String courseTitle;
-    String lectureId;
-    int courseCredit;
-    String courseType;
-    int courseCreditHours;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import org.example.mini_project_java.Models.Courses;
+import org.example.mini_project_java.Models.Undergraduate;
 
-    public Courses(String courseCode, String courseTitle, String lecId, int courseCredit, String courseType, int courseCreditHours) {
-        this.courseCode = courseCode;
-        this.courseTitle = courseTitle;
-        this.courseCredit = courseCredit;
-        this.courseType = courseType;
-        this.courseCreditHours = courseCreditHours;
-        this.lectureId = lecId;
+import java.util.List;
+
+public class ViewCourse_controller {
+    @FXML
+    public AnchorPane studentCourse;
+
+    @FXML
+    public TableView<Courses> courseDetailsTable;
+
+    @FXML
+    public TableColumn<Courses, String> courseCodeColumn;
+
+    @FXML
+    public TableColumn<Courses, String> courseNameColumn;
+
+    @FXML
+    public TableColumn<Courses, String> lecturerIdColumn;
+
+    private ObservableList<Courses> courseList = FXCollections.observableArrayList();
+
+    private Undergraduate student; // Correct spelling
+
+    @FXML
+    public void initialize() {
+        setupTable();
     }
 
-    public String getCourseCode() {
-        return courseCode;
+    private void setupTable() {
+        courseCodeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
+        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
+        lecturerIdColumn.setCellValueFactory(new PropertyValueFactory<>("lecturerId"));
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
+    private void loadCourses() {
+        if (student != null) {
+            List<Courses> courses = student.viewCourseDetails();
+            courseList.setAll(courses);
+            courseDetailsTable.setItems(courseList);
+        }
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
+    public void setStudent(Undergraduate student) {
+        this.student = student;
+        loadCourses();
     }
-
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
-    }
-
-    public String getLectureId() {
-        return lectureId;
-    }
-
-    public void setLectureId(String lectureId) {
-        this.lectureId = lectureId;
-    }
-
-    public int getCourseCredit() {
-        return courseCredit;
-    }
-
-    public void setCourseCredit(String courseCredit) {
-        this.courseCredit = Integer.parseInt(courseCredit);
-    }
-
-    public String getCourseType() {
-        return courseType;
-    }
-
-    public void setCourseType(String courseType) {
-        this.courseType = courseType;
-    }
-
-    public int getCourseCreditHours() {
-        return courseCreditHours;
-    }
-
-    public void setCourseCreditHours(String courseCreditHours) {
-        this.courseCreditHours = Integer.parseInt(courseCreditHours);
-    }
-
-
 }

@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import org.example.mini_project_java.Models.Courses;
-import org.example.mini_project_java.Models.Student;
+import org.example.mini_project_java.Models.Undergratuate;
 
 import java.util.List;
 
@@ -30,11 +30,11 @@ public class ViewCourse_controller {
 
     private ObservableList<Courses> courseList = FXCollections.observableArrayList();
 
-    private Student student; // create a student object
+    private Undergratuate student; // create a student object
 
     @FXML
     public void initialize() {
-        student = new Student(); // or pass the logged-in student if you have
+        student = new Undergratuate(); // or pass the logged-in student if you have
         setupTable();
         loadCourses();
     }
