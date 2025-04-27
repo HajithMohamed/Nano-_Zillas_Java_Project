@@ -11,21 +11,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import org.example.mini_project_java.Database.DatabaseConnection;
-import org.example.mini_project_java.Models.Attaendance;
-import org.example.mini_project_java.Models.Undergratuate;
 
 public class Technical_Officer_Attendance_controller {
+    @FXML
     public AnchorPane techAttendance;
+    @FXML
     public TextField courseId;
+    @FXML
     public Button getStudentbtn;
-
-    public TableView attendanceTable;
-    public TableColumn studentIdColumn;
-    public TableColumn studentNameColumn;
-    public TableColumn attendanceColumn;
-    public ComboBox selectWeek;
+    @FXML
+    public TableView<Student> attendanceTable;
+    @FXML
+    public TableColumn<Student, String> studentIdColumn;
+    @FXML
+    public TableColumn<Student, String> studentNameColumn;
+    @FXML
+    public TableColumn<Student, String> attendanceColumn;
+    @FXML
+    public ComboBox<String> selectWeek;
 
     private Connection connection;
     private ObservableList<Student> studentList = FXCollections.observableArrayList();
@@ -46,8 +52,6 @@ public class Technical_Officer_Attendance_controller {
         // Setup table columns
         studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         studentNameColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
-
-        // Setup attendance column with buttons
         attendanceColumn.setCellFactory(createAttendanceButtonCellFactory());
 
         // Set action for get students button
@@ -55,36 +59,52 @@ public class Technical_Officer_Attendance_controller {
     }
 
     private void handleGetStudents(ActionEvent event) {
-        String courseCod = courseId.getText();
+        String courseCode = courseId.getText().trim();
         String week = (String) selectWeek.getValue();
 
-        if (courseCod.isEmpty() || week == null) {
+        if (courseCode.isEmpty() || week == null) {
             showAlert("Input Error", "Please enter course code and select week");
             return;
         }
 
-        loadStudents(courseCod, week);
+        // Validate course code
+        if (!isValidCourse(courseCode)) {
+            showAlert("Input Error", "Invalid course code");
+            return;
+        }
+
+        loadStudents();
     }
 
-    private void loadStudents(String courseCode, String week) {
+    private boolean isValidCourse(String courseCode) {
+        try (PreparedStatement stmt = connection.prepareStatement("SELECT 1 FROM COURSE WHERE course_code = ?")) {
+            stmt.setString(1, courseCode);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            showAlert("Database Error", "Error validating course: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private void loadStudents() {
         studentList.clear();
+        int weekNumber = Integer.parseInt(selectWeek.getValue().replace("Week ", ""));
+        String courseCode = courseId.getText().trim();
 
         try {
-            // Query to get all students with role "student" from USERS table
-            String query = "SELECT u.id, u.name FROM USERS u WHERE u.role = 'student'";
+            String query = "SELECT username, full_name FROM USERS u WHERE u.role = 'student'";
 
-            PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                String studentId = resultSet.getString("id");
-                String studentName = resultSet.getString("name");
-
-                // Check if attendance record exists
-                String existingStatus = checkExistingAttendance(studentId, courseCode, week);
-
-                Student student = new Student(studentId, studentName, existingStatus);
-                studentList.add(student);
+            try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        String studentId = rs.getString("username");
+                        String studentName = rs.getString("full_name");
+                        String existingStatus = checkExistingAttendance(studentId, courseCode, weekNumber);
+                        studentList.add(new Student(studentId, studentName, existingStatus));
+                    }
+                }
             }
 
             attendanceTable.setItems(studentList);
@@ -94,117 +114,91 @@ public class Technical_Officer_Attendance_controller {
         }
     }
 
-    private String checkExistingAttendance(String studentId, String courseCode, String week) {
-        try {
-            String query = "SELECT status FROM attaendance WHERE student_id = ? AND Course_code = ? AND week = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, studentId);
-            statement.setString(2, courseCode);
-            statement.setString(3, week);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                return resultSet.getString("status");
+    private String checkExistingAttendance(String studentId, String courseCode, int week) {
+        try (PreparedStatement stmt = connection.prepareStatement(
+                "SELECT status FROM attendance WHERE student_id = ? AND course_code = ? AND week = ?")) {
+            stmt.setString(1, studentId);
+            stmt.setString(2, courseCode);
+            stmt.setInt(3, week);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("status");
+                }
             }
         } catch (SQLException e) {
-            System.out.println("Error checking attendance: " + e.getMessage());
+            showAlert("Database Error", "Error checking attendance: " + e.getMessage());
         }
-
-        return null; // No existing record
+        return null;
     }
 
     private Callback<TableColumn<Student, String>, TableCell<Student, String>> createAttendanceButtonCellFactory() {
-        return new Callback<>() {
+        return param -> new TableCell<>() {
+            private final Button presentBtn = new Button("Present");
+            private final Button absentBtn = new Button("Absent");
+
+            {
+                presentBtn.setOnAction(event -> {
+                    Student student = getTableView().getItems().get(getIndex());
+                    updateAttendance(student, "Present");
+                });
+                absentBtn.setOnAction(event -> {
+                    Student student = getTableView().getItems().get(getIndex());
+                    updateAttendance(student, "Absent");
+                });
+            }
+
             @Override
-            public TableCell<Student, String> call(TableColumn<Student, String> param) {
-                return new TableCell<>() {
-                    private final Button presentBtn = new Button("Present");
-                    private final Button absentBtn = new Button("Absent");
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Student student = getTableView().getItems().get(getIndex());
+                    presentBtn.setStyle("Present".equals(student.getAttendanceStatus()) ?
+                            "-fx-background-color: green; -fx-text-fill: white;" : "");
+                    absentBtn.setStyle("Absent".equals(student.getAttendanceStatus()) ?
+                            "-fx-background-color: red; -fx-text-fill: white;" : "");
 
-                    {
-                        presentBtn.setOnAction(event -> {
-                            Student student = getTableView().getItems().get(getIndex());
-                            updateAttendance(student, "Present");
-                        });
-
-                        absentBtn.setOnAction(event -> {
-                            Student student = getTableView().getItems().get(getIndex());
-                            updateAttendance(student, "Absent");
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            Student student = getTableView().getItems().get(getIndex());
-                            if ("Present".equals(student.getAttendanceStatus())) {
-                                presentBtn.setStyle("-fx-background-color: green; -fx-text-fill: white;");
-                                absentBtn.setStyle("");
-                            } else if ("Absent".equals(student.getAttendanceStatus())) {
-                                absentBtn.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-                                presentBtn.setStyle("");
-                            } else {
-                                presentBtn.setStyle("");
-                                absentBtn.setStyle("");
-                            }
-
-                            // Create a container for the buttons
-                            javafx.scene.layout.HBox buttonBox = new javafx.scene.layout.HBox(5);
-                            buttonBox.getChildren().addAll(presentBtn, absentBtn);
-                            setGraphic(buttonBox);
-                        }
-                    }
-                };
+                    HBox buttonBox = new HBox(5, presentBtn, absentBtn);
+                    setGraphic(buttonBox);
+                }
             }
         };
     }
 
     private void updateAttendance(Student student, String status) {
+        String courseCode = courseId.getText().trim();
+        int weekNumber = Integer.parseInt(selectWeek.getValue().replace("Week ", ""));
+
         try {
-            String courseCode = courseId.getText();
-            String week = (String) selectWeek.getValue();
-
-            Attaendance attendance = new Attaendance();
-
-            // First check if record exists
-            String checkQuery = "SELECT * FROM attaendance WHERE student_id = ? AND Course_code = ? AND week = ?";
-            PreparedStatement checkStmt = connection.prepareStatement(checkQuery);
-            checkStmt.setString(1, student.getStudentId());
-            checkStmt.setString(2, courseCode);
-            checkStmt.setString(3, week);
-
-            ResultSet rs = checkStmt.executeQuery();
-
-            if (rs.next()) {
-                // Update existing record
-                String updateQuery = "UPDATE attaendance SET status = ? WHERE student_id = ? AND Course_code = ? AND week = ?";
-                PreparedStatement updateStmt = connection.prepareStatement(updateQuery);
-                updateStmt.setString(1, status);
-                updateStmt.setString(2, student.getStudentId());
-                updateStmt.setString(3, courseCode);
-                updateStmt.setString(4, week);
-
-                updateStmt.executeUpdate();
-                updateStmt.close();
-            } else {
-                // Insert new record
-                String insertQuery = "INSERT INTO attaendance (student_id, Course_code, week, status) VALUES (?, ?, ?, ?)";
-                PreparedStatement insertStmt = connection.prepareStatement(insertQuery);
-                insertStmt.setString(1, student.getStudentId());
-                insertStmt.setString(2, courseCode);
-                insertStmt.setString(3, week);
-                insertStmt.setString(4, status);
-
-                insertStmt.executeUpdate();
-                insertStmt.close();
+            String checkQuery = "SELECT 1 FROM attendance WHERE student_id = ? AND course_code = ? AND week = ?";
+            try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
+                checkStmt.setString(1, student.getStudentId());
+                checkStmt.setString(2, courseCode);
+                checkStmt.setInt(3, weekNumber);
+                try (ResultSet rs = checkStmt.executeQuery()) {
+                    if (rs.next()) {
+                        String updateQuery = "UPDATE attendance SET status = ? WHERE student_id = ? AND course_code = ? AND week = ?";
+                        try (PreparedStatement updateStmt = connection.prepareStatement(updateQuery)) {
+                            updateStmt.setString(1, status);
+                            updateStmt.setString(2, student.getStudentId());
+                            updateStmt.setString(3, courseCode);
+                            updateStmt.setInt(4, weekNumber);
+                            updateStmt.executeUpdate();
+                        }
+                    } else {
+                        String insertQuery = "INSERT INTO attendance (student_id, course_code, week, status) VALUES (?, ?, ?, ?)";
+                        try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
+                            insertStmt.setString(1, student.getStudentId());
+                            insertStmt.setString(2, courseCode);
+                            insertStmt.setInt(3, weekNumber);
+                            insertStmt.setString(4, status);
+                            insertStmt.executeUpdate();
+                        }
+                    }
+                }
             }
 
-            // Update the student's status in the table
             student.setAttendanceStatus(status);
             attendanceTable.refresh();
 
@@ -221,10 +215,9 @@ public class Technical_Officer_Attendance_controller {
         alert.showAndWait();
     }
 
-    // Inner class for Student model with attendance status
     public static class Student {
-        private String studentId;
-        private String studentName;
+        private final String studentId;
+        private final String studentName;
         private String attendanceStatus;
 
         public Student(String studentId, String studentName, String attendanceStatus) {

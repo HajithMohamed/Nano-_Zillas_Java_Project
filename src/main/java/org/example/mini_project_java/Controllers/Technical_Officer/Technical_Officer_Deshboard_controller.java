@@ -96,7 +96,7 @@ public class Technical_Officer_Deshboard_controller implements Initializable {
         String username = Model.getInstance().getLoggedInUsername();
         if (username == null) {
             System.err.println("No logged-in user found.");
-            return "TO/2022/001"; // Default for testing
+            return "techOff/0001"; // Default for testing
         }
         return username;
     }

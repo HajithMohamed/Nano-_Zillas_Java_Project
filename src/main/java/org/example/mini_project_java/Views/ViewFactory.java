@@ -364,7 +364,7 @@ public class ViewFactory {
 
     public AnchorPane getTechnicalOfficerDashboardView(boolean reload) {
         if (technicalOfficerDashboardView == null || reload) {
-            technicalOfficerDashboardView = loadView("/Fxml/Technical_Officer/Technical_Officer_Dashboard.fxml", "Technical Officer Dashboard view could not be loaded.");
+            technicalOfficerDashboardView = loadView("/Fxml/Technical_Officer/Technical_Offiicer_Deshboard.fxml", "Technical Officer Dashboard view could not be loaded.");
         }
         return technicalOfficerDashboardView;
     }
