@@ -19,6 +19,11 @@ public class UpdateProfile_controller {
 
     public AnchorPane studentDashbord;
     public TextField userName;
+    public TextField fName;
+    public TextField lName;
+    public TextField email;
+    public TextField mobileNo;
+    public Button update_btn;
     @FXML
     private TextField fullName; // Full Name TextField
     @FXML

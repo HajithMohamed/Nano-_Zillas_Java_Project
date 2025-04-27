@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dca136a-051a-49b5-9fa5-86fa93da73f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/View_Attendance_controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Notice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Attendance.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/StudentDAshboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewcourse.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewgrade.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/Viewtimetable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/UpdateProfile_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/UpdateProfile_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Undergratuate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Undergratuate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +114,8 @@
       <workItem from="1745609070842" duration="145000" />
       <workItem from="1745637676972" duration="7229000" />
       <workItem from="1745648071997" duration="4105000" />
-      <workItem from="1745692693707" duration="2382000" />
+      <workItem from="1745692693707" duration="4474000" />
+      <workItem from="1745749520613" duration="664000" />
     </task>
     <servers />
   </component>
