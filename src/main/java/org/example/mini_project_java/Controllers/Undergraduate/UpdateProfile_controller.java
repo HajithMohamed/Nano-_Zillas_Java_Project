@@ -4,10 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.mini_project_java.Database.DatabaseConnection;
@@ -31,10 +33,10 @@ public class UpdateProfile_controller implements Initializable {
     public TextField userName;
 
     @FXML
-    public TextField fName;
+    public TextField fullName;
 
     @FXML
-    public TextField lName;
+    public TextField password;
 
     @FXML
     public TextField email;
@@ -46,43 +48,26 @@ public class UpdateProfile_controller implements Initializable {
     public Button update_btn;
 
     @FXML
-    private TextField fullName;
+    public ImageView profileImage;
 
     @FXML
-    private TextField address;
+    public Button profileChangeButton;
 
     @FXML
-    private TextField phone;
+    public Text welcomeText;
 
     @FXML
-    private ImageView profileImageView;
-
-    @FXML
-    private Button chooseImageBtn;
-
-    @FXML
-    private Button updateProfile;
-
-    @FXML
-    private Button viewProfileBtn;
+    public Text headerText;
 
     private File selectedImageFile;
     private String currentProfilePicturePath;
+    private String studentFullName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Set up event handlers
-        if (chooseImageBtn != null) {
-            chooseImageBtn.setOnAction(event -> changeProfileImage());
-        }
-
-        if (updateProfile != null) {
-            updateProfile.setOnAction(event -> updateStudentProfile());
-        }
-
-        if (viewProfileBtn != null) {
-            viewProfileBtn.setOnAction(event -> viewProfile());
-        }
+        profileChangeButton.setOnAction(event -> changeProfileImage());
+        update_btn.setOnAction(event -> updateStudentProfile());
 
         // Load student details
         String username = getLoggedInUsername();
@@ -94,23 +79,20 @@ public class UpdateProfile_controller implements Initializable {
 
     private void setNonEditableFields() {
         // Disable fields that students shouldn't be able to edit
-        if (userName != null) userName.setEditable(false);
-        if (fName != null) fName.setEditable(false);
-        if (lName != null) lName.setEditable(false);
-        if (email != null) email.setEditable(false);
-        if (fullName != null) fullName.setEditable(false);
-        if (address != null) address.setEditable(false);
+        userName.setEditable(false);
+        fullName.setEditable(false);
+        email.setEditable(false);
+        password.setEditable(false);
 
-        // Keep phone/mobileNo editable
-        if (phone != null) phone.setEditable(true);
-        if (mobileNo != null) mobileNo.setEditable(true);
+        // Keep only mobile number editable
+        mobileNo.setEditable(true);
     }
 
     private String getLoggedInUsername() {
         String username = Model.getInstance().getLoggedInUsername();
         if (username == null) {
             System.err.println("No logged-in user found.");
-            return "";
+            return "TG/2022/1414"; // Default for testing
         }
         return username;
     }
@@ -129,14 +111,18 @@ public class UpdateProfile_controller implements Initializable {
                 try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         // Populate the fields with data from the database
-                        if (userName != null) userName.setText(rs.getString("username"));
-                        if (fName != null) fName.setText(rs.getString("first_name"));
-                        if (lName != null) lName.setText(rs.getString("last_name"));
-                        if (email != null) email.setText(rs.getString("email"));
-                        if (mobileNo != null) mobileNo.setText(rs.getString("contact_number"));
-                        if (fullName != null) fullName.setText(rs.getString("first_name") + " " + rs.getString("last_name"));
-                        if (address != null) address.setText(rs.getString("address"));
-                        if (phone != null) phone.setText(rs.getString("contact_number"));
+                        studentFullName = rs.getString("full_name");
+
+                        userName.setText(rs.getString("username"));
+                        fullName.setText(studentFullName);
+                        email.setText(rs.getString("email"));
+                        mobileNo.setText(rs.getString("contact_number"));
+                        password.setText("********"); // Masked for security
+
+                        // Update welcome message and header with student's name
+                        // Extract first name from full_name for personalized messages
+                        String firstName = studentFullName.split(" ")[0];
+                        updateWelcomeAndHeader(firstName);
 
                         // Load profile picture
                         currentProfilePicturePath = rs.getString("profile_picture");
@@ -153,15 +139,26 @@ public class UpdateProfile_controller implements Initializable {
         }
     }
 
+    private void updateWelcomeAndHeader(String firstName) {
+        // Find and update the welcome text and header text in the FXML
+        if (welcomeText != null) {
+            welcomeText.setText("Welcome " + firstName + "!");
+        }
+
+        if (headerText != null) {
+            headerText.setText(firstName + "'s Profile Details");
+        }
+    }
+
     private void loadProfileImage(String imagePath) {
-        if (profileImageView == null) return;
+        if (profileImage == null) return;
 
         if (imagePath != null && !imagePath.isEmpty()) {
             try {
                 File imageFile = new File(imagePath);
                 if (imageFile.exists()) {
                     Image image = new Image(imageFile.toURI().toString());
-                    profileImageView.setImage(image);
+                    profileImage.setImage(image);
                 } else {
                     setDefaultProfileImage();
                 }
@@ -175,9 +172,9 @@ public class UpdateProfile_controller implements Initializable {
     }
 
     private void setDefaultProfileImage() {
-        if (profileImageView != null) {
+        if (profileImage != null) {
             try {
-                profileImageView.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/default_profile.png"))));
+                profileImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/admin.png"))));
             } catch (Exception e) {
                 System.err.println("Failed to load default profile image: " + e.getMessage());
             }
@@ -191,14 +188,14 @@ public class UpdateProfile_controller implements Initializable {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
         );
 
-        Stage stage = (Stage) chooseImageBtn.getScene().getWindow();
+        Stage stage = (Stage) profileChangeButton.getScene().getWindow();
         selectedImageFile = fileChooser.showOpenDialog(stage);
 
         if (selectedImageFile != null) {
             try {
                 String imageUrl = selectedImageFile.toURI().toString();
                 Image newImage = new Image(imageUrl);
-                profileImageView.setImage(newImage);
+                profileImage.setImage(newImage);
             } catch (Exception e) {
                 e.printStackTrace();
                 showAlert("Error", "Failed to load selected profile picture.");
@@ -218,11 +215,7 @@ public class UpdateProfile_controller implements Initializable {
             // Update only contact number and profile picture
             String updateSQL = "UPDATE USERS SET contact_number = ?, profile_picture = ? WHERE username = ?";
             try (PreparedStatement ps = connection.prepareStatement(updateSQL)) {
-                // Use phone or mobileNo depending on which one is populated
-                String contactNumber = (phone != null && !phone.getText().isEmpty()) ?
-                        phone.getText() : (mobileNo != null) ? mobileNo.getText() : "";
-
-                ps.setString(1, contactNumber);
+                ps.setString(1, mobileNo.getText());
 
                 // Use new profile picture path if selected, otherwise keep the current one
                 String profilePicturePath = selectedImageFile != null ?
@@ -244,12 +237,6 @@ public class UpdateProfile_controller implements Initializable {
             e.printStackTrace();
             showAlert("Database Error", "Failed to update profile: " + e.getMessage());
         }
-    }
-
-    private void viewProfile() {
-        // This method would navigate to the view profile screen
-        // Implementation depends on your application's navigation structure
-        System.out.println("View Profile button clicked");
     }
 
     private void showAlert(String title, String message) {

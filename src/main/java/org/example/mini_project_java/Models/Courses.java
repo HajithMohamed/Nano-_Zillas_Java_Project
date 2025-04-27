@@ -1,58 +1,28 @@
-package org.example.mini_project_java.Controllers.Undergraduate;
+package org.example.mini_project_java.Models;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import org.example.mini_project_java.Models.Courses;
-import org.example.mini_project_java.Models.Undergraduate;
+public class Courses {
+    private String courseCode;
+    private String courseTitle;
+    private String lecturerId;
+    private int courseCredit;
+    private String courseType;
+    private int creditHours;
 
-import java.util.List;
-
-public class ViewCourse_controller {
-    @FXML
-    public AnchorPane studentCourse;
-
-    @FXML
-    public TableView<Courses> courseDetailsTable;
-
-    @FXML
-    public TableColumn<Courses, String> courseCodeColumn;
-
-    @FXML
-    public TableColumn<Courses, String> courseNameColumn;
-
-    @FXML
-    public TableColumn<Courses, String> lecturerIdColumn;
-
-    private ObservableList<Courses> courseList = FXCollections.observableArrayList();
-
-    private Undergraduate student; // Correct spelling
-
-    @FXML
-    public void initialize() {
-        setupTable();
+    // Constructor
+    public Courses(String courseCode, String courseTitle, String lecturerId, int courseCredit, String courseType, int creditHours) {
+        this.courseCode = courseCode;
+        this.courseTitle = courseTitle;
+        this.lecturerId = lecturerId;
+        this.courseCredit = courseCredit;
+        this.courseType = courseType;
+        this.creditHours = creditHours;
     }
 
-    private void setupTable() {
-        courseCodeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
-        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
-        lecturerIdColumn.setCellValueFactory(new PropertyValueFactory<>("lecturerId"));
-    }
-
-    private void loadCourses() {
-        if (student != null) {
-            List<Courses> courses = student.viewCourseDetails();
-            courseList.setAll(courses);
-            courseDetailsTable.setItems(courseList);
-        }
-    }
-
-    public void setStudent(Undergraduate student) {
-        this.student = student;
-        loadCourses();
-    }
+    // Getters
+    public String getCourseCode() { return courseCode; }
+    public String getCourseTitle() { return courseTitle; }
+    public String getLecturerId() { return lecturerId; }
+    public int getCourseCredit() { return courseCredit; }
+    public String getCourseType() { return courseType; }
+    public int getCreditHours() { return creditHours; }
 }

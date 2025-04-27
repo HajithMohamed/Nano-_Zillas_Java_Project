@@ -195,10 +195,10 @@ public class Admin_Course_Controller implements Initializable {
                     Courses course = getTableView().getItems().get(getIndex());
                     courseCode.setText(course.getCourseCode());
                     courseTitle.setText(course.getCourseTitle());
-                    lecId.setText(course.getLectureId());
+                    lecId.setText(course.getLecturerId());
                     courseCredit.setText(String.valueOf(course.getCourseCredit()));
                     courseType.setText(course.getCourseType());
-                    courseCreditHours.setText(String.valueOf(course.getCourseCreditHours()));
+                    courseCreditHours.setText(String.valueOf(course.getCreditHours()));
                     courseBeingEdited = course;
                     addCourse.setText("Update Course");
                 });
