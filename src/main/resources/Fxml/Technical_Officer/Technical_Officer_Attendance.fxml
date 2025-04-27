@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="techAttendance" prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_profile" stylesheets="@../../Styles/TechnicalOfficer.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_Officer_Attendance_controller">
 
    <!-- Page Heading -->
-   <Text layoutX="275.0" layoutY="26.0" styleClass="technical_officer_heading" text="Level 1 Semester 2 Medical" />
+   <Text layoutX="275.0" layoutY="26.0" styleClass="technical_officer_heading" text="Level 2 Semester 1 Attendance" />
 
    <!-- Course Details Section -->
-   <AnchorPane layoutX="94.0" layoutY="40.0" prefHeight="60.0" prefWidth="830.0">
+   <AnchorPane layoutX="15.0" layoutY="70.0" prefHeight="102.0" prefWidth="830.0">
       <Label layoutX="14.0" layoutY="28.0" styleClass="technical_officer_label" text="Course ID:" />
-      <Label layoutX="415.0" layoutY="28.0" styleClass="technical_officer_label" text="Week:" />
-      <ComboBox fx:id="subjectComboBox" layoutX="97.0" layoutY="25.0" prefWidth="200" styleClass="technical_officer_combobox" />
-      <ComboBox fx:id="subjectComboBox1" layoutX="454.0" layoutY="27.0" prefWidth="200" styleClass="technical_officer_combobox" />
+      <Label layoutX="369.0" layoutY="28.0" styleClass="technical_officer_label" text="Week:" />
+      <ComboBox fx:id="selectWeek" layoutX="415.0" layoutY="26.0" prefHeight="25.0" prefWidth="221.0" styleClass="technical_officer_combobox" />
+      <TextField fx:id="courseId" layoutX="81.0" layoutY="25.0" prefHeight="25.0" prefWidth="268.0" />
+      <Button fx:id="getStudentbtn" layoutX="673.0" layoutY="26.0" mnemonicParsing="false" text="Get Students" />
    </AnchorPane>
 
-   <!-- Attendance Section -->
-   <AnchorPane layoutX="10.0" layoutY="100.0" prefHeight="60.0" prefWidth="830.0" />
-
    <!-- Table for Student Attendance -->
-   <TableView fx:id="attendanceTable" layoutX="10.0" layoutY="180.0" prefHeight="750.0" prefWidth="850.0" styleClass="technical_officer_table">
+   <TableView fx:id="attendanceTable" layoutX="10.0" layoutY="180.0" prefHeight="550.0" prefWidth="830.0" styleClass="technical_officer_table">
       <columns>
          <TableColumn fx:id="studentIdColumn" prefWidth="200.0" text="Student ID" />
          <TableColumn fx:id="studentNameColumn" prefWidth="400.0" text="Name" />
-         <TableColumn fx:id="attendanceColumn" prefWidth="200.0" text="Attendance" />
+         <TableColumn fx:id="attendanceColumn" prefWidth="229.0" text="Attendance" />
       </columns>
    </TableView>
+
 </AnchorPane>
