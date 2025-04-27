@@ -14,20 +14,21 @@
 
       <!-- Medical Details Section -->
       <AnchorPane fx:id="studentMedical" layoutX="7.0" layoutY="10.0" prefHeight="220.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
-         <Text layoutX="299.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="See Medical Details" wrappingWidth="322.5542907714844" />
+         <Text layoutX="191.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Medical Records of Undergraduate" wrappingWidth="400.9543762207031" />
 
-         <Label layoutX="27.0" layoutY="85.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
-         <TextField fx:id="studentIdField" layoutX="114.0" layoutY="79.0" styleClass="user_profile_Add_New_User_Text_Field" />
+         <Label layoutX="37.0" layoutY="99.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
+         <TextField fx:id="studentIdField" layoutX="114.0" layoutY="93.0" styleClass="user_profile_Add_New_User_Text_Field" />
 
          <TableView fx:id="medicalRecordsTable" layoutX="9.0" layoutY="154.0" prefHeight="491.0" prefWidth="810.0" styleClass="user_profile_Table">
             <columns>
                <TableColumn fx:id="courseCodeColumn" prefWidth="180.0" text="Course Code" />
                <TableColumn fx:id="studentIdColumn" prefWidth="180.0" text="Student ID" />
-               <TableColumn fx:id="submissionDateColumn" prefWidth="180.0" text="Submission Date" />
-               <TableColumn fx:id="descriptionColumn" prefWidth="250.0" text="Description" />
+               <TableColumn fx:id="submissionDateColumn" prefWidth="180.0" text="Submited Week" />
+               <TableColumn fx:id="descriptionColumn" prefWidth="250.0" text="Status" />
             </columns>
          </TableView>
-         <Button fx:id="seeAttendanceButton" layoutX="438.0" layoutY="69.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="143.0" styleClass="user_profile_Add_New_User_Button" text="View Medical" />
+         <Button fx:id="seeAttendanceButton" layoutX="508.0" layoutY="89.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="143.0" styleClass="user_profile_Add_New_User_Button" text="View Medical" />
+         <Text layoutX="275.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Department of ICT" wrappingWidth="259.35430908203125" />
       </AnchorPane>
    </AnchorPane>
 </AnchorPane>

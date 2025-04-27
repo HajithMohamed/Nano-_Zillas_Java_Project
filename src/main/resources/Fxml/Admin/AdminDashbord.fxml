@@ -13,14 +13,17 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Controller">
 
-    <Text layoutX="24.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Welcome Mr. Clerk!" />
+    <!-- Welcome message -->
+    <Text fx:id="welcomeText" layoutX="24.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Welcome Mr. Clerk!" />
 
     <!-- Notification Icon -->
     <Icon fx:id="adminNortification" content="NOTIFICATIONS" layoutX="718.0" layoutY="15.0" prefHeight="66.0" prefWidth="78.0" />
 
     <VBox layoutX="193.0" layoutY="100.0" prefHeight="630.0" prefWidth="700.0" styleClass="admin_dashboard_card" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
 
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Mr. Jude's Profile Details" />
+        <!-- Profile Heading -->
+        <Text fx:id="profileHeading" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Mr. Jude's Profile Details" />
+
         <ImageView fx:id="profileImage" fitHeight="150.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
             <VBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

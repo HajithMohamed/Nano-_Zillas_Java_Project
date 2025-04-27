@@ -15,6 +15,8 @@ public class ViewFactory {
 
     private final StringProperty adminSelectedMenuItem;
     private final StringProperty studentSelectedMenuItem;
+    private final StringProperty lectureSelectedMenuItem;
+    private final StringProperty technicalOfficerSelectedMenuItem;
 
     // Admin views
     private AnchorPane dashboardView;
@@ -31,31 +33,183 @@ public class ViewFactory {
     private AnchorPane undergraduateMedicalView;
     private AnchorPane UndergraduateTimeTableView;
 
+    // Technical Officer views
+    private AnchorPane technicalOfficerAttendanceView;
+    private AnchorPane technicalOfficerMedicalView;
+    private AnchorPane technicalOfficerDashboardView;
+
+    // Lecture Views
+    private AnchorPane lectureDashboardView;
+    private AnchorPane LectureCourseMaterialView;
+    private AnchorPane lectureCourseView;
+    private AnchorPane lectureMarksView;
+    private AnchorPane lectureUndergraduateDetailsView;
+    private AnchorPane lectureEligibilityView;
+    private AnchorPane lectureGradeView;
+    private AnchorPane lectureMedicalView;
+
     public ViewFactory() {
+        this.lectureSelectedMenuItem = new SimpleStringProperty("");
+        this.technicalOfficerSelectedMenuItem = new SimpleStringProperty("");
         this.studentSelectedMenuItem = new SimpleStringProperty("");
         this.adminSelectedMenuItem = new SimpleStringProperty("");
     }
 
-    // -------- Student MenuItem Methods --------
-    public void getStudentSelectedMenuItem() {
-        studentSelectedMenuItem.get();
+    public String getTechnicalOfficerSelectedMenuItem() {
+        return technicalOfficerSelectedMenuItem.get();
     }
 
-    public void setStudentSelectedMenuItem(String item) {
-        this.studentSelectedMenuItem.set(item);
+    public StringProperty technicalOfficerSelectedMenuItemProperty() {
+        return technicalOfficerSelectedMenuItem;
+    }
+
+    public String getLectureSelectedMenuItem() {
+        return lectureSelectedMenuItem.get();
+    }
+
+    public StringProperty lectureSelectedMenuItemProperty() {
+        return lectureSelectedMenuItem;
     }
 
     public StringProperty studentSelectedMenuItemProperty() {
         return studentSelectedMenuItem;
     }
 
-    // -------- Admin MenuItem Methods --------
     public StringProperty getAdminSelectedMenuItem() {
         return adminSelectedMenuItem;
     }
 
-    public void setAdminSelectedMenuItem(String item) {
-        this.adminSelectedMenuItem.set(item);
+    // -------- Lecturer Views --------
+    public AnchorPane getLectureDashboardView() {
+        return getLectureDashboardView(false);
+    }
+
+    public AnchorPane getLectureDashboardView(boolean reload) {
+        if (lectureDashboardView == null || reload) {
+            lectureDashboardView = loadView("/Fxml/Lecturer/LecturerDashboard.fxml", "Lecturer Dashboard view could not be loaded.");
+        }
+        return lectureDashboardView;
+    }
+
+    public AnchorPane getLectureCourseMaterialView() {
+        return getLectureCourseMaterialView(false);
+    }
+
+    public AnchorPane getLectureCourseMaterialView(boolean reload) {
+        if (LectureCourseMaterialView == null || reload) {
+            LectureCourseMaterialView = loadView("/Fxml/Lecturer/LectureCourseMaterial.fxml", "Course Material view could not be loaded.");
+        }
+        return LectureCourseMaterialView;
+    }
+
+    public AnchorPane getLectureCourseView() {
+        return getLectureCourseView(false);
+    }
+
+    public AnchorPane getLectureCourseView(boolean reload) {
+        if (lectureCourseView == null || reload) {
+            lectureCourseView = loadView("/Fxml/Lecturer/ModifyCourse.fxml", "Courses view could not be loaded.");
+        }
+        return lectureCourseView;
+    }
+
+    public AnchorPane getLectureMarksView() {
+        return getLectureMarksView(false);
+    }
+
+    public AnchorPane getLectureMarksView(boolean reload) {
+        if (lectureMarksView == null || reload) {
+            lectureMarksView = loadView("/Fxml/Lecturer/UploadMark.fxml", "Marks view could not be loaded.");
+        }
+        return lectureMarksView;
+    }
+
+    public AnchorPane getLectureUndergraduateDetailsView() {
+        return getLectureUndergraduateDetailsView(false);
+    }
+
+    public AnchorPane getLectureUndergraduateDetailsView(boolean reload) {
+        if (lectureUndergraduateDetailsView == null || reload) {
+            lectureUndergraduateDetailsView = loadView("/Fxml/Lecturer/UndergraduateDetails.fxml", "Undergraduate Details view could not be loaded.");
+        }
+        return lectureUndergraduateDetailsView;
+    }
+
+    public AnchorPane getLectureEligibilityView() {
+        return getLectureEligibilityView(false);
+    }
+
+    public AnchorPane getLectureEligibilityView(boolean reload) {
+        if (lectureEligibilityView == null || reload) {
+            lectureEligibilityView = loadView("/Fxml/Lecturer/UndergraduateEligibility.fxml", "Eligibility view could not be loaded.");
+        }
+        return lectureEligibilityView;
+    }
+
+    public AnchorPane getLectureGradeView() {
+        return getLectureGradeView(false);
+    }
+
+    public AnchorPane getLectureGradeView(boolean reload) {
+        if (lectureGradeView == null || reload) {
+            lectureGradeView = loadView("/Fxml/Lecturer/UndergraduateMarksGpa.fxml", "Grades view could not be loaded.");
+        }
+        return lectureGradeView;
+    }
+
+    public AnchorPane getLectureMedicalView() {
+        return getLectureMedicalView(false);
+    }
+
+    public AnchorPane getLectureMedicalView(boolean reload) {
+        if (lectureMedicalView == null || reload) {
+            lectureMedicalView = loadView("/Fxml/Lecturer/DisplayMedicalAttendance.fxml", "Medical view could not be loaded.");
+        }
+        return lectureMedicalView;
+    }
+
+    // -------- Window Display Methods --------
+    public void showLoginWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
+        createStage(loader);
+    }
+
+    public void showAdminWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Admin.fxml"));
+        createStage(loader);
+    }
+
+    public void showUndergraduateWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Student/student.fxml"));
+        createStage(loader);
+    }
+
+    public void showTechnicalOfficerWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Technical_Officer/Technical_Officer.fxml"));
+        createStage(loader);
+    }
+
+    public void showLecturerWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Lecturer/Lecture.fxml"));
+        createStage(loader);
+    }
+
+    private void createStage(FXMLLoader loader) {
+        try {
+            Scene scene = new Scene(loader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Window could not be loaded.");
+        }
+    }
+
+    public void closeStage(Stage stage) {
+        if (stage != null) {
+            stage.close();
+        }
     }
 
     // -------- Admin Views --------
@@ -65,7 +219,7 @@ public class ViewFactory {
 
     public AnchorPane getDashboardView(boolean reload) {
         if (dashboardView == null || reload) {
-            dashboardView = loadView("/Fxml/Admin/Dashboard.fxml", "Dashboard view could not be loaded.");
+            dashboardView = loadView("/Fxml/Admin/AdminDashbord.fxml", "Dashboard view could not be loaded.");
         }
         return dashboardView;
     }
@@ -109,7 +263,7 @@ public class ViewFactory {
 
     public AnchorPane getCourseView(boolean reload) {
         if (courseView == null || reload) {
-            courseView = loadView("/Fxml/Admin/Courses.fxml", "Courses view could not be loaded.");
+            courseView = loadView("/Fxml/Admin/Corses.fxml", "Courses view could not be loaded.");
         }
         return courseView;
     }
@@ -154,7 +308,7 @@ public class ViewFactory {
 
     public AnchorPane getUndergraduateDashboardView(boolean reload) {
         if (undergraduateDashboardView == null || reload) {
-            undergraduateDashboardView = loadView("/Fxml/Student/StudentDAshboard.fxml", "Dashboard view could not be loaded.");
+            undergraduateDashboardView = loadView("/Fxml/Student/StudentDashboard.fxml", "Dashboard view could not be loaded.");
         }
         return undergraduateDashboardView;
     }
@@ -181,38 +335,38 @@ public class ViewFactory {
         return UndergraduateTimeTableView;
     }
 
-    // -------- Window Display Methods --------
-    public void showLoginWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
-        createStage(loader);
+    // -------- Technical Officer Views --------
+    public AnchorPane getTechnicalOfficerAttendanceView() {
+        return getTechnicalOfficerAttendanceView(false);
     }
 
-    public void showAdminWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Admin.fxml"));
-        createStage(loader);
-    }
-
-    public void showUndergraduateWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Student/student.fxml"));
-        createStage(loader);
-    }
-
-    private void createStage(FXMLLoader loader) {
-        try {
-            Scene scene = new Scene(loader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showError("Window could not be loaded.");
+    public AnchorPane getTechnicalOfficerAttendanceView(boolean reload) {
+        if (technicalOfficerAttendanceView == null || reload) {
+            technicalOfficerAttendanceView = loadView("/Fxml/Technical_Officer/Technical_Officer_Attendance.fxml", "Technical Officer Attendance view could not be loaded.");
         }
+        return technicalOfficerAttendanceView;
     }
 
-    public void closeStage(Stage stage) {
-        if (stage != null) {
-            stage.close();
+    public AnchorPane getTechnicalOfficerMedicalView() {
+        return getTechnicalOfficerMedicalView(false);
+    }
+
+    public AnchorPane getTechnicalOfficerMedicalView(boolean reload) {
+        if (technicalOfficerMedicalView == null || reload) {
+            technicalOfficerMedicalView = loadView("/Fxml/Technical_Officer/Technical_Officer_Medical.fxml", "Technical Officer Medical view could not be loaded.");
         }
+        return technicalOfficerMedicalView;
+    }
+
+    public AnchorPane getTechnicalOfficerDashboardView() {
+        return getTechnicalOfficerDashboardView(false);
+    }
+
+    public AnchorPane getTechnicalOfficerDashboardView(boolean reload) {
+        if (technicalOfficerDashboardView == null || reload) {
+            technicalOfficerDashboardView = loadView("/Fxml/Technical_Officer/Technical_Officer_Dashboard.fxml", "Technical Officer Dashboard view could not be loaded.");
+        }
+        return technicalOfficerDashboardView;
     }
 
     // -------- Helper Methods --------
@@ -222,7 +376,7 @@ public class ViewFactory {
         } catch (IOException e) {
             e.printStackTrace();
             showError(errorMessage);
-            return new AnchorPane(); // Return empty fallback view
+            return new AnchorPane();
         }
     }
 
