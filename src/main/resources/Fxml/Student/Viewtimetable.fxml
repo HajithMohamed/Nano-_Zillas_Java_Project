@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Timetable_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.ViewTimetable_controller">
 
     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
@@ -16,11 +16,12 @@
             <!-- Table to display timetable details -->
             <TableView fx:id="timetableTable" layoutX="10.0" layoutY="140.0" prefHeight="444.0" prefWidth="810.0" styleClass="user_profile_Table">
                 <columns>
-                    <TableColumn fx:id="subCodeColumn" prefWidth="155.19994354248047" text="Subject Code" />
-                    <TableColumn fx:id="subNameColumn" prefWidth="176.800048828125" text="Subject Name" />
-                    <TableColumn fx:id="sessionsColumn" prefWidth="174.40005493164062" text="Location" />
-               <TableColumn fx:id="sessionsColumn1" prefWidth="139.20010375976562" text="Start_time" />
-               <TableColumn fx:id="sessionsColumn2" prefWidth="139.20010375976562" text="End_time" />
+                    <TableColumn fx:id="timePeriod" prefWidth="91.99997329711914" text="Time" />
+                    <TableColumn fx:id="monday" prefWidth="134.40003967285156" text="Monday" />
+                    <TableColumn fx:id="tuesday" prefWidth="144.0" text="Tues Day" />
+               <TableColumn fx:id="wednesday" prefWidth="132.800048828125" text="Wednes Day" />
+               <TableColumn fx:id="thursday" prefWidth="134.39996337890625" text="ThursDay" />
+               <TableColumn fx:id="friday" maxWidth="1.7976931348623157E308" prefWidth="152.00006103515625" text="Friday" />
                 </columns>
             </TableView>
          <Text layoutX="274.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Department of ICT" wrappingWidth="212.15426635742188" />

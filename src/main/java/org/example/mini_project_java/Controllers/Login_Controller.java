@@ -58,7 +58,7 @@ public class Login_Controller {
             case "student":
                 Model.getInstance().getViewFactory().showUndergraduateWindow();
                 break;
-            case "technical_officer":
+            case "technical officer":
                 Model.getInstance().getViewFactory().showTechnicalOfficerWindow();
                 break;
             case "lecturer":

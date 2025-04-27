@@ -1,10 +1,10 @@
-package org.example.mini_project_java.Controllers.Undergraduate;
+package org.example.mini_project_java.Controllers.Technical_Officer;
 
+import com.gluonhq.charm.glisten.control.Icon;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,19 +24,22 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UpdateProfile_controller implements Initializable {
+public class Technical_Officer_Deshboard_controller implements Initializable {
 
     @FXML
-    public AnchorPane studentDashbord;
+    public AnchorPane profDetai;
 
     @FXML
-    public TextField userName;
+    public Icon lecturerNotification;
 
     @FXML
-    public TextField fullName;
+    public TextField username;
 
     @FXML
-    public TextField password;
+    public TextField FullName;
+
+    @FXML
+    public TextField Password;
 
     @FXML
     public TextField email;
@@ -51,40 +54,41 @@ public class UpdateProfile_controller implements Initializable {
     public ImageView profileImage;
 
     @FXML
-    public Button profileChangeButton;
+    public Button profileImageChangeButton;
 
     @FXML
-    public Text welcomeText;
+    public Text welcomeText; // The Text in the FXML for "Welcome Mr. Lecturer!"
 
     @FXML
-    public Text headerText;
+    public Text headerText; // The Text in the FXML for "Mr. Heshan's Profile Details"
 
     private File selectedImageFile;
     private String currentProfilePicturePath;
-    private String studentFullName;
+    private String officerFullName;
+    private String officerFirstName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Set up event handlers
-        profileChangeButton.setOnAction(event -> changeProfileImage());
-        update_btn.setOnAction(event -> updateStudentProfile());
+        profileImageChangeButton.setOnAction(event -> changeProfileImage());
+        update_btn.setOnAction(event -> updateTechOfficerProfile());
 
-        // Load student details
+        // Load technical officer details
         String username = getLoggedInUsername();
-        loadStudentDetails(username);
+        loadTechOfficerDetails(username);
 
         // Make non-editable fields disabled
         setNonEditableFields();
     }
 
     private void setNonEditableFields() {
-        // Disable fields that students shouldn't be able to edit
-        userName.setEditable(false);
-        fullName.setEditable(false);
-        email.setEditable(false);
-        password.setEditable(false);
+        // Disable fields that technical officers shouldn't be able to edit
+        username.setEditable(false);
+        Password.setEditable(false);
 
-        // Keep only mobile number editable
+        // Keep these fields editable
+        FullName.setEditable(true);
+        email.setEditable(true);
         mobileNo.setEditable(true);
     }
 
@@ -92,12 +96,12 @@ public class UpdateProfile_controller implements Initializable {
         String username = Model.getInstance().getLoggedInUsername();
         if (username == null) {
             System.err.println("No logged-in user found.");
-            return "TG/2022/1414"; // Default for testing
+            return "techOff/0001"; // Default for testing
         }
         return username;
     }
 
-    private void loadStudentDetails(String username) {
+    private void loadTechOfficerDetails(String username) {
         if (username == null || username.trim().isEmpty()) {
             System.err.println("Provided username is null or empty.");
             showAlert("Error", "Invalid username provided.");
@@ -111,42 +115,50 @@ public class UpdateProfile_controller implements Initializable {
                 try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         // Populate the fields with data from the database
-                        studentFullName = rs.getString("full_name");
+                        officerFullName = rs.getString("full_name");
 
-                        userName.setText(rs.getString("username"));
-                        fullName.setText(studentFullName);
+                        // Extract first name for personalized messages
+                        if (officerFullName != null && !officerFullName.isEmpty()) {
+                            officerFirstName = officerFullName.split(" ")[0];
+                        } else {
+                            officerFirstName = "Officer"; // Default if name not found
+                        }
+
+                        this.username.setText(rs.getString("username"));
+                        FullName.setText(officerFullName);
                         email.setText(rs.getString("email"));
                         mobileNo.setText(rs.getString("contact_number"));
-                        password.setText("********"); // Masked for security
+                        Password.setText("********"); // Masked for security
 
-                        // Update welcome message and header with student's name
-                        // Extract first name from full_name for personalized messages
-                        String firstName = studentFullName.split(" ")[0];
-                        updateWelcomeAndHeader(firstName);
+                        // Update welcome message and header with officer's name
+                        updateWelcomeAndHeader();
 
                         // Load profile picture
                         currentProfilePicturePath = rs.getString("profile_picture");
                         loadProfileImage(currentProfilePicturePath);
                     } else {
-                        System.err.println("No student found with username: " + username);
-                        showAlert("Error", "Student profile not found.");
+                        System.err.println("No technical officer found with username: " + username);
+                        showAlert("Error", "Technical officer profile not found.");
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert("Database Error", "Failed to load student details: " + e.getMessage());
+            showAlert("Database Error", "Failed to load technical officer details: " + e.getMessage());
         }
     }
 
-    private void updateWelcomeAndHeader(String firstName) {
-        // Find and update the welcome text and header text in the FXML
-        if (welcomeText != null) {
-            welcomeText.setText("Welcome " + firstName + "!");
+    private void updateWelcomeAndHeader() {
+        // Use lookup to find the welcome text and header text in the FXML
+        // Note: In your FXML, these need to have fx:id assigned to them
+        Text welcomeTextElement = (Text) profDetai.lookup(".admin_dashboard_header");
+        if (welcomeTextElement != null) {
+            welcomeTextElement.setText("Welcome Mr. " + officerFirstName + "!");
         }
 
-        if (headerText != null) {
-            headerText.setText(firstName + "'s Profile Details");
+        Text headerTextElement = (Text) profDetai.lookup("VBox .admin_dashboard_header");
+        if (headerTextElement != null) {
+            headerTextElement.setText("Mr. " + officerFirstName + "'s Profile Details");
         }
     }
 
@@ -188,7 +200,7 @@ public class UpdateProfile_controller implements Initializable {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
         );
 
-        Stage stage = (Stage) profileChangeButton.getScene().getWindow();
+        Stage stage = (Stage) profileImageChangeButton.getScene().getWindow();
         selectedImageFile = fileChooser.showOpenDialog(stage);
 
         if (selectedImageFile != null) {
@@ -204,30 +216,42 @@ public class UpdateProfile_controller implements Initializable {
     }
 
     @FXML
-    private void updateStudentProfile() {
-        String username = getLoggedInUsername();
-        if (username.isEmpty()) {
+    private void updateTechOfficerProfile() {
+        String usernameValue = getLoggedInUsername();
+        if (usernameValue.isEmpty()) {
             showAlert("Error", "No user is currently logged in.");
             return;
         }
 
         try (Connection connection = DatabaseConnection.getConnection()) {
-            // Update only contact number and profile picture
-            String updateSQL = "UPDATE USERS SET contact_number = ?, profile_picture = ? WHERE username = ?";
+            // Update full name, email, contact number and profile picture
+            String updateSQL = "UPDATE USERS SET full_name = ?, email = ?, contact_number = ?, profile_picture = ? WHERE username = ?";
             try (PreparedStatement ps = connection.prepareStatement(updateSQL)) {
-                ps.setString(1, mobileNo.getText());
+                ps.setString(1, FullName.getText());
+                ps.setString(2, email.getText());
+                ps.setString(3, mobileNo.getText());
 
                 // Use new profile picture path if selected, otherwise keep the current one
                 String profilePicturePath = selectedImageFile != null ?
                         selectedImageFile.getAbsolutePath() : currentProfilePicturePath;
-                ps.setString(2, profilePicturePath);
+                ps.setString(4, profilePicturePath);
 
-                ps.setString(3, username);
+                ps.setString(5, usernameValue);
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
                     currentProfilePicturePath = profilePicturePath;
                     selectedImageFile = null;
+
+                    // Update officer name for display
+                    officerFullName = FullName.getText();
+                    if (officerFullName != null && !officerFullName.isEmpty()) {
+                        officerFirstName = officerFullName.split(" ")[0];
+                    }
+
+                    // Update welcome and header texts
+                    updateWelcomeAndHeader();
+
                     showAlert("Success", "Profile updated successfully!");
                 } else {
                     showAlert("Error", "Failed to update profile. No records were affected.");
