@@ -6,31 +6,50 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.ViewGrade">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.ViewGrade_controller">
 
-    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
+    <AnchorPane fx:id="studentGrade" layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
         <!-- Grade Details Section -->
-        <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="510.0" prefWidth="857.0" styleClass="user_profile_Add_New_User">
-            <Text layoutX="288.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="View Grade Details" wrappingWidth="274.5542907714844" />
-
-            <Label layoutX="33.0" layoutY="123.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
-            <TextField fx:id="studentIdField" layoutX="168.0" layoutY="113.0" styleClass="user_profile_Add_New_User_Text_Field" />
-
-            <Button fx:id="viewGradeButton" layoutX="505.0" layoutY="113.0" onAction="#viewGradeDetails" styleClass="user_profile_Add_New_User_Button" text="View Grades" />
+        <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="735.0" prefWidth="858.0" styleClass="user_profile_Add_New_User">
+            <Text layoutX="197.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Semster Results - Departmet of ICT" wrappingWidth="440.9543151855469" />
 
             <!-- Table to display grade details -->
-            <TableView fx:id="gradeDetailsTable" layoutX="14.0" layoutY="262.0" prefHeight="150.0" prefWidth="809.0" styleClass="user_profile_Table">
+            <TableView fx:id="gradeDetailsTable" layoutX="51.0" layoutY="198.0" prefHeight="364.0" prefWidth="762.0" styleClass="user_profile_Table">
                 <columns>
-                    <TableColumn fx:id="courseCodeColumn" prefWidth="180.0" text="Course Code" />
-                    <TableColumn fx:id="courseNameColumn" prefWidth="250.0" text="Course Name" />
-                    <TableColumn fx:id="gradeColumn" prefWidth="187.20004272460938" text="Grade" />
+                    <TableColumn fx:id="courseCodeColumn" prefWidth="204.79998016357422" text="Course Code" />
+                    <TableColumn fx:id="courseNameColumn" prefWidth="299.2000427246094" text="Course Name" />
                     <!-- New GPA Column -->
-                    <TableColumn fx:id="gpaColumn" prefWidth="180.7999267578125" text="GPA" />
+                    <TableColumn fx:id="gpaColumn" prefWidth="248.00006103515625" text="Result" />
                 </columns>
             </TableView>
+         <Text layoutX="263.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Faculty of Technology" wrappingWidth="274.5542907714844" />
+         <AnchorPane layoutX="93.0" layoutY="120.0" prefHeight="52.0" prefWidth="694.0">
+            <children>
+               <Label layoutX="7.0" layoutY="11.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
+               <Button fx:id="viewGradeButton" layoutX="512.0" layoutY="5.0" onAction="#viewGradeDetails" prefHeight="32.0" prefWidth="118.0" styleClass="user_profile_Add_New_User_Button" text="View Grades" />
+               <TextField layoutX="98.0" layoutY="6.0" prefHeight="40.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="73.0" layoutY="591.0" prefHeight="52.0" prefWidth="628.0">
+            <children>
+               <Label layoutX="28.0" layoutY="9.0" text="CGPA" textFill="#255255">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <Label layoutX="454.0" layoutY="9.0" text="SGPA" textFill="#255255">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Label>
+               <TextField layoutX="94.0" layoutY="6.0" prefHeight="32.0" prefWidth="82.0" styleClass="user_profile_Add_New_User_Text_Field2" />
+               <TextField layoutX="514.0" layoutY="6.0" prefHeight="32.0" prefWidth="82.0" styleClass="user_profile_Add_New_User_Text_Field2" />
+            </children>
+         </AnchorPane>
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>

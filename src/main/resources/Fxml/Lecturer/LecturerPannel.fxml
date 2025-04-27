@@ -19,12 +19,11 @@
                 stylesheets="@../../Styles/admin_pannell.css">
 
         <!-- Logo Section -->
-        <VBox prefHeight="100.0" prefWidth="160.0" styleClass="logo"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="100.0" prefWidth="160.0" styleClass="logo" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Avatar radius="25.0">
                 <Image url="@../../Images/admin.png" />
             </Avatar>
-            <Text styleClass="logo_Text" text="Lecturer Panel" wrappingWidth="179.786" />
+            <Text styleClass="logo_Text" text="Lecturer Pannel" wrappingWidth="179.786" />
         </VBox>
 
         <!-- Navigation Menu -->

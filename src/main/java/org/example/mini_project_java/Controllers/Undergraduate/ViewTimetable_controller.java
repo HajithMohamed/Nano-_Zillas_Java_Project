@@ -1,4 +1,4 @@
 package org.example.mini_project_java.Controllers.Undergraduate;
 
-public class ViewGrade {
+public class ViewTimetable_controller {
 }

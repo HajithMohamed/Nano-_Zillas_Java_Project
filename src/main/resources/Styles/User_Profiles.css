@@ -18,17 +18,36 @@
     -fx-border-radius: 5;
     -fx-padding: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 1);
-    -fx-font-size: 1.em;
+    -fx-font-size: 1em;
 }
 
 .user_profile_Table .column-header {
     -fx-background-color: #008B8B;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: CENTER;
+    -fx-padding: 8px;
 }
 
-/* "Add New User" Section */
+.user_profile_Table .table-row-cell {
+    -fx-border-color: #dddddd;
+    -fx-table-cell-border-color: #dddddd;
+    -fx-alignment: CENTER;
+}
+
+.user_profile_Table .table-row-cell:odd {
+    -fx-background-color: #f5f5f5;
+}
+
+.user_profile_Table .table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+
+.user_profile_Table .table-row-cell:hover {
+    -fx-background-color: #e6f7f7;
+}
+
+/* "Add New Course" Section */
 .user_profile_Add_New_User {
     -fx-background-color: #ffffff;
     -fx-border-radius: 10;
@@ -58,13 +77,33 @@
     -fx-padding: 6px 10px;
     -fx-font-size: 1em;
     -fx-border-color: transparent;
-    -fx-pref-width: 300px;
+    -fx-pref-width: 230px;
 }
 
 .user_profile_Add_New_User_Text_Field:focused {
     -fx-border-color: #008B8B;
     -fx-border-width: 1px;
     -fx-border-radius: 5;
+}
+
+/* ComboBox styling */
+.user_profile_Add_New_User_ComboBox {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 5;
+    -fx-padding: 5px;
+    -fx-font-size: 1em;
+    -fx-border-color: transparent;
+}
+
+.user_profile_Add_New_User_ComboBox:focused {
+    -fx-border-color: #008B8B;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+.user_profile_Add_New_User_ComboBox .list-cell:selected {
+    -fx-background-color: #008B8B;
+    -fx-text-fill: white;
 }
 
 /* Add Button */
@@ -82,10 +121,48 @@
 .user_profile_Add_New_User_Button:hover {
     -fx-background-color: #006d6d;
 }
-.user_profile_Add_New_User_Text_Area {
-    -fx-background-color: #e2e8f0;       /* Light gray-blue background */
-    -fx-background-radius: 5;            /* Rounded corners */
-    -fx-padding: 6px 10px;               /* Top-bottom 6px, left-right 10px padding */
-    -fx-font-size: 1em;                  /* Inherits parent font size scaling */
-    -fx-border-color: transparent;       /* Hides border */
+
+/* Action button in table */
+.action-button {
+    -fx-background-color: #008B8B;
+    -fx-text-fill: white;
+    -fx-font-size: 0.9em;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #006d6d;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 0.9em;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Calendar time slot styling */
+.lunch-break {
+    -fx-background-color: #ffe0b2;
+    -fx-text-fill: #e65100;
+    -fx-font-weight: bold;
+}
+
+.free-slot {
+    -fx-background-color: #e8f5e9;
+    -fx-text-fill: #2e7d32;
+}
+
+.booked-slot {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #0d47a1;
+    -fx-font-weight: bold;
 }

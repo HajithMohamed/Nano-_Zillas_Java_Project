@@ -13,9 +13,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.2</junit.version>
+        <javafx.version>24.0.1</javafx.version> <!-- Added -->
     </properties>
 
-    <!-- Add Gluon repository here -->
     <repositories>
         <repository>
             <id>gluon-releases</id>
@@ -24,19 +24,20 @@
     </repositories>
 
     <dependencies>
-        <!-- JavaFX dependencies -->
+        <!-- JavaFX updated to 24.0.1 -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.6</version>
+            <version>${javafx.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.6</version>
+            <version>${javafx.version}</version>
         </dependency>
 
-        <!-- Correct MySQL Connector dependency -->
+
+        <!-- Other dependencies (you had these correct) -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
@@ -47,13 +48,21 @@
             <artifactId>bcrypt</artifactId>
             <version>0.9.0</version>
         </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>21.0.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>21.0.6</version>
+            </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
-
-        <!-- Optional UI enhancements -->
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
@@ -69,6 +78,11 @@
             <artifactId>charm-glisten</artifactId>
             <version>6.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>java-dotenv</artifactId>
+            <version>5.2.2</version>
+        </dependency>
 
         <!-- JUnit for testing -->
         <dependency>
@@ -83,13 +97,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- dotenv for env file support -->
-        <dependency>
-            <groupId>io.github.cdimascio</groupId>
-            <artifactId>java-dotenv</artifactId>
-            <version>5.2.2</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -102,17 +109,17 @@
                 <configuration>
                     <source>23</source>
                     <target>23</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
 
-            <!-- JavaFX plugin -->
+
+            <!-- Updated JavaFX plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
-                <configuration>
-                    <mainClass>org.example.mini_project_java.App</mainClass>
-                </configuration>
+                <version>0.0.8</version> <!-- Keep this for now, it still works -->
+
             </plugin>
         </plugins>
     </build>

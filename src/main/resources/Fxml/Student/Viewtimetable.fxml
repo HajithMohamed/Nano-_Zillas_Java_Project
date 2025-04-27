@@ -10,17 +10,20 @@
     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
         <!-- Timetable Section -->
-        <AnchorPane layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
-            <Text layoutX="323.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="View Timetable" wrappingWidth="212.15426635742188" />
+        <AnchorPane fx:id="studentTimeTable" layoutX="7.0" layoutY="10.0" prefHeight="300.0" prefWidth="848.0" styleClass="user_profile_Add_New_User">
+            <Text layoutX="315.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Time Table " wrappingWidth="212.15426635742188" />
 
             <!-- Table to display timetable details -->
-            <TableView fx:id="timetableTable" layoutX="10.0" layoutY="140.0" prefHeight="250.0" prefWidth="809.0" styleClass="user_profile_Table">
+            <TableView fx:id="timetableTable" layoutX="10.0" layoutY="140.0" prefHeight="444.0" prefWidth="810.0" styleClass="user_profile_Table">
                 <columns>
-                    <TableColumn fx:id="subCodeColumn" prefWidth="180.0" text="Subject Code" />
-                    <TableColumn fx:id="subNameColumn" prefWidth="250.0" text="Subject Name" />
-                    <TableColumn fx:id="sessionsColumn" prefWidth="368.0000244140625" text="Sessions" />
+                    <TableColumn fx:id="subCodeColumn" prefWidth="155.19994354248047" text="Subject Code" />
+                    <TableColumn fx:id="subNameColumn" prefWidth="176.800048828125" text="Subject Name" />
+                    <TableColumn fx:id="sessionsColumn" prefWidth="174.40005493164062" text="Location" />
+               <TableColumn fx:id="sessionsColumn1" prefWidth="139.20010375976562" text="Start_time" />
+               <TableColumn fx:id="sessionsColumn2" prefWidth="139.20010375976562" text="End_time" />
                 </columns>
             </TableView>
+         <Text layoutX="274.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Department of ICT" wrappingWidth="212.15426635742188" />
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>
