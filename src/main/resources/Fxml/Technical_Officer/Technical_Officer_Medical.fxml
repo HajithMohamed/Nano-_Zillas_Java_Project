@@ -19,7 +19,7 @@
 
         <!-- Filters Section -->
         <HBox spacing="20">
-            <Label styleClass="technical_officer_label" text="Subject:" />
+            <Label styleClass="technical_officer_label" text="Course ID" />
             <ComboBox fx:id="subjectComboBox" prefWidth="200" styleClass="technical_officer_combobox" />
 
             <Label styleClass="technical_officer_label" text="Week:" />
