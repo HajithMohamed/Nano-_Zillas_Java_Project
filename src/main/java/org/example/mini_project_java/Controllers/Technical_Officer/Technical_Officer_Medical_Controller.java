@@ -160,11 +160,11 @@ public class Technical_Officer_Medical_Controller implements Initializable {
         List<String> courses = new ArrayList<>();
 
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "SELECT DISTINCT courseCode FROM COURSES";
+            String query = "SELECT DISTINCT course_code FROM COURSE";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
-                        courses.add(rs.getString("courseCode"));
+                        courses.add(rs.getString("course_code"));
                     }
                 }
             }

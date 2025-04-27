@@ -62,7 +62,7 @@ public abstract class Users {
                             return new Admin(inputUsername, storedPassword, name, email, role, mobileNo, profilePicture);
                         case "student":
                             return new Undergratuate(inputUsername, storedPassword, name, email, role, mobileNo, profilePicture);
-                        case "technical_officer":
+                        case "technical officer":
                             return new Tecninical_Officer(inputUsername, storedPassword, name, email, role, mobileNo, profilePicture);
                         case "lecturer":
                             return new Lecture(inputUsername, storedPassword, name, email, role, mobileNo, profilePicture);
