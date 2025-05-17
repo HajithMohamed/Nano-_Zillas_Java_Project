@@ -1,51 +1,162 @@
-/* Main container */
-.technical_officer_profile {
-    -fx-background-color: #f9f9f9;
+/* Root pane styling */
+AnchorPane {
+    -fx-background-color: #fff; /* Light gray background */
+    -fx-padding: 10px;
 }
 
-/* Page heading */
-.technical_officer_heading {
-    -fx-font-size: 2em;
+/* Styling for section headings (e.g., "Add Medical Records", "View Medical Records") */
+Text {
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333;
+    -fx-fill: #2c3e50; /* Dark blue-gray for headings */
     -fx-text-alignment: center;
 }
 
-/* Labels inside course details */
-.technical_officer_label {
-    -fx-font-size: 1.1em;
-    -fx-text-fill: #444444;
+/* Styling for labels */
+Label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495e; /* Slightly lighter blue-gray for labels */
+    -fx-alignment: center-right;
 }
 
-/* TextFields for course input */
-.technical_officer_textfield {
-    -fx-background-color: #e2e8f0;
-    -fx-background-radius: 5;
-    -fx-padding: 6px 10px;
-    -fx-font-size: 1em;
-    -fx-border-color: transparent;
-    -fx-pref-width: 300px;
+/* Common styling for input fields (TextField, ComboBox, DatePicker) */
+TextField, ComboBox, DatePicker {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7; /* Light gray border */
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 13px;
+    -fx-pref-height: 26px; /* Match the height specified in FXML */
 }
 
-.technical_officer_textfield:focused {
-    -fx-border-color: #008B8B;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5;
+/* Focused state for input fields */
+TextField:focused, ComboBox:focused, DatePicker:focused {
+    -fx-border-color: #3498db; /* Blue border when focused */
+    -fx-border-width: 2px;
 }
 
-/* TableView for attendance */
-.technical_officer_table {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dddddd;
-    -fx-border-radius: 5;
-    -fx-padding: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 1);
-    -fx-font-size: 1em;
+/* Specific styling for ComboBox to match the image */
+ComboBox .list-cell {
+    -fx-font-size: 13px;
+    -fx-text-fill: #34495e;
+    -fx-background-color: white;
 }
 
-.technical_officer_table .column-header {
-    -fx-background-color: #008B8B;
+ComboBox .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+}
+
+ComboBox .list-view .list-cell:hover {
+    -fx-background-color: #ecf0f1; /* Light gray on hover */
+}
+
+/* Styling for buttons (Add Medical Record, Filter, Browse) */
+Button {
+    -fx-background-color: #008B8B; /* Dark cyan */
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+Button:hover {
+    -fx-background-color: #006d6d; /* Darker cyan on hover */
+}
+
+/* Styling for action buttons (Accept, Reject, View) */
+.accept-button {
+    -fx-background-color: #008B8B; /* Dark cyan */
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 5px;
+}
+
+.accept-button:hover {
+    -fx-background-color: #006d6d; /* Darker cyan on hover */
+}
+
+.reject-button {
+    -fx-background-color: #e74c3c; /* Red for Reject */
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 5px;
+}
+
+.reject-button:hover {
+    -fx-background-color: #c0392b; /* Darker red on hover */
+}
+
+.view-button {
+    -fx-background-color: #3498db; /* Blue for View */
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 5px;
+}
+
+.view-button:hover {
+    -fx-background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Styling for the TableView */
+TableView {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Table header styling */
+TableView .column-header-background {
+    -fx-background-color: #008B8B; /* Dark cyan */
+    -fx-background-radius: 5px 5px 0 0;
+}
+
+TableView .column-header .label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 13px;
+    -fx-alignment: center;
+}
+
+/* Table rows styling */
+TableView .table-row-cell {
+    -fx-cell-size: 30px; /* Row height */
+    -fx-font-size: 13px;
+    -fx-text-fill: #34495e;
+}
+
+TableView .table-row-cell:odd {
+    -fx-background-color: #ecf0f1; /* Light gray for odd rows */
+}
+
+TableView .table-row-cell:even {
+    -fx-background-color: white; /* White for even rows */
+}
+
+TableView .table-row-cell:selected {
+    -fx-background-color: #3498db; /* Blue background for selected row */
+    -fx-text-fill: white;
+}
+
+/* Styling for HBox (used in action column for Accept/Reject buttons) */
+HBox {
+    -fx-spacing: 10px; /* Spacing between buttons in the action column */
+}
+
+/* Ensure consistent spacing for layout */
+AnchorPane {
+    -fx-spacing: 10px;
+}
+
+/* Shadow effect for addMedicalPane */
+#addMedicalPane {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);
+}
+
+/* Shadow effect for viewMedicalPane */
+#viewMedicalPane {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);
 }
