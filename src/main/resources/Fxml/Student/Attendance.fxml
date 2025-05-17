@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="studentAttandance" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.View_Attendance_controller">
-    <AnchorPane fx:id="studentAttendance" layoutX="10.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
 
-        <!-- View Attendance Section -->
-        <AnchorPane fx:id="studentAttendance" layoutX="7.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile_Add_New_User">
+    <!-- View Attendance Section -->
+    <AnchorPane fx:id="studentAttendance" layoutX="7.0" layoutY="10.0" prefHeight="750.0" prefWidth="850.0" styleClass="user_profile_Add_New_User" stylesheets="@../../Styles/User_Profiles.css">
 
-            <!-- Attendance Form Section -->
-            <AnchorPane layoutX="16.0" layoutY="60.0" prefHeight="487.0" prefWidth="658.0" styleClass="user_profile_Add_New_User">
-                <Text layoutX="227.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Attendance Details of Undergraduate" wrappingWidth="438.5542297363281" />
-
-                <Label layoutX="73.0" layoutY="119.0" styleClass="user_profile_Add_New_User_Label" text="Student ID" />
-                <TextField fx:id="studentIdField" layoutX="164.0" layoutY="113.0" styleClass="user_profile_Add_New_User_Text_Field" />
-
-                <Button fx:id="seeAttendanceButton" layoutX="552.0" layoutY="109.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" styleClass="user_profile_Add_New_User_Button" text="View Attendance" />
-
-                <!-- Attendance Table Section -->
-                <TableView fx:id="attendanceTable" layoutX="14.0" layoutY="187.0" prefHeight="378.0" prefWidth="837.0" styleClass="user_profile_Table">
-                    <columns>
-                        <TableColumn fx:id="courseCodeColumn" prefWidth="180.0" text="Course Code" />
-                        <TableColumn fx:id="courseNameColumn" prefWidth="139.199951171875" text="Course Name" />
-                        <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="162.39996337890625" text="Attendance Status" />
-                        <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="155.20001220703125" text="Date" />
-                        <TableColumn fx:id="attendanceStatusColumn" maxWidth="260.8000122070313" minWidth="-1.0" prefWidth="190.39996337890625" text="Attendance Status" />
-                    </columns>
-                </TableView>
+        <!-- Attendance Form Section -->
+        <AnchorPane layoutX="16.0" layoutY="60.0" prefHeight="673.0" prefWidth="885.0" styleClass="user_profile_Add_New_User">
+            <Text layoutX="227.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Attendance Details of Undergraduate" wrappingWidth="438.5542297363281" />
+            <Label layoutX="73.0" layoutY="119.0" styleClass="user_profile_Add_New_User_Label" text="Course ID:" />
+            <Button fx:id="seeAttendanceButton" layoutX="554.0" layoutY="108.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" styleClass="user_profile_Add_New_User_Button" text="View Attendance" />
+            <!-- Attendance Table Section -->
+            <TableView fx:id="attendanceTable" layoutX="28.0" layoutY="187.0" prefHeight="378.0" prefWidth="817.0" styleClass="user_profile_Table">
+                <columns>
+                    <TableColumn fx:id="courseCodeColumn" prefWidth="200.0" text="Course Code" />
+                    <TableColumn fx:id="courseNameColumn" prefWidth="250.0" text="Course Name" />
+                    <TableColumn fx:id="statusColumn" prefWidth="167.0" text="Attendance Status" />
+                    <TableColumn fx:id="dateColumn" prefWidth="200.0" text="Week" />
+                </columns>
+            </TableView>
             <Text layoutX="318.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 2em; -fx-font-weight: bold;" text="Department of ICT" wrappingWidth="300.0" />
-            </AnchorPane>
+            <ComboBox fx:id="courseId" layoutX="137.0" layoutY="116.0" prefHeight="26.0" prefWidth="226.0" />
+            <ProgressBar fx:id="attendancePercentage" layoutX="32.0" layoutY="585.0" prefHeight="40.0" prefWidth="810.0" progress="0.0" />
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>

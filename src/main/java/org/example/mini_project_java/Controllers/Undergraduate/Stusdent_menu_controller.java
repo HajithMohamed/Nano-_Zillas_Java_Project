@@ -53,8 +53,7 @@ public class Stusdent_menu_controller implements Initializable {
             studentMedical.setOnAction(e -> onMenuItemSelected(studentMenuItem.MEDICAL));
         if (studentTimeTable != null)
             studentTimeTable.setOnAction(e -> onMenuItemSelected(studentMenuItem.TIMETABLE));
-        if (studentLogout != null)
-            studentLogout.setOnAction(e -> handleLogout());
+
     }
 
     private void onMenuItemSelected(String menuItem) {
@@ -63,14 +62,7 @@ public class Stusdent_menu_controller implements Initializable {
         System.out.println(menuItem + " selected");
     }
 
-    private void handleLogout() {
-        // Show login window again
-        Model.getInstance().getViewFactory().showLoginWindow();
 
-        // Close current student window
-        Stage stage = (Stage) student_parent.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

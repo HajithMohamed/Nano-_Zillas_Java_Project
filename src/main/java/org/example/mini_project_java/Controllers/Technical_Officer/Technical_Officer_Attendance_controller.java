@@ -14,136 +14,138 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import org.example.mini_project_java.Database.DatabaseConnection;
+import org.example.mini_project_java.Models.Attaendance;
+import org.example.mini_project_java.Models.Courses;
+import org.example.mini_project_java.Models.Undergratuate;
 
 public class Technical_Officer_Attendance_controller {
     @FXML
     public AnchorPane techAttendance;
     @FXML
-    public TextField courseId;
+    public ComboBox<Courses> courseId;
     @FXML
     public Button getStudentbtn;
     @FXML
-    public TableView<Student> attendanceTable;
+    public TableView<Undergratuate> attendanceTable;
     @FXML
-    public TableColumn<Student, String> studentIdColumn;
+    public TableColumn<Undergratuate, String> studentIdColumn;
     @FXML
-    public TableColumn<Student, String> studentNameColumn;
+    public TableColumn<Undergratuate, String> studentNameColumn;
     @FXML
-    public TableColumn<Student, String> attendanceColumn;
+    public TableColumn<Undergratuate, String> attendanceColumn;
+    @FXML
+    public TableColumn<Undergratuate, Double> percentageColumn; // New column for percentage
     @FXML
     public ComboBox<String> selectWeek;
 
     private Connection connection;
-    private ObservableList<Student> studentList = FXCollections.observableArrayList();
+    private ObservableList<Undergratuate> studentList = FXCollections.observableArrayList();
+    private ObservableList<Courses> courseList = FXCollections.observableArrayList();
+    private Attaendance attendanceModel = new Attaendance();
 
     @FXML
     public void initialize() {
         // Initialize database connection
         connection = DatabaseConnection.getConnection();
 
-        // Setup weeks in combobox
+        // Populate course ComboBox
+        loadCourses();
+
+        // Setup weeks in combobox (1-15 to match table)
         ObservableList<String> weeks = FXCollections.observableArrayList();
-        for (int i = 1; i <= 14; i++) {
+        for (int i = 1; i <= 15; i++) {
             weeks.add("Week " + i);
         }
         selectWeek.setItems(weeks);
         selectWeek.getSelectionModel().selectFirst();
 
         // Setup table columns
-        studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
-        studentNameColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        studentNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        percentageColumn.setCellValueFactory(new PropertyValueFactory<>("attendancePercentage")); // New column
         attendanceColumn.setCellFactory(createAttendanceButtonCellFactory());
 
         // Set action for get students button
         getStudentbtn.setOnAction(this::handleGetStudents);
     }
 
+    private void loadCourses() {
+        try (PreparedStatement stmt = connection.prepareStatement("SELECT course_code, course_title FROM COURSE")) {
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    String courseCode = rs.getString("course_code");
+                    String courseTitle = rs.getString("course_title");
+                    courseList.add(new Courses(courseCode, courseTitle, null, 0, null, 0));
+                }
+                courseId.setItems(courseList);
+                courseId.setCellFactory(param -> new ListCell<Courses>() {
+                    @Override
+                    protected void updateItem(Courses item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty || item == null) {
+                            setText(null);
+                        } else {
+                            setText(item.getCourseCode() + " - " + item.getCourseTitle());
+                        }
+                    }
+                });
+                courseId.setButtonCell(new ListCell<Courses>() {
+                    @Override
+                    protected void updateItem(Courses item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty || item == null) {
+                            setText("Select Course");
+                        } else {
+                            setText(item.getCourseCode() + " - " + item.getCourseTitle());
+                        }
+                    }
+                });
+            }
+        } catch (SQLException e) {
+            showAlert(Alert.AlertType.ERROR, "Database Error", "Error loading courses: " + e.getMessage());
+        }
+    }
+
     private void handleGetStudents(ActionEvent event) {
-        String courseCode = courseId.getText().trim();
-        String week = (String) selectWeek.getValue();
+        Courses selectedCourse = courseId.getValue();
+        String courseCode = (selectedCourse != null) ? selectedCourse.getCourseCode() : "";
+        String week = selectWeek.getValue();
 
         if (courseCode.isEmpty() || week == null) {
-            showAlert("Input Error", "Please enter course code and select week");
+            showAlert(Alert.AlertType.ERROR, "Input Error", "Please select a course and a week.");
             return;
         }
 
-        // Validate course code
-        if (!isValidCourse(courseCode)) {
-            showAlert("Input Error", "Invalid course code");
+        if (!attendanceModel.isValidCourse(courseCode)) {
+            showAlert(Alert.AlertType.ERROR, "Input Error", "Invalid course code.");
             return;
         }
 
         loadStudents();
     }
 
-    private boolean isValidCourse(String courseCode) {
-        try (PreparedStatement stmt = connection.prepareStatement("SELECT 1 FROM COURSE WHERE course_code = ?")) {
-            stmt.setString(1, courseCode);
-            try (ResultSet rs = stmt.executeQuery()) {
-                return rs.next();
-            }
-        } catch (SQLException e) {
-            showAlert("Database Error", "Error validating course: " + e.getMessage());
-            return false;
-        }
-    }
-
     private void loadStudents() {
         studentList.clear();
         int weekNumber = Integer.parseInt(selectWeek.getValue().replace("Week ", ""));
-        String courseCode = courseId.getText().trim();
+        String courseCode = courseId.getValue().getCourseCode();
 
-        try {
-            String query = "SELECT username, full_name FROM USERS u WHERE u.role = 'student'";
-
-            try (PreparedStatement stmt = connection.prepareStatement(query)) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    while (rs.next()) {
-                        String studentId = rs.getString("username");
-                        String studentName = rs.getString("full_name");
-                        String existingStatus = checkExistingAttendance(studentId, courseCode, weekNumber);
-                        studentList.add(new Student(studentId, studentName, existingStatus));
-                    }
-                }
-            }
-
-            attendanceTable.setItems(studentList);
-
-        } catch (SQLException e) {
-            showAlert("Database Error", "Error loading students: " + e.getMessage());
-        }
+        studentList.addAll(attendanceModel.loadStudents(courseCode, weekNumber));
+        attendanceTable.setItems(studentList);
     }
 
-    private String checkExistingAttendance(String studentId, String courseCode, int week) {
-        try (PreparedStatement stmt = connection.prepareStatement(
-                "SELECT status FROM attendance WHERE student_id = ? AND course_code = ? AND week = ?")) {
-            stmt.setString(1, studentId);
-            stmt.setString(2, courseCode);
-            stmt.setInt(3, week);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getString("status");
-                }
-            }
-        } catch (SQLException e) {
-            showAlert("Database Error", "Error checking attendance: " + e.getMessage());
-        }
-        return null;
-    }
-
-    private Callback<TableColumn<Student, String>, TableCell<Student, String>> createAttendanceButtonCellFactory() {
+    private Callback<TableColumn<Undergratuate, String>, TableCell<Undergratuate, String>> createAttendanceButtonCellFactory() {
         return param -> new TableCell<>() {
             private final Button presentBtn = new Button("Present");
             private final Button absentBtn = new Button("Absent");
 
             {
                 presentBtn.setOnAction(event -> {
-                    Student student = getTableView().getItems().get(getIndex());
-                    updateAttendance(student, "Present");
+                    Undergratuate student = getTableView().getItems().get(getIndex());
+                    updateAttendance(student, true);
                 });
                 absentBtn.setOnAction(event -> {
-                    Student student = getTableView().getItems().get(getIndex());
-                    updateAttendance(student, "Absent");
+                    Undergratuate student = getTableView().getItems().get(getIndex());
+                    updateAttendance(student, false);
                 });
             }
 
@@ -153,10 +155,11 @@ public class Technical_Officer_Attendance_controller {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    Student student = getTableView().getItems().get(getIndex());
-                    presentBtn.setStyle("Present".equals(student.getAttendanceStatus()) ?
+                    Undergratuate student = getTableView().getItems().get(getIndex());
+                    String status = student.getAttendanceStatus();
+                    presentBtn.setStyle("Present".equals(status) ?
                             "-fx-background-color: green; -fx-text-fill: white;" : "");
-                    absentBtn.setStyle("Absent".equals(student.getAttendanceStatus()) ?
+                    absentBtn.setStyle("Absent".equals(status) ?
                             "-fx-background-color: red; -fx-text-fill: white;" : "");
 
                     HBox buttonBox = new HBox(5, presentBtn, absentBtn);
@@ -166,80 +169,48 @@ public class Technical_Officer_Attendance_controller {
         };
     }
 
-    private void updateAttendance(Student student, String status) {
-        String courseCode = courseId.getText().trim();
-        int weekNumber = Integer.parseInt(selectWeek.getValue().replace("Week ", ""));
+    private void updateAttendance(Undergratuate student, boolean isPresent) {
+        String courseCode = courseId.getValue().getCourseCode();
+        int weekNumber;
+        try {
+            weekNumber = Integer.parseInt(selectWeek.getValue().replace("Week ", ""));
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Input Error", "Invalid week number selected.");
+            return;
+        }
+
+        if (courseCode.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Input Error", "Course code cannot be empty.");
+            return;
+        }
+        if (weekNumber < 1 || weekNumber > 15) {
+            showAlert(Alert.AlertType.ERROR, "Input Error", "Week number must be between 1 and 15.");
+            return;
+        }
+
+        if (!attendanceModel.isValidStudent(student.getUsername())) {
+            showAlert(Alert.AlertType.ERROR, "Input Error", "Student ID does not exist.");
+            return;
+        }
 
         try {
-            String checkQuery = "SELECT 1 FROM attendance WHERE student_id = ? AND course_code = ? AND week = ?";
-            try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
-                checkStmt.setString(1, student.getStudentId());
-                checkStmt.setString(2, courseCode);
-                checkStmt.setInt(3, weekNumber);
-                try (ResultSet rs = checkStmt.executeQuery()) {
-                    if (rs.next()) {
-                        String updateQuery = "UPDATE attendance SET status = ? WHERE student_id = ? AND course_code = ? AND week = ?";
-                        try (PreparedStatement updateStmt = connection.prepareStatement(updateQuery)) {
-                            updateStmt.setString(1, status);
-                            updateStmt.setString(2, student.getStudentId());
-                            updateStmt.setString(3, courseCode);
-                            updateStmt.setInt(4, weekNumber);
-                            updateStmt.executeUpdate();
-                        }
-                    } else {
-                        String insertQuery = "INSERT INTO attendance (student_id, course_code, week, status) VALUES (?, ?, ?, ?)";
-                        try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
-                            insertStmt.setString(1, student.getStudentId());
-                            insertStmt.setString(2, courseCode);
-                            insertStmt.setInt(3, weekNumber);
-                            insertStmt.setString(4, status);
-                            insertStmt.executeUpdate();
-                        }
-                    }
-                }
-            }
-
-            student.setAttendanceStatus(status);
+            attendanceModel.updateAttendance(student.getUsername(), courseCode, weekNumber, isPresent);
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Attendance updated successfully for " + student.getName() + ".");
+            student.setAttendanceStatus(isPresent ? "Present" : "Absent");
+            // Recalculate percentage after updating attendance
+            double percentage = attendanceModel.calculateAttendancePercentage(student.getUsername(), courseCode);
+            student.setAttendancePercentage(percentage);
             attendanceTable.refresh();
-
-        } catch (SQLException e) {
-            showAlert("Database Error", "Error updating attendance: " + e.getMessage());
+        } catch (RuntimeException e) {
+            showAlert(Alert.AlertType.ERROR, "Database Error", e.getMessage());
         }
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    public static class Student {
-        private final String studentId;
-        private final String studentName;
-        private String attendanceStatus;
-
-        public Student(String studentId, String studentName, String attendanceStatus) {
-            this.studentId = studentId;
-            this.studentName = studentName;
-            this.attendanceStatus = attendanceStatus;
-        }
-
-        public String getStudentId() {
-            return studentId;
-        }
-
-        public String getStudentName() {
-            return studentName;
-        }
-
-        public String getAttendanceStatus() {
-            return attendanceStatus;
-        }
-
-        public void setAttendanceStatus(String attendanceStatus) {
-            this.attendanceStatus = attendanceStatus;
-        }
     }
 }

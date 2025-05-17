@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Undergratuate extends Users {
 
+    private String attendanceStatus;
+    private double attendancePercentage;
+
     public Undergratuate(String username, String password, String name, String email, String role, String mobileNo) {
         super(username, password, name, email, role, mobileNo);
     }
@@ -18,7 +21,13 @@ public class Undergratuate extends Users {
 
     public Undergratuate() {
     }
+    public double getAttendancePercentage() {
+        return attendancePercentage;
+    }
 
+    public void setAttendancePercentage(double attendancePercentage) {
+        this.attendancePercentage = attendancePercentage;
+    }
     // Method to view course details
     public List<Courses> viewCourseDetails() {
         List<Courses> courseList = new ArrayList<>();
@@ -58,5 +67,14 @@ public class Undergratuate extends Users {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // Getter and Setter for attendanceStatus
+    public String getAttendanceStatus() {
+        return attendanceStatus;
+    }
+
+    public void setAttendanceStatus(String attendanceStatus) {
+        this.attendanceStatus = attendanceStatus;
     }
 }
