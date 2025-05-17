@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a7786089-125e-4522-8828-b27f80cf6a28" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Medical_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Medical_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/viewMedical_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/viewMedical_controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Medical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Medical.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Medical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Medical.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/TechnicalOfficer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/TechnicalOfficer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Student/viewMedical.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <workItem from="1747357136551" duration="3201000" />
       <workItem from="1747403623946" duration="4604000" />
       <workItem from="1747443021054" duration="3632000" />
-      <workItem from="1747452377187" duration="21328000" />
+      <workItem from="1747452377187" duration="22727000" />
     </task>
     <servers />
   </component>

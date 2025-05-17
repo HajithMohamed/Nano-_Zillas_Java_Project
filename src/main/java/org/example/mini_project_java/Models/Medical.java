@@ -14,7 +14,7 @@ public class Medical {
     private String courseCode;
     private String studentId;
     private String week;
-    private String medicalReport;
+    private String medicalReport; // Stores the file path to the PDF
     private String medicalNo;
     private String status;
     private java.sql.Date submissionDate;
@@ -120,6 +120,34 @@ public class Medical {
             }
         } catch (SQLException e) {
             System.err.println("Error retrieving medical reports by status: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return medicalReports;
+    }
+
+    public List<Medical> viewMedicalReportByStudentId() {
+        List<Medical> medicalReports = new ArrayList<>();
+        String sql = "SELECT medicalId, courseCode, studentId, week, medicalReport, medicalNo, status, submissionDate " +
+                "FROM MEDICAL_REPORTS WHERE studentId = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, this.studentId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    medicalReports.add(new Medical(
+                            rs.getInt("medicalId"),
+                            rs.getString("courseCode"),
+                            rs.getString("studentId"),
+                            rs.getString("week"),
+                            rs.getString("medicalReport"),
+                            rs.getString("medicalNo"),
+                            rs.getString("status"),
+                            rs.getDate("submissionDate")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving medical reports by student ID: " + e.getMessage());
             e.printStackTrace();
         }
         return medicalReports;
