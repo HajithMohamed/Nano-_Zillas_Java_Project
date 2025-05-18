@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="650.0" prefWidth="700.0" stylesheets="@../../Styles/User_Profiles.css" styleClass="user_profile"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.mini_project_java.Controllers.Lecturer.ModifyCourseController">
+<AnchorPane prefHeight="650.0" prefWidth="700.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.ModifyCourseController">
 
    <Text layoutX="190.0" layoutY="40.0" styleClass="user_profile_heading" text="Course Material Management" />
    <Line endX="660" endY="55" startX="40" startY="55" stroke="#cccccc" />
 
    <Text layoutX="40.0" layoutY="97.0" styleClass="user_profile_Add_New_User_Label" text="Material:" />
-   <TextField fx:id="materialTextField" layoutX="99.0" layoutY="77.0" prefWidth="240.0"
-              styleClass="user_profile_Add_New_User_Text_Field" />
-   <Button fx:id="browseButton" layoutX="344.0" layoutY="77.0" prefHeight="32.0" prefWidth="82.0" text="Browse"
-           onAction="#handleBrowseAction" />
+   <TextField fx:id="materialTextField" layoutX="99.0" layoutY="77.0" prefWidth="240.0" styleClass="user_profile_Add_New_User_Text_Field" />
+   <Button fx:id="browseButton" layoutX="344.0" layoutY="77.0" onAction="#handleBrowseAction" prefHeight="32.0" prefWidth="82.0" text="Browse" />
    <Text layoutX="449.0" layoutY="98.0" styleClass="user_profile_Add_New_User_Label" text="Week:" />
    <ComboBox fx:id="weekComboBox" layoutX="495.0" layoutY="81.0" prefHeight="26.0" prefWidth="166.0" />
    <Text layoutX="40.0" layoutY="140.0" styleClass="user_profile_Add_New_User_Label" text="Course:" />
    <ComboBox fx:id="courseComboBox" layoutX="99.0" layoutY="120.0" prefHeight="26.0" prefWidth="300.0" />
 
-   <Button fx:id="addMaterialButton" layoutX="517.0" layoutY="137.0" styleClass="user_profile_Add_New_User_Button"
-           text="Add Material" onAction="#handleAddMaterialAction" />
+   <Button fx:id="addMaterialButton" layoutX="517.0" layoutY="137.0" onAction="#handleAddMaterialAction" styleClass="user_profile_Add_New_User_Button" text="Add Material" />
 
-   <TableView fx:id="materialTableView" layoutX="40.0" layoutY="224.0" prefHeight="402.0" prefWidth="620.0"
-              style="-fx-background-color: white;">
+   <TableView fx:id="materialTableView" layoutX="40.0" layoutY="224.0" prefHeight="402.0" prefWidth="620.0" style="-fx-background-color: white;">
       <columns>
          <TableColumn fx:id="weekColumn" prefWidth="150.0" text="Week" />
          <TableColumn fx:id="materialColumn" prefWidth="469.0" text="Material" />

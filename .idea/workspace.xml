@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7786089-125e-4522-8828-b27f80cf6a28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/CourseMaterials.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Eligibility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/ModifyCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/ModifyCourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Lecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Lecture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/LecturerDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/LecturerDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/DisplayMedicalAttendanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/DisplayMedicalAttendanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateDetailsControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateDetailsControllers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateEligibilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateEligibilityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateMarksGpaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UndergraduateMarksGpaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UploadMarkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/UploadMarkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/DisplayMedicalAttendance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/DisplayMedicalAttendance.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/LecturerPannel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/LecturerPannel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/ModifyCourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/ModifyCourse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateEligibility.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateEligibility.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateMarksGpa.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UndergraduateMarksGpa.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UploadMark.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Lecturer/UploadMark.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/User_Profiles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,23 +48,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Tech LMS.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Hajith__Mohamed",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Projects/Nano-_Zillas_Java_Project",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Tech LMS.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Hajith__Mohamed&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Nano-_Zillas_Java_Project&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tech LMS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
@@ -86,7 +95,9 @@
       <workItem from="1747357136551" duration="3201000" />
       <workItem from="1747403623946" duration="4604000" />
       <workItem from="1747443021054" duration="3632000" />
-      <workItem from="1747452377187" duration="26513000" />
+      <workItem from="1747452377187" duration="26760000" />
+      <workItem from="1747545745605" duration="7043000" />
+      <workItem from="1747555840273" duration="5742000" />
     </task>
     <servers />
   </component>
