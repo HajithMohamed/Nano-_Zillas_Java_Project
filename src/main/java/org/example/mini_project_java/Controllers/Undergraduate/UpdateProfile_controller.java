@@ -14,6 +14,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.mini_project_java.Database.DatabaseConnection;
 import org.example.mini_project_java.Models.Model;
+import org.example.mini_project_java.Models.Users;
 
 import java.io.File;
 import java.net.URL;
@@ -89,12 +90,12 @@ public class UpdateProfile_controller implements Initializable {
     }
 
     private String getLoggedInUsername() {
-        String username = Model.getInstance().getLoggedInUsername();
-        if (username == null) {
+        Users user = Model.getLoggedInUser();
+        if (user == null) {
             System.err.println("No logged-in user found.");
             return "TG/2022/1414"; // Default for testing
         }
-        return username;
+        return user.getUsername();
     }
 
     private void loadStudentDetails(String username) {

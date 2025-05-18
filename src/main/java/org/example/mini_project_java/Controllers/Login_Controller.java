@@ -41,6 +41,8 @@ public class Login_Controller {
 
         Users user = Users.login(username, password);
         if (user != null) {
+            // Set the logged-in user globally
+            Model.setLoggedInUser(user);
             navigateToRoleBasedView(user);
         } else {
             showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password.");

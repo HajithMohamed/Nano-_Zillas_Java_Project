@@ -70,8 +70,8 @@ public class LecturerPannelController implements Initializable {
     }
 
     private void handleLogout() {
-        Model.getInstance().getViewFactory().showLoginWindow();
-        Stage stage = (Stage) lecture_parent.getScene().getWindow();
+        Model.logout();
+        javafx.stage.Stage stage = (javafx.stage.Stage) lecture_parent.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
 

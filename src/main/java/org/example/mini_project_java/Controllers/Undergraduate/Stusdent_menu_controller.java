@@ -53,6 +53,8 @@ public class Stusdent_menu_controller implements Initializable {
             studentMedical.setOnAction(e -> onMenuItemSelected(studentMenuItem.MEDICAL));
         if (studentTimeTable != null)
             studentTimeTable.setOnAction(e -> onMenuItemSelected(studentMenuItem.TIMETABLE));
+        if (studentLogout != null)
+            studentLogout.setOnAction(e -> handleLogout());
 
     }
 
@@ -60,6 +62,13 @@ public class Stusdent_menu_controller implements Initializable {
         // Set the selected menu item so Student_Controller listens and loads the view
         Model.getInstance().getViewFactory().studentSelectedMenuItemProperty().set(menuItem);
         System.out.println(menuItem + " selected");
+    }
+
+    private void handleLogout() {
+        Model.logout();
+        // Close current window
+        javafx.stage.Stage stage = (javafx.stage.Stage) student_parent.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
     }
 
 

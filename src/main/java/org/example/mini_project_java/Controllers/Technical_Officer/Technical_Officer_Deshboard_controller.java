@@ -14,6 +14,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.mini_project_java.Database.DatabaseConnection;
 import org.example.mini_project_java.Models.Model;
+import org.example.mini_project_java.Models.Users;
 
 import java.io.File;
 import java.net.URL;
@@ -93,12 +94,12 @@ public class Technical_Officer_Deshboard_controller implements Initializable {
     }
 
     private String getLoggedInUsername() {
-        String username = Model.getInstance().getLoggedInUsername();
-        if (username == null) {
+        Users user = Model.getLoggedInUser();
+        if (user == null) {
             System.err.println("No logged-in user found.");
             return "techOff/0001"; // Default for testing
         }
-        return username;
+        return user.getUsername();
     }
 
     private void loadTechOfficerDetails(String username) {

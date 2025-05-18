@@ -22,7 +22,7 @@
             <Button fx:id="techMedical" mnemonicParsing="false" text="Medical Records" />
             <Line endX="120.0" />
             <Button fx:id="techDashboard" mnemonicParsing="false" text="Profile" />
-            <Button mnemonicParsing="false" text="Log Out" />
+            <Button fx:id="techLogout" mnemonicParsing="false" text="Log Out" />
         </VBox>
         <VBox prefHeight="120.0" prefWidth="210.0" styleClass="footer-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-30.0">
             <Text text="Report Suggestion / Bug?" />
