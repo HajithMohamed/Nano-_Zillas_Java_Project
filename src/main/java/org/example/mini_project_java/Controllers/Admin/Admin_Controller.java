@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.mini_project_java.Models.Admin;
 import org.example.mini_project_java.Models.Model;
+import org.example.mini_project_java.Models.Users;
 import org.example.mini_project_java.Utils.MenuItems;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class Admin_Controller implements Initializable {
     @FXML private Button profileImageChangeButton;
     @FXML private ImageView profileImage;
     @FXML private Icon adminNortification;
+    @FXML private Button adminLogout;
 
     private Admin adminModel;
     private File selectedImageFile;
@@ -56,9 +58,17 @@ public class Admin_Controller implements Initializable {
         if (update_btn != null) {
             update_btn.setOnAction(event -> updateProfile());
         }
+        if (adminLogout != null) {
+            adminLogout.setOnAction(event -> handleLogout());
+        }
 
         String username = getLoggedInUsername();
         loadAdminDetails(username);
+    }
+
+    private void handleLogout() {
+        Model.logout();
+        // Do NOT close the stage here! Model.logout() already closes all windows and shows login.
     }
 
     private void addListeners() {
@@ -75,12 +85,12 @@ public class Admin_Controller implements Initializable {
     }
 
     private String getLoggedInUsername() {
-        String username = Model.getInstance().getLoggedInUsername();
-        if (username == null) {
+        Users user = Model.getLoggedInUser();
+        if (user == null) {
             System.err.println("No logged-in user found. Using fallback username.");
             return "ADMIN/RUH/TEC/001";
         }
-        return username;
+        return user.getUsername();
     }
 
     private void loadAdminDetails(String username) {
@@ -114,7 +124,7 @@ public class Admin_Controller implements Initializable {
             if (currentProfilePicturePath != null && !currentProfilePicturePath.isEmpty() && profileImage != null) {
                 try {
                     File imageFile = new File(currentProfilePicturePath);
-                    if (imageFile.exists()) {
+                    if (imageFile.exists() && imageFile.isFile()) {
                         Image image = new Image(imageFile.toURI().toString());
                         profileImage.setImage(image);
                         System.out.println("Profile picture loaded successfully.");
@@ -138,7 +148,16 @@ public class Admin_Controller implements Initializable {
     private void setDefaultProfileImage() {
         if (profileImage != null) {
             try {
-                profileImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/default_profile.png"))));
+                String defaultImagePath = "/images/admin.png";
+                URL resourceUrl = getClass().getResource(defaultImagePath);
+                if (resourceUrl != null) {
+                    Image defaultImage = new Image(resourceUrl.toString());
+                    profileImage.setImage(defaultImage);
+                    System.out.println("Default profile image loaded successfully.");
+                } else {
+                    System.err.println("Default profile image not found at: " + defaultImagePath);
+                    showAlert("Error", "Default profile image not found.");
+                }
             } catch (Exception e) {
                 System.err.println("Failed to load default profile image: " + e.getMessage());
             }

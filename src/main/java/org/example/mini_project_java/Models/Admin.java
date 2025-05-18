@@ -3,12 +3,13 @@ package org.example.mini_project_java.Models;
 import org.example.mini_project_java.Database.DatabaseConnection;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public  class Admin extends Users {
+public class Admin extends Users {
 
     public Admin(String username, String password, String name, String email, String role, String mobile_no, String profilePicture) {
         super(username, password, name, email, role, mobile_no, profilePicture);
@@ -17,8 +18,6 @@ public  class Admin extends Users {
     public Admin(String username, String password, String name, String email, String role, String mobile_no) {
         super(username, password, name, email, role, mobile_no);
     }
-
-
 
     public Admin getAdminDetails(String username) {
         String query = "SELECT * FROM USERS WHERE username = ?";
@@ -36,6 +35,15 @@ public  class Admin extends Users {
                 String password = rs.getString("password");
                 String profilePic = rs.getString("profile_picture");
 
+                // Validate profile picture path
+                if (profilePic != null && !profilePic.isEmpty()) {
+                    File profileFile = new File(profilePic);
+                    if (!profileFile.exists() || !profileFile.isFile()) {
+                        System.err.println("Profile picture file does not exist: " + profilePic);
+                        profilePic = null; // Set to null if invalid
+                    }
+                }
+
                 if ("Admin".equalsIgnoreCase(role)) {
                     return new Admin(username, password, name, email, role, mobileNo, profilePic);
                 }
@@ -48,7 +56,6 @@ public  class Admin extends Users {
 
         return null;
     }
-
 
     @Override
     public void updateProfile() {
@@ -78,7 +85,6 @@ public  class Admin extends Users {
             e.printStackTrace();
         }
     }
-
 
     public Admin() {
         // Default constructor
@@ -123,10 +129,10 @@ public  class Admin extends Users {
     }
 
     public void addOrEditCourse(String courseCode, String courseTitle, String lectureId, int courseCredit, String courseType, int courseCreditHours, boolean isEdit) throws SQLException {
-        try (Connection connectDB = DatabaseConnection.getConnection()) {
+        try (Connection connectpromisedDB = DatabaseConnection.getConnection()) {
             if (!isEdit) {
                 String insertSQL = "INSERT INTO COURSE (course_code, course_title, lecturer_id, course_credit, course_type, credit_hours) VALUES (?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement ps = connectDB.prepareStatement(insertSQL)) {
+                try (PreparedStatement ps = connectpromisedDB.prepareStatement(insertSQL)) {
                     ps.setString(1, courseCode);
                     ps.setString(2, courseTitle);
                     ps.setString(3, lectureId);
@@ -137,7 +143,7 @@ public  class Admin extends Users {
                 }
             } else {
                 String updateSQL = "UPDATE COURSE SET course_title = ?, lecturer_id = ?, course_credit = ?, course_type = ?, credit_hours = ? WHERE course_code = ?";
-                try (PreparedStatement ps = connectDB.prepareStatement(updateSQL)) {
+                try (PreparedStatement ps = connectpromisedDB.prepareStatement(updateSQL)) {
                     ps.setString(1, courseTitle);
                     ps.setString(2, lectureId);
                     ps.setInt(3, courseCredit);

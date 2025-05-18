@@ -5,7 +5,7 @@
 <BorderPane fx:id="technical_officer_parent" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.mini_project_java.Controllers.Technical_Officer.Technical_officer_controller"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0">
 
     <left>
         <fx:include source="Technical_Officer_Menu.fxml"/>

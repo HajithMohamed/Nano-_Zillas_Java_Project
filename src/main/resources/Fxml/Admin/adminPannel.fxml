@@ -31,7 +31,7 @@
             <Button fx:id="timetable" mnemonicParsing="false" text="Time Table" />
             <Line endX="120.0" />
             <Button fx:id="dashboard" mnemonicParsing="false" text="Admin Profile" />
-            <Button mnemonicParsing="false" text="Log Out" />
+            <Button fx:id="adminLogout" mnemonicParsing="false" text="Log Out" />
         </VBox>
 
         <!-- Footer Section -->

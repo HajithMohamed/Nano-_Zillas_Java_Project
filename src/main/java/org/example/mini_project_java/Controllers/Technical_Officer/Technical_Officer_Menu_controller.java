@@ -50,10 +50,7 @@ public class Technical_Officer_Menu_controller implements Initializable {
     }
 
     private void handleLogout() {
-        // Show login window again
-        Model.getInstance().getViewFactory().showLoginWindow();
-
-        // Close current Technical Officer window
+        Model.logout();
         Stage stage = (Stage) TechOffPan.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }

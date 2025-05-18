@@ -9,6 +9,7 @@ import org.example.mini_project_java.Models.Lecture;
 import javafx.scene.control.Alert;
 import java.io.File;
 import javafx.stage.FileChooser;
+import org.example.mini_project_java.Models.Users;
 
 public class LecturerDashboardController {
     @FXML
@@ -38,10 +39,8 @@ public class LecturerDashboardController {
         // Disable username and password fields to prevent updates
         lecturer_username.setEditable(false);
         lecturerPassword.setEditable(false);
-
-        // Fetch lecturer details (replace "Mr.Heshan" with actual logged-in username)
-        // In a real app, this would come from a session or authentication mechanism
-        String loggedInUsername = "LEC/RUH/TEC/001"; // Replace with actual username retrieval logic
+        Users user = org.example.mini_project_java.Models.Model.getLoggedInUser();
+        String loggedInUsername = (user != null) ? user.getUsername() : "LEC/RUH/TEC/001";
         try {
             lecturer = Lecture.fetchLecturerByUsername(loggedInUsername);
         } catch (Exception e) {
@@ -61,7 +60,7 @@ public class LecturerDashboardController {
         // Load data from lecturer object to text fields
         lecturer_username.setText(lecturer.getUsername());
         lecturerFullName.setText(lecturer.getName());
-        lecturerPassword.setText("********"); // Masked for security
+        lecturerPassword.setText("********");
         email.setText(lecturer.getEmail());
         mobileNo.setText(lecturer.getMobileNo());
         // Load profile image if available
