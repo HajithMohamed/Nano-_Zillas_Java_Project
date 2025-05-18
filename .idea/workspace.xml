@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7786089-125e-4522-8828-b27f80cf6a28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TECUMSDATABASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Admin/Admin_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerPannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Lecturer/LecturerPannelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Login_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Deshboard_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Deshboard_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Menu_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Technical_Officer/Technical_Officer_Menu_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Stusdent_menu_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/Stusdent_menu_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/UpdateProfile_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Controllers/Undergraduate/UpdateProfile_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mini_project_java/Models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Admin/adminPannel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Technical_Officer/Technical_Officer_Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql-connector-j-8.1.0.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +53,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\Nano-_Zillas_Java_Project" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Tech LMS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.mini_project_java.App" />
@@ -96,7 +91,8 @@
       <workItem from="1747452377187" duration="26760000" />
       <workItem from="1747545745605" duration="7043000" />
       <workItem from="1747555840273" duration="5742000" />
-      <workItem from="1747564219455" duration="2836000" />
+      <workItem from="1747564219455" duration="3246000" />
+      <workItem from="1747567622096" duration="75000" />
     </task>
     <servers />
   </component>
