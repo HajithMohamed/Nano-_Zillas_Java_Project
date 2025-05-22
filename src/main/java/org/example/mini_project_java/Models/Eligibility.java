@@ -8,12 +8,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Eligibility {
     private static final Logger logger = LoggerFactory.getLogger(Eligibility.class);
+
+    private static final Map<String, Double> COURSE_CA_TOTALS = new HashMap<>();
+    static {
+        COURSE_CA_TOTALS.put("ICT2113", 30.0);
+        COURSE_CA_TOTALS.put("ICT2122", 40.0);
+        COURSE_CA_TOTALS.put("ICT2133", 30.0);
+        COURSE_CA_TOTALS.put("ICT2142", 40.0);
+        COURSE_CA_TOTALS.put("ICT2152", 30.0);
+    }
 
     private String student_id;
     private String course_code;
@@ -29,7 +36,6 @@ public class Eligibility {
         this.eligibilityStatus = eligibilityStatus;
     }
 
-    // Getters and setters
     public String getStudent_id() { return student_id; }
     public void setStudent_id(String student_id) { this.student_id = student_id; }
     public String getCourse_code() { return course_code; }
@@ -41,32 +47,46 @@ public class Eligibility {
     public String getEligibilityStatus() { return eligibilityStatus; }
     public void setEligibilityStatus(String eligibilityStatus) { this.eligibilityStatus = eligibilityStatus; }
 
-    private Optional<Double> getCaFinal(String stu_id, String course_code) {
-        validateInputs(stu_id, course_code);
-        logger.debug("Fetching CA final for student {} and course {}", stu_id, course_code);
+    private Map<String, Double> getCaFinal(String course_code) {
+        validateInput(course_code, "Course code");
+        logger.debug("Fetching CA finals for all students in course {}", course_code);
+        Map<String, Double> caTotals = new HashMap<>();
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
                 logger.error("Database connection is null");
-                return Optional.empty();
+                return caTotals;
             }
             try (PreparedStatement stmt = conn.prepareStatement(
-                    "SELECT caTotal FROM Student_Grades WHERE stu_id = ? AND course_code = ?")) {
-                stmt.setString(1, stu_id);
-                stmt.setString(2, course_code);
+                    "SELECT stu_id, caTotal FROM Student_Grades WHERE course_code = ?")) {
+                stmt.setString(1, course_code);
                 try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
+                    while (rs.next()) {
+                        String stu_id = rs.getString("stu_id");
                         double caTotal = rs.getDouble("caTotal");
-                        logger.debug("CA final found: {}", caTotal);
-                        return Optional.of(caTotal);
-                    } else {
-                        logger.warn("No CA final found for student {} and course {}", stu_id, course_code);
+                        double maxCaTotal = COURSE_CA_TOTALS.getOrDefault(course_code, 100.0);
+                        if (caTotal >= 0) {
+                            double adjustedCaTotal = Math.min(caTotal, maxCaTotal);
+                            caTotals.put(stu_id, adjustedCaTotal);
+                            logger.debug("CA final found for student {}: {} (adjusted to {})",
+                                    stu_id, caTotal, adjustedCaTotal);
+                            if (caTotal > maxCaTotal) {
+                                logger.warn("CA total {} for student {} in course {} was capped at {}",
+                                        caTotal, stu_id, course_code, maxCaTotal);
+                            }
+                        } else {
+                            logger.error("Invalid CA total {} for student {} in course {}",
+                                    caTotal, stu_id, course_code);
+                        }
                     }
                 }
             }
         } catch (SQLException e) {
-            logger.error("Error fetching CA final for student {} and course {}", stu_id, course_code, e);
+            logger.error("Error fetching CA finals for course {}", course_code, e);
         }
-        return Optional.empty();
+        if (caTotals.isEmpty()) {
+            logger.warn("No CA finals found for course {}", course_code);
+        }
+        return caTotals;
     }
 
     private Optional<Double> getAttendancePercentage(String stu_id, String course_code) {
@@ -105,46 +125,59 @@ public class Eligibility {
         return Optional.empty();
     }
 
-    public boolean calculateAndStoreEligibility(String stu_id, String course_code) {
+    public static boolean calculateAndStoreEligibility(String stu_id, String course_code) {
         logger.debug("Starting calculateAndStoreEligibility for student {} and course {}", stu_id, course_code);
         validateInputs(stu_id, course_code);
-        Optional<Double> caFinalOpt = getCaFinal(stu_id, course_code);
-        Optional<Double> attendanceOpt = getAttendancePercentage(stu_id, course_code);
+
+        if (!COURSE_CA_TOTALS.containsKey(course_code)) {
+            logger.error("Unknown course code: {}", course_code);
+            throw new IllegalArgumentException("Unknown course code: " + course_code);
+        }
+
+        Map<String, Double> caTotals = new Eligibility(stu_id, course_code, 0.0, 0.0, "").getCaFinal(course_code);
+        Optional<Double> caFinalOpt = Optional.ofNullable(caTotals.get(stu_id));
+        Optional<Double> attendanceOpt = new Eligibility(stu_id, course_code, 0.0, 0.0, "").getAttendancePercentage(stu_id, course_code);
 
         if (caFinalOpt.isEmpty() || attendanceOpt.isEmpty()) {
-            logger.warn("Incomplete data for eligibility calculation: CA={}, Attendance={}", caFinalOpt, attendanceOpt);
+            logger.warn("Incomplete data for eligibility calculation: CA={}, Attendance={} for student {} in course {}",
+                    caFinalOpt, attendanceOpt, stu_id, course_code);
             return false;
         }
 
         double caFinal = caFinalOpt.get();
         double attendancePercentage = attendanceOpt.get();
+        double maxCaTotal = COURSE_CA_TOTALS.get(course_code);
+        double caThreshold = maxCaTotal * 0.5;
+
         String eligibilityStatus;
-        if (attendancePercentage >= 80 && caFinal >= 50) {
+        if (attendancePercentage >= 80 && caFinal >= caThreshold) {
             eligibilityStatus = "Eligible";
-        } else if (attendancePercentage < 80 && caFinal < 50) {
+        } else if (attendancePercentage < 80 && caFinal < caThreshold) {
             eligibilityStatus = "Not eligible (CA & Attendance)";
         } else if (attendancePercentage < 80) {
             eligibilityStatus = "Not eligible (Attendance)";
         } else {
             eligibilityStatus = "Not eligible (CA)";
         }
-        logger.debug("Calculated eligibility: status={}, CA={}, attendance={}", eligibilityStatus, caFinal, attendancePercentage);
+        logger.debug("Calculated eligibility: status={}, CA={} (threshold={}), attendance={} for student {} in course {}",
+                eligibilityStatus, caFinal, caThreshold, attendancePercentage, stu_id, course_code);
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
-                logger.error("Database connection is null");
+                logger.error("Database connection is null for student {} in course {}", stu_id, course_code);
                 return false;
             }
+            conn.setAutoCommit(false);
             boolean recordExists;
             try (PreparedStatement checkStmt = conn.prepareStatement(
                     "SELECT 1 FROM Eligibility WHERE student_id = ? AND course_code = ?")) {
+                System.out.println("hAJITH");
                 checkStmt.setString(1, stu_id);
                 checkStmt.setString(2, course_code);
                 try (ResultSet rs = checkStmt.executeQuery()) {
                     recordExists = rs.next();
                 }
             }
-            logger.debug("Record exists: {}", recordExists);
 
             int rowsAffected;
             if (recordExists) {
@@ -158,7 +191,8 @@ public class Eligibility {
                     updateStmt.setString(4, stu_id);
                     updateStmt.setString(5, course_code);
                     rowsAffected = updateStmt.executeUpdate();
-                    logger.debug("Update executed, rows affected: {}", rowsAffected);
+                    logger.debug("Update executed, rows affected: {} for student {} in course {}",
+                            rowsAffected, stu_id, course_code);
                 }
             } else {
                 logger.debug("Inserting into Eligibility for student {} and course {}", stu_id, course_code);
@@ -171,84 +205,36 @@ public class Eligibility {
                     insertStmt.setDouble(4, attendancePercentage);
                     insertStmt.setString(5, eligibilityStatus);
                     rowsAffected = insertStmt.executeUpdate();
-                    logger.debug("Insert executed, rows affected: {}", rowsAffected);
+                    logger.debug("Insert executed, rows affected: {} for student {} in course {}",
+                            rowsAffected, stu_id, course_code);
                 }
             }
-            return rowsAffected > 0;
+            conn.commit();
+            if (rowsAffected == 0) {
+                logger.warn("No rows affected for student {} in course {}", stu_id, course_code);
+                return false;
+            }
+            return true;
         } catch (SQLException e) {
-            logger.error("Error storing eligibility for student {} and course {}", stu_id, course_code, e);
+            logger.error("Error storing eligibility for student {} and course {}: {}",
+                    stu_id, course_code, e.getMessage(), e);
+            try (Connection conn = DatabaseConnection.getConnection()) {
+                if (conn != null) conn.rollback();
+            } catch (SQLException rollbackEx) {
+                logger.error("Error rolling back transaction for student {} in course {}",
+                        stu_id, course_code, rollbackEx);
+            }
             return false;
         }
-    }
-
-    public static Optional<Eligibility> getEligibility(String stu_id, String course_code) {
-        validateInputs(stu_id, course_code);
-        logger.debug("Fetching eligibility for student {} and course {}", stu_id, course_code);
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            if (conn == null) {
-                logger.error("Database connection is null");
-                return Optional.empty();
-            }
-            try (PreparedStatement stmt = conn.prepareStatement(
-                    "SELECT * FROM Eligibility WHERE student_id = ? AND course_code = ?")) {
-                stmt.setString(1, stu_id);
-                stmt.setString(2, course_code);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        Eligibility eligibility = new Eligibility(
-                                rs.getString("student_id"),
-                                rs.getString("course_code"),
-                                rs.getDouble("caFinal"),
-                                rs.getDouble("attendancePercentage"),
-                                rs.getString("eligibilityStatus")
-                        );
-                        logger.debug("Eligibility found: {}", eligibility);
-                        return Optional.of(eligibility);
-                    } else {
-                        logger.debug("No eligibility found for student {} and course {}", stu_id, course_code);
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            logger.error("Error fetching eligibility for student {} and course {}", stu_id, course_code, e);
-        }
-        return Optional.empty();
-    }
-
-    public static List<Eligibility> getEligibilityForStudent(String stu_id) {
-        validateInput(stu_id, "Student ID");
-        logger.debug("Fetching all eligibility records for student {}", stu_id);
-        List<Eligibility> eligibilityList = new ArrayList<>();
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            if (conn == null) {
-                logger.error("Database connection is null");
-                return eligibilityList;
-            }
-            try (PreparedStatement stmt = conn.prepareStatement(
-                    "SELECT * FROM Eligibility WHERE student_id = ?")) {
-                stmt.setString(1, stu_id);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    while (rs.next()) {
-                        eligibilityList.add(new Eligibility(
-                                rs.getString("student_id"),
-                                rs.getString("course_code"),
-                                rs.getDouble("caFinal"),
-                                rs.getDouble("attendancePercentage"),
-                                rs.getString("eligibilityStatus")
-                        ));
-                    }
-                }
-            }
-            logger.debug("Found {} eligibility records for student {}", eligibilityList.size(), stu_id);
-        } catch (SQLException e) {
-            logger.error("Error fetching eligibility for student {}", stu_id, e);
-        }
-        return eligibilityList;
     }
 
     public static boolean calculateEligibilityForCourse(String course_code) {
         validateInput(course_code, "Course code");
         logger.debug("Calculating eligibility for course {}", course_code);
+        if (!COURSE_CA_TOTALS.containsKey(course_code)) {
+            logger.error("Unknown course code: {}", course_code);
+            throw new IllegalArgumentException("Unknown course code: " + course_code);
+        }
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
                 logger.error("Database connection is null");
@@ -269,8 +255,7 @@ public class Eligibility {
             boolean success = true;
             for (String studentId : studentIds) {
                 logger.debug("Processing student {} for course {}", studentId, course_code);
-                boolean result = new Eligibility(studentId, course_code, 0.0, 0.0, "")
-                        .calculateAndStoreEligibility(studentId, course_code);
+                boolean result = calculateAndStoreEligibility(studentId, course_code);
                 if (!result) {
                     logger.warn("Failed to update eligibility for student {} and course {}", studentId, course_code);
                     success = false;
@@ -278,7 +263,7 @@ public class Eligibility {
             }
             return success;
         } catch (SQLException e) {
-            logger.error("Error calculating eligibility for course {}", course_code, e);
+            logger.error("Error calculating eligibility for course {}: {}", course_code, e.getMessage(), e);
             return false;
         }
     }

@@ -10,42 +10,74 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="studentDashbord" prefHeight="750.0" prefWidth="850.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.UpdateProfile_controller">
-   <Text fx:id="welcomeText" layoutX="24.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Welcome Student!" />
-   <VBox layoutX="72.0" layoutY="100.0" maxHeight="-Infinity" prefHeight="650.0" prefWidth="706.0" styleClass="admin_dashboard_card" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="100.0">
+<AnchorPane fx:id="studentDashbord" prefHeight="750.0" prefWidth="1000.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Undergraduate.UpdateProfile_controller">
+   <padding>
+      <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+   </padding>
+
+   <Text fx:id="welcomeText" styleClass="admin_dashboard_header" text="Welcome Student!" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+   
+   <VBox prefHeight="650.0" prefWidth="900.0" styleClass="admin_dashboard_card" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
       <padding>
-         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+         <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
       </padding>
-      <Text fx:id="headerText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Student's Profile Details" />
-      <ImageView fx:id="profileImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <VBox.margin>
-            <Insets top="50.0" />
-         </VBox.margin>
-         <Image url="@../../Images/admin.png" />
-      </ImageView>
-      <Button fx:id="profileChangeButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="66.0" text="Change">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
+
+      <Text fx:id="headerText" styleClass="admin_dashboard_header" text="Student's Profile Details" />
+      
+      <VBox alignment="CENTER" spacing="10.0">
          <padding>
-            <Insets top="10.0" />
-         </padding>
-      </Button>
-      <AnchorPane prefHeight="282.0" prefWidth="666.0" styleClass="admin_dashboard_card_anchor">
-         <VBox.margin>
             <Insets top="30.0" />
-         </VBox.margin>
-         <Label layoutX="79.0" layoutY="20.0" styleClass="admin_dashboard_grid_label" text="User Name:" />
-         <Label layoutX="78.0" layoutY="71.0" styleClass="admin_dashboard_grid_label" text="Full Name : " />
-         <Label layoutX="75.0" layoutY="120.0" styleClass="admin_dashboard_grid_label" text="Password : " />
-         <Label layoutX="78.0" layoutY="168.0" styleClass="admin_dashboard_grid_label" text="Email:" />
-         <Label layoutX="75.0" layoutY="218.0" styleClass="admin_dashboard_grid_label" text="Mobile No:" />
-         <TextField fx:id="userName" layoutX="198.0" layoutY="14.0" styleClass="admin_dashboard_grid_text_field" />
-         <TextField fx:id="fullName" layoutX="198.0" layoutY="66.0" styleClass="admin_dashboard_grid_text_field" />
-         <TextField fx:id="password" layoutX="198.0" layoutY="114.0" styleClass="admin_dashboard_grid_text_field" />
-         <TextField fx:id="email" layoutX="198.0" layoutY="162.0" styleClass="admin_dashboard_grid_text_field" />
-         <TextField fx:id="mobileNo" layoutX="198.0" layoutY="212.0" styleClass="admin_dashboard_grid_text_field" AnchorPane.topAnchor="212.0" />
-         <Button fx:id="update_btn" layoutX="512.0" layoutY="266.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="149.0" styleClass="admin_dashboard_grid_button" text="Update" />
+         </padding>
+
+         <ImageView fx:id="profileImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../Images/admin.png" />
+         </ImageView>
+         
+         <Button fx:id="profileChangeButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="Change Profile Picture" />
+      </VBox>
+
+      <AnchorPane prefHeight="300.0" prefWidth="800.0" styleClass="admin_dashboard_card_anchor">
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+
+         <VBox spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+               <Insets left="20.0" right="20.0" />
+            </padding>
+
+            <!-- User Name -->
+            <AnchorPane prefHeight="40.0" prefWidth="800.0">
+               <Label layoutX="0.0" layoutY="5.0" styleClass="admin_dashboard_grid_label" text="User Name:" />
+               <TextField fx:id="userName" layoutX="120.0" layoutY="0.0" prefWidth="600.0" styleClass="admin_dashboard_grid_text_field" />
+            </AnchorPane>
+
+            <!-- Full Name -->
+            <AnchorPane prefHeight="40.0" prefWidth="800.0">
+               <Label layoutX="0.0" layoutY="5.0" styleClass="admin_dashboard_grid_label" text="Full Name:" />
+               <TextField fx:id="fullName" layoutX="120.0" layoutY="0.0" prefWidth="600.0" styleClass="admin_dashboard_grid_text_field" />
+            </AnchorPane>
+
+            <!-- Password -->
+            <AnchorPane prefHeight="40.0" prefWidth="800.0">
+               <Label layoutX="0.0" layoutY="5.0" styleClass="admin_dashboard_grid_label" text="Password:" />
+               <TextField fx:id="password" layoutX="120.0" layoutY="0.0" prefWidth="600.0" styleClass="admin_dashboard_grid_text_field" />
+            </AnchorPane>
+
+            <!-- Email -->
+            <AnchorPane prefHeight="40.0" prefWidth="800.0">
+               <Label layoutX="0.0" layoutY="5.0" styleClass="admin_dashboard_grid_label" text="Email:" />
+               <TextField fx:id="email" layoutX="120.0" layoutY="0.0" prefWidth="600.0" styleClass="admin_dashboard_grid_text_field" />
+            </AnchorPane>
+
+            <!-- Mobile No -->
+            <AnchorPane prefHeight="40.0" prefWidth="800.0">
+               <Label layoutX="0.0" layoutY="5.0" styleClass="admin_dashboard_grid_label" text="Mobile No:" />
+               <TextField fx:id="mobileNo" layoutX="120.0" layoutY="0.0" prefWidth="600.0" styleClass="admin_dashboard_grid_text_field" />
+            </AnchorPane>
+         </VBox>
+
+         <Button fx:id="update_btn" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="admin_dashboard_grid_button" text="Update Profile" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       </AnchorPane>
    </VBox>
 </AnchorPane>

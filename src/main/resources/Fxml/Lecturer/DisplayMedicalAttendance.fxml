@@ -14,22 +14,22 @@
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="modify_course" stylesheets="@../../Styles/User_Profiles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Lecturer.DisplayMedicalAttendanceController">
 
     <!-- Headings -->
-    <Text layoutX="150.0" layoutY="40.0" styleClass="user_profile_heading" text="Undergraduate AttendanceMedical Records" />
-    <Text layoutX="295.0" layoutY="75.0" styleClass="user_profile_heading" text="Department of ICT" />
+    <Text layoutX="200.0" layoutY="40.0" styleClass="user_profile_heading" text="Undergraduate AttendanceMedical Records" />
+    <Text layoutX="320.0" layoutY="75.0" styleClass="user_profile_heading" text="Department of ICT" />
 
     <!-- TabPane to hold Attendance and Medical Panes -->
-    <TabPane fx:id="contentPane" layoutX="50.0" layoutY="108.0" prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+    <TabPane fx:id="contentPane" layoutX="50.0" layoutY="108.0" prefHeight="600.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <!-- Attendance Tab -->
         <Tab fx:id="attendanceTab" text="Attendance">
-            <AnchorPane prefHeight="520.0" prefWidth="750.0">
+            <AnchorPane prefHeight="570.0" prefWidth="750.0">
                 <!-- Search Bar -->
                 <Label layoutX="10.0" layoutY="10.0" styleClass="user_profile_Add_New_User_Label" text="Search by Student ID or Name:" />
-                <TextField fx:id="attendanceSearchField" layoutX="210.0" layoutY="3.0" onAction="#searchAttendance" prefHeight="34.0" prefWidth="298.0" promptText="Search by Student ID or Name" styleClass="user_profile_Add_New_User_Text_Field" />
+                <TextField fx:id="attendanceSearchField" layoutX="210.0" layoutY="3.0" onAction="#searchAttendance" prefHeight="34.0" prefWidth="350.0" promptText="Search by Student ID or Name" styleClass="user_profile_Add_New_User_Text_Field" />
 
                 <!-- Attendance Table -->
-                <TableView fx:id="attendanceTable" layoutX="10.0" layoutY="50.0" prefHeight="450.0" prefWidth="730.0" styleClass="user_profile_Table">
+                <TableView fx:id="attendanceTable" layoutX="10.0" layoutY="50.0" prefHeight="500.0" prefWidth="730.0" styleClass="user_profile_Table">
                     <columns>
-                        <TableColumn fx:id="attendanceStudentIdColumn" prefWidth="120.0" text="Student ID">
+                        <TableColumn fx:id="attendanceStudentIdColumn" prefWidth="150.0" text="Student ID">
                             <cellValueFactory>
                                 <PropertyValueFactory property="username" />
                             </cellValueFactory>
@@ -39,12 +39,12 @@
                                 <PropertyValueFactory property="name" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="attendanceStatusColumn" prefWidth="135.19998168945312" text="Status">
+                        <TableColumn fx:id="attendanceStatusColumn" prefWidth="150.0" text="Status">
                             <cellValueFactory>
                                 <PropertyValueFactory property="attendanceStatus" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="attendancePercentageColumn" prefWidth="254.39996337890625" text="Attendance (%)">
+                        <TableColumn fx:id="attendancePercentageColumn" prefWidth="230.0" text="Attendance (%)">
                             <cellValueFactory>
                                 <PropertyValueFactory property="attendancePercentage" />
                             </cellValueFactory>
@@ -55,26 +55,26 @@
                     </placeholder>
                 </TableView>
                 <!-- Browse Button -->
-                <Button layoutX="546.0" layoutY="7.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Browse" onAction="#browseAttendance" />
+                <Button layoutX="580.0" layoutY="7.0" mnemonicParsing="false" onAction="#browseAttendance" prefHeight="26.0" prefWidth="140.0" text="Browse" />
             </AnchorPane>
         </Tab>
 
         <!-- Medical Tab -->
         <Tab fx:id="medicalTab" text="Medical">
-            <AnchorPane prefHeight="520.0" prefWidth="750.0">
+            <AnchorPane prefHeight="570.0" prefWidth="750.0">
                 <!-- Search Bar -->
                 <Label layoutX="10.0" layoutY="10.0" styleClass="user_profile_Add_New_User_Label" text="Search by Student ID or Name:" />
-                <TextField fx:id="medicalSearchField" layoutX="202.0" layoutY="2.0" onAction="#searchMedical" prefHeight="34.0" prefWidth="399.0" promptText="Search by Student ID or Name" styleClass="user_profile_Add_New_User_Text_Field" />
+                <TextField fx:id="medicalSearchField" layoutX="210.0" layoutY="3.0" onAction="#searchMedical" prefHeight="34.0" prefWidth="300.0" promptText="Search by Student ID or Name" styleClass="user_profile_Add_New_User_Text_Field" />
 
                 <!-- Medical Table -->
-                <TableView fx:id="medicalTable" layoutX="10.0" layoutY="50.0" prefHeight="450.0" prefWidth="730.0" styleClass="user_profile_Table">
+                <TableView fx:id="medicalTable" layoutX="10.0" layoutY="50.0" prefHeight="500.0" prefWidth="730.0" styleClass="user_profile_Table">
                     <columns>
                         <TableColumn fx:id="medicalStudentIdColumn" prefWidth="120.0" text="Student ID">
                             <cellValueFactory>
                                 <PropertyValueFactory property="studentId" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="medicalStudentNameColumn" prefWidth="200.0" text="Student Name">
+                        <TableColumn fx:id="medicalStudentNameColumn" prefWidth="180.0" text="Student Name">
                             <cellValueFactory>
                                 <PropertyValueFactory property="name" />
                             </cellValueFactory>
@@ -84,12 +84,12 @@
                                 <PropertyValueFactory property="week" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="medicalReportColumn" prefWidth="150.0" text="Medical Report">
+                        <TableColumn fx:id="medicalReportColumn" prefWidth="180.0" text="Medical Report">
                             <cellValueFactory>
                                 <PropertyValueFactory property="medicalReport" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="medicalStatusColumn" prefWidth="148.80002441406248" text="Status">
+                        <TableColumn fx:id="medicalStatusColumn" prefWidth="150.0" text="Status">
                             <cellValueFactory>
                                 <PropertyValueFactory property="status" />
                             </cellValueFactory>
@@ -100,7 +100,7 @@
                     </placeholder>
                 </TableView>
                 <!-- Browse Button -->
-                <Button layoutX="530.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Browse" onAction="#browseMedical" />
+                <Button layoutX="530.0" layoutY="6.0" mnemonicParsing="false" onAction="#browseMedical" prefHeight="26.0" prefWidth="140.0" text="Browse" />
             </AnchorPane>
         </Tab>
     </TabPane>

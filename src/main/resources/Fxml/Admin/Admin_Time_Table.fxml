@@ -9,63 +9,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Time_Table_Controller">
-    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="780.0" prefWidth="980.0" styleClass="user_profile"
-                stylesheets="@../../Styles/User_Profiles.css">
-        <Text layoutX="426.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              styleClass="user_profile_heading" text="Time Table"/>
-        <TableView fx:id="timeTableView" layoutX="10.0" layoutY="63.0" prefHeight="430.0" prefWidth="960.0"
-                   styleClass="user_profile_Table">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Time_Table_Controller">
+    <AnchorPane layoutX="10.0" layoutY="-14.0" prefHeight="780.0" prefWidth="980.0" styleClass="user_profile" stylesheets="@../../Styles/User_Profiles.css">
+        <Text layoutX="426.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_profile_heading" text="Time Table" />
+        <TableView fx:id="timeTableView" layoutX="10.0" layoutY="63.0" prefHeight="430.0" prefWidth="960.0" styleClass="user_profile_Table">
             <columns>
-                <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time"/>
-                <TableColumn fx:id="mondayColumn" prefWidth="150.0" text="Monday"/>
-                <TableColumn fx:id="tuesdayColumn" prefWidth="150.0" text="Tuesday"/>
-                <TableColumn fx:id="wednesdayColumn" prefWidth="150.0" text="Wednesday"/>
-                <TableColumn fx:id="thursdayColumn" prefWidth="150.0" text="Thursday"/>
-                <TableColumn fx:id="fridayColumn" prefWidth="150.0" text="Friday"/>
-                <TableColumn fx:id="actionColumn" prefWidth="109.0" text="Action"/>
+                <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time" />
+                <TableColumn fx:id="mondayColumn" prefWidth="150.0" text="Monday" />
+                <TableColumn fx:id="tuesdayColumn" prefWidth="150.0" text="Tuesday" />
+                <TableColumn fx:id="wednesdayColumn" prefWidth="150.0" text="Wednesday" />
+                <TableColumn fx:id="thursdayColumn" prefWidth="150.0" text="Thursday" />
+                <TableColumn fx:id="fridayColumn" prefWidth="150.0" text="Friday" />
+                <TableColumn fx:id="actionColumn" prefWidth="109.0" text="Action" />
             </columns>
         </TableView>
-        <AnchorPane layoutX="7.0" layoutY="510.0" prefHeight="260.0" prefWidth="960.0"
-                    styleClass="user_profile_Add_New_User">
-            <Text layoutX="368.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  styleClass="user_profile_Add_New_User_Heading" text="Add New Course"/>
-            <Label layoutX="23.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Course Code"/>
-            <TextField fx:id="courseCode" layoutX="114.0" layoutY="62.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="500.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Course Title"/>
-            <TextField fx:id="courseTitle" layoutX="590.0" layoutY="62.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="23.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Lecturer ID"/>
-            <TextField fx:id="lecId" layoutX="114.0" layoutY="110.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="500.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Credits"/>
-            <TextField fx:id="courseCredit" layoutX="590.0" layoutY="110.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="23.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Type"/>
-            <TextField fx:id="courseType" layoutX="114.0" layoutY="160.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="500.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Credit Hours"/>
-            <TextField fx:id="courseCreditHours" layoutX="590.0" layoutY="160.0"
-                       styleClass="user_profile_Add_New_User_Text_Field"/>
-            <Label layoutX="23.0" layoutY="216.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Day"/>
-            <ComboBox fx:id="dayComboBox" layoutX="114.0" layoutY="210.0" prefWidth="230.0"
-                      styleClass="user_profile_Add_New_User_ComboBox"/>
-            <Label layoutX="360.0" layoutY="216.0" styleClass="user_profile_Add_New_User_Label"
-                   text="Time Slot"/>
-            <ComboBox fx:id="timeSlotComboBox" layoutX="440.0" layoutY="210.0" prefWidth="230.0"
-                      styleClass="user_profile_Add_New_User_ComboBox"/>
-            <Button fx:id="addCourseBtn" layoutX="810.0" layoutY="210.0" mnemonicParsing="false"
-                    styleClass="user_profile_Add_New_User_Button" text="Add Course"/>
+        <AnchorPane layoutX="9.0" layoutY="493.0" prefHeight="290.0" prefWidth="960.0" styleClass="user_profile_Add_New_User">
+            <Text layoutX="368.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_profile_Add_New_User_Heading" text="Add New Course" />
+            <Label layoutX="23.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Course Code" />
+            <TextField fx:id="courseCode" layoutX="114.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="500.0" layoutY="68.0" styleClass="user_profile_Add_New_User_Label" text="Course Title" />
+            <TextField fx:id="courseTitle" layoutX="590.0" layoutY="62.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="23.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label" text="Lecturer ID" />
+            <TextField fx:id="lecId" layoutX="114.0" layoutY="110.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="500.0" layoutY="116.0" styleClass="user_profile_Add_New_User_Label" text="Credits" />
+            <TextField fx:id="courseCredit" layoutX="590.0" layoutY="110.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="23.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Type" />
+            <TextField fx:id="courseType" layoutX="114.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="500.0" layoutY="166.0" styleClass="user_profile_Add_New_User_Label" text="Credit Hours" />
+            <TextField fx:id="courseCreditHours" layoutX="590.0" layoutY="160.0" styleClass="user_profile_Add_New_User_Text_Field" />
+            <Label layoutX="23.0" layoutY="216.0" styleClass="user_profile_Add_New_User_Label" text="Day" />
+            <ComboBox fx:id="dayComboBox" layoutX="114.0" layoutY="210.0" prefWidth="230.0" styleClass="user_profile_Add_New_User_ComboBox" />
+            <Label layoutX="360.0" layoutY="216.0" styleClass="user_profile_Add_New_User_Label" text="Time Slot" />
+            <ComboBox fx:id="timeSlotComboBox" layoutX="440.0" layoutY="210.0" prefWidth="230.0" styleClass="user_profile_Add_New_User_ComboBox" />
+            <Button fx:id="addCourseBtn" layoutX="810.0" layoutY="210.0" mnemonicParsing="false" styleClass="user_profile_Add_New_User_Button" text="Add Course" />
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>

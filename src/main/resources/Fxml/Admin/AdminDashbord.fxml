@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Controller">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" styleClass="admin_dashboard" stylesheets="@../../Styles/Admin_Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Admin.Admin_Controller">
 
     <!-- Welcome message -->
     <Text fx:id="welcomeText" layoutX="24.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="admin_dashboard_header" text="Welcome Mr. Clerk!" />

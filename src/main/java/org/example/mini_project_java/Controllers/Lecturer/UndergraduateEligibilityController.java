@@ -136,7 +136,6 @@ public class UndergraduateEligibilityController implements Initializable {
                     if (conn == null) {
                         throw new SQLException("Database connection is null");
                     }
-                    // Get all courses assigned to lecturer
                     String courseQuery = "SELECT course_code FROM COURSE WHERE lecturer_id = ?";
                     try (PreparedStatement courseStmt = conn.prepareStatement(courseQuery)) {
                         courseStmt.setString(1, loggedInLecturerId);
@@ -168,8 +167,9 @@ public class UndergraduateEligibilityController implements Initializable {
                     if (conn == null) {
                         throw new SQLException("Database connection is null");
                     }
-                    String query = "SELECT * FROM Eligibility";
+                    String query = "SELECT * FROM Eligibility WHERE course_code IN (SELECT course_code FROM COURSE WHERE lecturer_id = ?)";
                     try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                        stmt.setString(1, loggedInLecturerId);
                         try (ResultSet rs = stmt.executeQuery()) {
                             while (rs.next()) {
                                 list.add(new Eligibility(
@@ -220,9 +220,38 @@ public class UndergraduateEligibilityController implements Initializable {
 
     @FXML
     private void refreshData() {
-        calculateAndStoreEligibility();
-        loadCourseNames();
-        loadEligibilityData();
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                logger.debug("Processing all marks for lecturer {}", loggedInLecturerId);
+                try (Connection conn = DatabaseConnection.getConnection()) {
+                    if (conn == null) {
+                        throw new SQLException("Database connection is null");
+                    }
+                    String courseQuery = "SELECT course_code FROM COURSE WHERE lecturer_id = ?";
+                    try (PreparedStatement courseStmt = conn.prepareStatement(courseQuery)) {
+                        courseStmt.setString(1, loggedInLecturerId);
+                        try (ResultSet courseRs = courseStmt.executeQuery()) {
+                            while (courseRs.next()) {
+                                String courseCode = courseRs.getString("course_code");
+                                logger.debug("Calculating eligibility for course {}", courseCode);
+                                Eligibility.calculateEligibilityForCourse(courseCode);
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+        };
+        task.setOnSucceeded(event -> {
+            loadCourseNames();
+            loadEligibilityData();
+        });
+        task.setOnFailed(event -> {
+            logger.error("Failed to refresh eligibility data", task.getException());
+            showAlert("Database Error", "Error refreshing eligibility data: " + task.getException().getMessage());
+        });
+        new Thread(task).start();
     }
 
     private void showAlert(String title, String message) {

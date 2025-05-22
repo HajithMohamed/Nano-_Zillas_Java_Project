@@ -5,7 +5,7 @@
 <BorderPane fx:id="lecture_parent" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.mini_project_java.Controllers.Lecturer.LectureController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="750.0" prefWidth="1030.0">
 
     <left>
         <fx:include source="LecturerPannel.fxml"/>
