@@ -23,28 +23,28 @@ DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `attendance` (
-  `student_id` varchar(20) NOT NULL,
-  `course_code` varchar(10) NOT NULL,
-  `week1` tinyint(1) DEFAULT NULL,
-  `week2` tinyint(1) DEFAULT NULL,
-  `week3` tinyint(1) DEFAULT NULL,
-  `week4` tinyint(1) DEFAULT NULL,
-  `week5` tinyint(1) DEFAULT NULL,
-  `week6` tinyint(1) DEFAULT NULL,
-  `week7` tinyint(1) DEFAULT NULL,
-  `week8` tinyint(1) DEFAULT NULL,
-  `week9` tinyint(1) DEFAULT NULL,
-  `week10` tinyint(1) DEFAULT NULL,
-  `week11` tinyint(1) DEFAULT NULL,
-  `week12` tinyint(1) DEFAULT NULL,
-  `week13` tinyint(1) DEFAULT NULL,
-  `week14` tinyint(1) DEFAULT NULL,
-  `week15` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`student_id`,`course_code`),
-  KEY `course_code` (`course_code`),
-  CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`username`),
-  CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `course` (`course_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+                              `student_id` varchar(20) NOT NULL,
+                              `course_code` varchar(10) NOT NULL,
+                              `week1` tinyint(1) DEFAULT NULL,
+                              `week2` tinyint(1) DEFAULT NULL,
+                              `week3` tinyint(1) DEFAULT NULL,
+                              `week4` tinyint(1) DEFAULT NULL,
+                              `week5` tinyint(1) DEFAULT NULL,
+                              `week6` tinyint(1) DEFAULT NULL,
+                              `week7` tinyint(1) DEFAULT NULL,
+                              `week8` tinyint(1) DEFAULT NULL,
+                              `week9` tinyint(1) DEFAULT NULL,
+                              `week10` tinyint(1) DEFAULT NULL,
+                              `week11` tinyint(1) DEFAULT NULL,
+                              `week12` tinyint(1) DEFAULT NULL,
+                              `week13` tinyint(1) DEFAULT NULL,
+                              `week14` tinyint(1) DEFAULT NULL,
+                              `week15` tinyint(1) DEFAULT NULL,
+                              PRIMARY KEY (`student_id`,`course_code`),
+                              KEY `course_code` (`course_code`),
+                              CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`username`),
+                              CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `course` (`course_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

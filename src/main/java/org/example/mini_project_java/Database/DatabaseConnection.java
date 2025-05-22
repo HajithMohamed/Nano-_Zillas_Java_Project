@@ -18,9 +18,9 @@ public class DatabaseConnection {
 
             String host = dotenv.get("DB_HOST", "localhost");
             String port = dotenv.get("DB_PORT", "3306");
-            String dbName = dotenv.get("DB_NAME", "testdb");
+            String dbName = dotenv.get("DB_NAME", "TECUMS");
             String username = dotenv.get("DB_USER", "root");
-            String password = dotenv.get("DB_PASS", "");
+            String password = dotenv.get("DB_PASS", "HAzi@1958");
 
             String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false";
 

@@ -11,44 +11,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Login_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mini_project_java.Controllers.Login_Controller">
 
    <!-- Left Logo Section -->
-   <VBox prefHeight="450.0" prefWidth="200.0" styleClass="login_container_logo">
-      <ImageView fitHeight="100.0" fitWidth="100.0">
+   <VBox prefHeight="500.0" prefWidth="300.0" styleClass="login_container_logo" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+      <padding>
+         <Insets top="40.0" bottom="40.0" />
+      </padding>
+      <ImageView fitHeight="120.0" fitWidth="120.0">
          <image>
             <Image url="@../Images/download.png" />
          </image>
       </ImageView>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_logo_Text" text="UNIVERSITY OF RUHUNA" textAlignment="CENTER" wrappingWidth="180.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_logo_Text" text="UNIVERSITY OF RUHUNA" textAlignment="CENTER" wrappingWidth="250.0" />
    </VBox>
 
    <!-- Login Form Section -->
-   <VBox layoutX="214.0" layoutY="14.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_container_Main_VB" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-
+   <VBox prefHeight="500.0" prefWidth="500.0" styleClass="login_container_Main_VB" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <padding>
-         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         <Insets top="60.0" right="60.0" bottom="60.0" left="60.0" />
       </padding>
 
       <!-- Heading -->
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_Main_Heading" text="University Management System" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_container_Main_Heading_2" text="Faculty of Technology">
          <VBox.margin>
-            <Insets left="80.0" />
-         </VBox.margin></Text>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Text>
 
-      <!-- Username -->
-      <Label styleClass="login_container_Main_Label" text="User Name :" />
-      <TextField fx:id="usernameField" styleClass="login_container_Main_TextField" />
+      <VBox spacing="20.0">
+         <padding>
+            <Insets top="40.0" />
+         </padding>
 
-      <!-- Password -->
-      <Label styleClass="login_container_Main_Label" text="Password :" />
-      <PasswordField fx:id="passwordField" styleClass="login_container_Main_PasswordField">
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin></PasswordField>
+         <!-- Username -->
+         <VBox spacing="8.0">
+            <Label styleClass="login_container_Main_Label" text="User Name :" />
+            <TextField fx:id="usernameField" styleClass="login_container_Main_TextField" />
+         </VBox>
 
-      <!-- Login Button -->
-      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" styleClass="login_container_Main_Button" text="Log In" />
+         <!-- Password -->
+         <VBox spacing="8.0">
+            <Label styleClass="login_container_Main_Label" text="Password :" />
+            <PasswordField fx:id="passwordField" styleClass="login_container_Main_PasswordField" />
+         </VBox>
+
+         <!-- Login Button -->
+         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" styleClass="login_container_Main_Button" text="Log In" />
+      </VBox>
    </VBox>
 </AnchorPane>

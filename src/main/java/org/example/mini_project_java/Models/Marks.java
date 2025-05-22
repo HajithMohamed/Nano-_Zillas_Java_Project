@@ -228,7 +228,9 @@ public class Marks {
                                 Arrays.sort(marks4);
                                 caFinal = (((marks4[1] + marks4[2]) * 10) / 100) + (((assessment01 + assessment02) * 20) / 100);
                                 break;
+
                         }
+                        System.out.println(caFinal);
 
                         // Update caTotal in the database
                         updateGradeTotals(studentId, courseCode, caFinal, 0.0, 0.0, 0.0);
