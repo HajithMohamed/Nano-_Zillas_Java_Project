@@ -126,3 +126,12 @@ If you want, I can also add diagrams and examples so the answer is ready for ass
 
  Mini-Project-Java │── 📂 src │ │── 📂 main │ │ │── 📂 controllers # JavaFX controllers (handle UI events) │ │ │── 📂 models # Data models (POJOs) for business logic │ │ │── 📂 views # FXML files defining UI layouts │ │ │── 📂 database # Database connection & SQL queries │ │ │── 📂 utils # Utility/helper classes │ │ │── 📄 Main.java # Entry point (main method) │ │ │── 📄 App.java # JavaFX Application class (starts UI) │── 📂 resources # Static resources (CSS, images, etc.) │ │── 📂 styles # Stylesheets for UI styling │ │── 📂 images # Icons, logos, and other graphics │ │── 📄 database.properties # Database configuration file │── 📂 lib # External libraries (JDBC drivers, dependencies) │── 📄 pom.xml # Maven dependencies (if using Maven) │── 📄 build.gradle # Gradle build file (if using Gradle) │── 📄 README.md # Project documentation (this file)
 
+
+
+
+In-Class Exercise
+• What are the main components of a thread, and how do they differ from those of a traditional process?
+How does multithreading improve the performance and efficiency of modern software applications? Provide examples.
+• What are the three common models for establishing relationships between, user and kernel threads, and what are the advantages and disadvantages of each?
+• What are some key issues and challenges associated with multithreading, such as signal handling and thread cancellation?
+• Explain the concept of fork-join parallelism and its significance in the context of 'multithreaded programming
